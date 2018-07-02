@@ -1,12 +1,31 @@
 body {
   font-family: 'Roboto';
-  color: #7a7a7a;
  }
+
+#bottom-nav-bar {
+  border-style: solid;
+    border-width: 2px;
+}
+
+.bottom-nav-bar-item {
+	float: left;
+	text-align: center;
+	text-transform: uppercase;
+	width: 25%;
+}
 
 [class*="col-"] {
   width: 100%;
   display: inline-block;
   float: left; 
+}
+
+.preparation-card {
+  border-style: solid;
+    border-width: 2px;
+  float: left;
+  text-align: center;
+  width: 40%;	
 }
 
 
