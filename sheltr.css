@@ -129,6 +129,10 @@ body {
   width: 80%;
 }
 
+#prep-list-1-close {
+	cursor: pointer;
+}
+
 	.subtitle {
 		font-size: 1.3em;
 		margin: 0 0 0 3vw;
