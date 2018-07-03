@@ -1,9 +1,29 @@
 $(document).ready(function() {
 	$("#prep-card-1").click(function(){
-		console.log("lala")
-		var list = $("<div class='preparation-list-background'><div class='betterDisplay'></div>");
-		console.log("lele")
+		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    /*$(".betterDisplay").text(screen_text);*/
+    var content = $("<label class='container'>\
+    										<div class='col-12'>Marina\
+    										<input type='checkbox'>\
+    										<span class='checkmark'></span>\
+    										</div>\
+    										<div class='col-12'>Ketki\
+    										<input type='checkbox'>\
+    										<span class='checkmark'></span>\
+    										</div>\
+    										<div class='col-12'>Nish\
+    										<input type='checkbox'>\
+    										<span class='checkmark'></span>\
+    										</div>\
+    										<div class='col-12'>Brooke\
+    										<input type='checkbox'>\
+    										<span class='checkmark'></span>\
+    										</div>\
+    										<div class='col-12'>Jon\
+    										<input type='checkbox'>\
+    										<span class='checkmark'></span>\
+    										</div>\
+    									</label>");
+    $(".preparation-list").append(content);
 	});
 });

@@ -44,6 +44,14 @@ body {
 	  width: 100%;	
 	}
 
+	input[type=checkbox] {
+    -ms-transform: scale(3); 
+    -moz-transform: scale(3); 
+    -webkit-transform: scale(3); 
+    -o-transform: scale(3); 
+    transform: scale(3); 
+  }
+
 	#preparation-bar {
 	  background-color: #f0f0f5;
 	  border-radius: 25px;
@@ -112,17 +120,14 @@ body {
   width: 100%; 
 }
 
-.betterDisplay {
+.preparation-list {
   background: white;
-  border-radius: 25px;
-  font-size: 2.3em;
-  left: 0;
-  margin: 4em;
-  padding: 2.5em;
-  position: fixed;
-  top: 0; 
+  border-radius: 15px;
+  font-size: 1.5em;
+  margin: 2em .5em 0 .5em;
+  height: 80%;
+  width: 80%;
 }
-
 
 	.subtitle {
 		font-size: 1.3em;
