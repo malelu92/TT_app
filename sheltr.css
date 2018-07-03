@@ -3,13 +3,13 @@ body {
   margin: 0;
  }
  /*For Mobile*/
-@media only screen and (max-width: 767px) {
+/*@media only screen and (max-width: 767px) {
 
 	body {
 	  font-family: 'Roboto';
 	  font-size: 1.2em!important;
 	  margin: 0;
-	 }
+	 }*/
 
 	#bottom-nav-bar {
 	  border-style: solid;
@@ -111,7 +111,7 @@ body {
 	.subtitle {
 		font-size: 1.3em;
 	}
-}
+/*}*/
 
 /* For desktop: */
 @media only screen and (min-width: 850px) {
