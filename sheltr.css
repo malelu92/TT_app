@@ -71,6 +71,10 @@ body {
   margin: 2vh 0 2vh 0;
 }
 
+.preparation-card-text {
+	padding: 0 5vw 0 5vw;
+}
+
 /*.preparation-card-line {
 	  border-style: solid;
     border-width: 2px;
