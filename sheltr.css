@@ -61,9 +61,10 @@ body {
 	}
 
 	.preparation-card {
-	  border-style: solid;
-	    border-width: 2px;
+	  /*border-style: solid;
+	    border-width: 2px;*/
 	  border-radius: 5px;
+	  background-color: #f0f0f5;
 	  float: left;
 	  height: 18vh;
 	  margin:	2.5vw 0 2.5vw 5vw;
@@ -92,8 +93,7 @@ body {
 	}
 
 	.preparation-card-why {
-	  border-style: solid;
-	  border-width: 2px;
+		background-color: #b3b3cc;
 	  border-radius: 50%;
 	  height: 4vh;
 	  margin: 2% 0 0 75%;
