@@ -3,11 +3,11 @@ body {
   margin: 0;
  }
  /*For Mobile*/
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 767px) {
 
 	body {
 	  font-family: 'Roboto';
-	  font-size: 1.2em;
+	  font-size: 1.2em!important;
 	  margin: 0;
 	 }
 
