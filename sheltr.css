@@ -4,9 +4,10 @@ body {
  }
  /*For Mobile*/
 @media only screen and (max-width: 767px) {
-	body {
+
+body {
   font-family: 'Roboto';
-  font-size: 1.3em;
+  font-size: 1em;
   margin: 0;
  }
 
