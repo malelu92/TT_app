@@ -1,5 +1,6 @@
 body {
   font-family: 'Roboto';
+  margin: 0;
  }
 
 #bottom-nav-bar {
@@ -20,12 +21,63 @@ body {
   float: left; 
 }
 
+.filter-item {
+	  border-style: solid;
+    border-width: 2px;
+  border-radius: 25px;
+	float: left;
+	height:3.5vh;
+	margin: .7vh 0 0 3vw;
+	padding: 0 5vw 0 5vw;
+}
+
+#header {
+	  border-style: solid;
+    border-width: 2px;
+    font-size: 1.2em;
+  height: 10vh;
+  margin: 0 0 1vh 0;
+  width: 100%;	
+}
+
+#preparation-bar {
+	  border-style: solid;
+    border-width: 2px;
+   border-radius: 25px;
+   height: 3.5vh;
+   margin: 2.5vh auto 2.5vh auto;
+   width: 80%;
+}
+
 .preparation-card {
   border-style: solid;
     border-width: 2px;
+  border-radius: 5px;
   float: left;
+  height: 10vh;
+  margin:	2.5vw 0 2.5vw 5vw;
   text-align: center;
   width: 40%;	
+}
+
+#preparation-cards-body {
+  border-style: solid;
+    border-width: 2px;
+    width: 100%;
+
+  margin: 2vh 0 2vh 0;
+}
+
+/*.preparation-card-line {
+	  border-style: solid;
+    border-width: 2px;
+
+    height: 60px;
+    width: 90%;
+}*/
+
+.subtitle {
+	font-size: 1.3em;
 }
 
 
