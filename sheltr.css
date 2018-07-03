@@ -91,6 +91,11 @@ body {
 
  /*For Mobile*/
 @media only screen and (max-width: 767px) {
+	body {
+  font-family: 'Roboto';
+  font-size: 100px;
+  margin: 0;
+ }
 }
 
 /* For desktop: */
