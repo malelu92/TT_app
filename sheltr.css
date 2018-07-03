@@ -5,95 +5,112 @@ body {
  /*For Mobile*/
 @media only screen and (max-width: 767px) {
 
-body {
-  font-family: 'Roboto';
-  font-size: 3em;
-  margin: 0;
- }
+	body {
+	  font-family: 'Roboto';
+	  font-size: 1.2em;
+	  margin: 0;
+	 }
 
-#bottom-nav-bar {
-  border-style: solid;
-    border-width: 2px;
-  bottom:0;
-  position: absolute;
-}
-
-.bottom-nav-bar-item {
-	float: left;
-	height: 5vh;
-	text-align: center;
-	text-transform: uppercase;
-	width: 25%;
-}
-
-[class*="col-"] {
-  width: 100%;
-  display: inline-block;
-  float: left; 
-}
-
-.filter-item {
+	#bottom-nav-bar {
 	  border-style: solid;
-    border-width: 2px;
-  border-radius: 25px;
-	float: left;
-	height:3.5vh;
-	margin: .7vh 0 0 3vw;
-	padding: 0 5vw 0 5vw;
-}
+	    border-width: 2px;
+	  bottom:0;
+	  position: absolute;
+	}
 
-#header {
+	.bottom-nav-bar-item {
+		float: left;
+		height: 5vh;
+		text-align: center;
+		text-transform: uppercase;
+		width: 25%;
+	}
+
+	[class*="col-"] {
+	  width: 100%;
+	  display: inline-block;
+	  float: left; 
+	}
+
+	.filter-item {
+		  border-style: solid;
+	    border-width: 2px;
+	  border-radius: 25px;
+		float: left;
+		height:3.5vh;
+		margin: .7vh 0 0 3vw;
+		padding: 0 5vw 0 5vw;
+	}
+
+	#header {
+		  border-style: solid;
+	    border-width: 2px;
+	    font-size: 1.2em;
+	  height: 10vh;
+	  margin: 0 0 1vh 0;
+	  width: 100%;	
+	}
+
+	#preparation-bar {
+		  border-style: solid;
+	    border-width: 2px;
+	   border-radius: 25px;
+	  height: 3.5vh;
+	  margin: 2.5vh auto 2.5vh auto;
+	  width: 80%;
+	}
+
+	.preparation-card {
 	  border-style: solid;
-    border-width: 2px;
-    font-size: 1.2em;
-  height: 10vh;
-  margin: 0 0 1vh 0;
-  width: 100%;	
-}
+	    border-width: 2px;
+	  border-radius: 5px;
+	  float: left;
+	  height: 18vh;
+	  margin:	2.5vw 0 2.5vw 5vw;
+	  text-align: center;
+	  width: 40%;	
+	  position: relative;
+	}
 
-#preparation-bar {
+	#preparation-cards-body {
 	  border-style: solid;
-    border-width: 2px;
-   border-radius: 25px;
-  height: 3.5vh;
-  margin: 2.5vh auto 2.5vh auto;
-  width: 80%;
-}
+	    border-width: 2px;
+	    width: 100%;
 
-.preparation-card {
-  border-style: solid;
-    border-width: 2px;
-  border-radius: 5px;
-  float: left;
-  height: 10vh;
-  margin:	2.5vw 0 2.5vw 5vw;
-  text-align: center;
-  width: 40%;	
-}
+	  margin: 2vh 0 2vh 0;
+	}
 
-#preparation-cards-body {
-  border-style: solid;
-    border-width: 2px;
-    width: 100%;
+	.preparation-card-countdown {
+		bottom:0;
+		font-size: .8em;
+	  margin: 0 0 2% 60%;
+	  position: absolute;
+	}
 
-  margin: 2vh 0 2vh 0;
-}
+	.preparation-card-text {
+		padding: 0 5vw 0 5vw;
+	}
 
-.preparation-card-text {
-	padding: 0 5vw 0 5vw;
-}
-
-/*.preparation-card-line {
+	.preparation-card-why {
 	  border-style: solid;
-    border-width: 2px;
+	  border-width: 2px;
+	  border-radius: 50%;
+	  height: 4vh;
+	  margin: 2% 0 0 75%;
+	  width: 4vh;
+	}
 
-    height: 60px;
-    width: 90%;
-}*/
+	/*.preparation-card-line {
+		  border-style: solid;
+	    border-width: 2px;
 
-.subtitle {
-	font-size: 1.3em;
-}
+	    height: 60px;
+	    width: 90%;
+	}*/
+
+	.subtitle {
+		font-size: 1.3em;
+	}
 }
 
 /* For desktop: */
