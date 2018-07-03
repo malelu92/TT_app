@@ -7,10 +7,11 @@ body {
 	  border-style: solid;
 	    border-width: 2px;
 	  bottom:0;
-	  position: absolute;
+	  position: fixed;
 	}
 
 	.bottom-nav-bar-item {
+		background-color: #ffffff;
 		float: left;
 		height: 5vh;
 		text-align: center;
@@ -44,9 +45,8 @@ body {
 	}
 
 	#preparation-bar {
-		  border-style: solid;
-	    border-width: 2px;
-	   border-radius: 25px;
+	  background-color: #f0f0f5;
+	  border-radius: 25px;
 	  height: 3.5vh;
 	  margin: 2.5vh auto 2.5vh auto;
 	  width: 80%;
@@ -57,6 +57,7 @@ body {
 	    border-width: 2px;*/
 	  border-radius: 5px;
 	  background-color: #f0f0f5;
+	  cursor: pointer;
 	  float: left;
 	  height: 18vh;
 	  margin:	2.5vw 0 2.5vw 5vw;
@@ -100,8 +101,32 @@ body {
 	    width: 90%;
 	}*/
 
+.preparation-list-background {
+  background: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  left: 0;
+  margin: 0;
+  position: fixed;
+  padding: 0;
+  top: 0;
+  width: 100%; 
+}
+
+.betterDisplay {
+  background: white;
+  border-radius: 25px;
+  font-size: 2.3em;
+  left: 0;
+  margin: 4em;
+  padding: 2.5em;
+  position: fixed;
+  top: 0; 
+}
+
+
 	.subtitle {
 		font-size: 1.3em;
+		margin: 0 0 0 3vw;
 	}
 
 	 /*For Mobile*/
