@@ -2,6 +2,13 @@ body {
   font-family: 'Roboto';
   margin: 0;
  }
+ /*For Mobile*/
+@media only screen and (max-width: 767px) {
+	body {
+  font-family: 'Roboto';
+  font-size: 1.3em;
+  margin: 0;
+ }
 
 #bottom-nav-bar {
   border-style: solid;
@@ -86,15 +93,6 @@ body {
 .subtitle {
 	font-size: 1.3em;
 }
-
-
- /*For Mobile*/
-@media only screen and (max-width: 767px) {
-	body {
-  font-family: 'Roboto';
-  font-size: 1.3em;
-  margin: 0;
- }
 }
 
 /* For desktop: */
