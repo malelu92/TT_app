@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
-	sessionStorage.setItem('prep-card-1-count', 0);
+	/*sessionStorage.setItem('prep-card-1-count', 0);
 	sessionStorage.setItem('prep-card-2-count', 0);
 	sessionStorage.setItem('prep-card-3-count', 0);
 	sessionStorage.setItem('prep-card-4-count', 0);
 	sessionStorage.setItem('prep-card-5-count', 0);
-	sessionStorage.setItem('prep-card-6-count', 0);
+	sessionStorage.setItem('prep-card-6-count', 0);*/
 
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
@@ -13,28 +13,35 @@ $(document).ready(function() {
 
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
-		var prep_card = "prep-card-" + i + "-count";
-		console.log(prep_card)
+		var prep_card = 'prep-card-' + i + '-count';
+		/*console.log(prep_card)
+		console.log(typeof(prep_card))*/
 		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+		sessionStorage.setItem(prep_card, 0);
 	}
 
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
-		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+		createList(this.id, card_lists[0]); 
+		/*var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(card_lists[0], this.id);
+    var content = createListItems(card_lists[0], this.id);
     $(".preparation-list").append(content);
 
 	  for (var i = 0; i < card_lists[0].length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
-	  }
+	  }*/
+
 	});
 
 	/* Emergency kit card */
 	$("#prep-card-2").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(card_lists[1], this.id);
+    console.log("lala")
+    console.log(this.id)
+    console.log(typeof(this.id))
+    var content = createListItems(card_lists[1], this.id);
     $(".preparation-list").append(content);
 
 	  for (var i = 0; i < card_lists[1].length; i++) {
@@ -46,7 +53,7 @@ $(document).ready(function() {
 	$("#prep-card-3").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(card_lists[2], this.id);
+    var content = createListItems(card_lists[2], this.id);
     $(".preparation-list").append(content);
 
 	  for (var i = 0; i < card_lists[2].length; i++) {
@@ -91,7 +98,18 @@ function closePrepList(id) {
 	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items;
 }
 
-function createList(list_items, card_id) {
+function createList(id, items_list) {
+	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+  $("body").append(list);
+  var content = createListItems(items_list, id);
+  $(".preparation-list").append(content);
+
+	for (var i = 0; i < items_list.length; i++) {
+	  loadCheckedItem("item"+i+"-"+id)
+	}	
+}
+
+function createListItems(list_items, card_id) {
 	var init = "<div>\
     						<div id='close-" + card_id + "' onclick='closePrepList(this.id)' class='col-12'>close</div>\
     						<label class='container'>";
