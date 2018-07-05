@@ -16,6 +16,7 @@ function createList(list_items, card_id) {
 $(document).ready(function() {
 
 	sessionStorage.setItem('prep-card-1-count', 0);
+	sessionStorage.setItem('prep-card-2-count', 0);
 
 	/* click on emergency contact list card */
 	$("#prep-card-1").click(function(){
@@ -62,6 +63,31 @@ $(document).ready(function() {
 	  }
 	});
 
+
+		/* click on emergency contact list card */
+	$("#prep-card-2").click(function(){
+		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+    $("body").append(list);
+    var items_list = ["Ketki", "Nishchala", "Brooke", "Marina", "lala"];
+    var content = createList(items_list, this.id);
+    $(".preparation-list").append(content);
+	  for (var i = 0; i < items_list.length; i++) {
+	  	loadCheckedItem("item"+i+"-"+this.id)
+	  }
+  });
+
+  		/* click on emergency contact list card */
+	/*$("#prep-card-3").click(function(){
+		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+    $("body").append(list);
+    var items_list = ["Ketki", "Nishchala", "Brooke", "Marina"];
+    var content = createList(items_list, this.id);
+    $(".preparation-list").append(content);
+	  for (var i = 0; i < items_list.length; i++) {
+	  	loadCheckedItem("item"+i+"-"+this.id)
+	  }
+  });*/
+
 });
 
 function loadCheckedItem(id) {
@@ -77,7 +103,6 @@ function loadCheckedItem(id) {
 function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
-	console.log(card)
 
 	if(!(sessionStorage.getItem(id))){
 		sessionStorage.setItem(id, true);
@@ -103,4 +128,5 @@ function closePrepList() {
 	$(".preparation-list-background").remove();
 	console.log(sessionStorage.getItem('prep-card-1-count'))
 	document.getElementById("countdown-1").innerHTML = sessionStorage.getItem('prep-card-1-count') + " of 5";
+	document.getElementById("countdown-2").innerHTML = sessionStorage.getItem('prep-card-2-count') + " of 5";
 }
