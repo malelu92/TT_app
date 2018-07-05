@@ -6,11 +6,10 @@ function createList(list_items) {
     								</div>";
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + " onclick='checkedItem()'>\
+  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + " onclick='checkedItem(this.id)'>\
     										<span class='checkmark'></span>\
     										</div>"; 
   }
-  /*console.log(middle)*/
   return init + middle + end;
 }
 
@@ -63,22 +62,22 @@ $(document).ready(function() {
 
 
 
-function checkedItem() {
-	/*console.log("id")
-	console.log(id)*/
-	if(!(sessionStorage.getItem('item0'))){
-		sessionStorage.setItem('item0', true);
+function checkedItem(id) {
+	console.log("id")
+	console.log(id)
+	if(!(sessionStorage.getItem(id))){
+		sessionStorage.setItem(id, true);
     var count = sessionStorage.getItem('prep-card-1-count');
     sessionStorage.setItem('prep-card-1-count', count+1);
 	}
 	else {
-		if(sessionStorage.getItem('item0') == "true") {
-			sessionStorage.setItem('item0', false);
+		if(sessionStorage.getItem(id) == "true") {
+			sessionStorage.setItem(id, false);
 			var count = sessionStorage.getItem('prep-card-1-count');
 			sessionStorage.setItem('prep-card-1-count', count-1);
 		}
 		else {
-			sessionStorage.setItem('item0', true);
+			sessionStorage.setItem(id, true);
     	var count = sessionStorage.getItem('prep-card-1-count');
     	sessionStorage.setItem('prep-card-1-count', count+1);
 		}
