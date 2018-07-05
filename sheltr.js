@@ -7,21 +7,25 @@ $(document).ready(function() {
 	sessionStorage.setItem('prep-card-5-count', 0);
 	sessionStorage.setItem('prep-card-6-count', 0);
 
-	var items_list_card_1 = ["Marina1", "Marina2", "Marina3"];
-	var items_list_card_2 = ["Brazil", "USA", "India", "England"];
-	var items_list_card_3 = ["Ketki", "Nishchala", "Brooke", "Marina", "Jon"];
-	document.getElementById("countdown-1").innerHTML = sessionStorage.getItem('prep-card-1-count') + " of " + items_list_card_1.length;
-	document.getElementById("countdown-2").innerHTML = sessionStorage.getItem('prep-card-2-count') + " of " + items_list_card_2.length;
-	document.getElementById("countdown-3").innerHTML = sessionStorage.getItem('prep-card-3-count') + " of " + items_list_card_3.length;
+	var card_lists = [["Marina1", "Marina2", "Marina3"],
+									["Brazil", "USA", "India", "England"],
+									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"]];
+
+	for (var i=1; i<=card_lists.length; i++) {
+		var countdown = "countdown-" + i;
+		var prep_card = "prep-card-" + i + "-count";
+		console.log(prep_card)
+		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+	}
 
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(items_list_card_1, this.id);
+    var content = createList(card_lists[0], this.id);
     $(".preparation-list").append(content);
 
-	  for (var i = 0; i < items_list_card_1.length; i++) {
+	  for (var i = 0; i < card_lists[0].length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
 	});
@@ -30,10 +34,10 @@ $(document).ready(function() {
 	$("#prep-card-2").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(items_list_card_2, this.id);
+    var content = createList(card_lists[1], this.id);
     $(".preparation-list").append(content);
 
-	  for (var i = 0; i < items_list_card_2.length; i++) {
+	  for (var i = 0; i < card_lists[1].length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
   });
@@ -42,10 +46,10 @@ $(document).ready(function() {
 	$("#prep-card-3").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var content = createList(items_list_card_3, this.id);
+    var content = createList(card_lists[2], this.id);
     $(".preparation-list").append(content);
 
-	  for (var i = 0; i < items_list_card_3.length; i++) {
+	  for (var i = 0; i < card_lists[2].length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
   });
@@ -76,6 +80,7 @@ function checkedItem(id) {
 
 }
 
+/* closes preparation list and updates value on preparation card */
 function closePrepList(id) {
 	$(".preparation-list-background").remove();
 	var card_number = (id.split('-')[3])
