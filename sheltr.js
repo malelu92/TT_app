@@ -9,7 +9,8 @@ $(document).ready(function() {
 
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
-									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"]];
+									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
+									["Lala", "Lele"]];
 
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
@@ -23,46 +24,26 @@ $(document).ready(function() {
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
 		createList(this.id, card_lists[0]); 
-		/*var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
-    $("body").append(list);
-    var content = createListItems(card_lists[0], this.id);
-    $(".preparation-list").append(content);
-
-	  for (var i = 0; i < card_lists[0].length; i++) {
-	  	loadCheckedItem("item"+i+"-"+this.id)
-	  }*/
-
 	});
 
 	/* Emergency kit card */
 	$("#prep-card-2").click(function(){
-		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
-    $("body").append(list);
-    console.log("lala")
-    console.log(this.id)
-    console.log(typeof(this.id))
-    var content = createListItems(card_lists[1], this.id);
-    $(".preparation-list").append(content);
-
-	  for (var i = 0; i < card_lists[1].length; i++) {
-	  	loadCheckedItem("item"+i+"-"+this.id)
-	  }
+		createList(this.id, card_lists[1]);
   });
 
   /* Shelter registrations card */
 	$("#prep-card-3").click(function(){
-		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
-    $("body").append(list);
-    var content = createListItems(card_lists[2], this.id);
-    $(".preparation-list").append(content);
+		createList(this.id, card_lists[2]);
+  });
 
-	  for (var i = 0; i < card_lists[2].length; i++) {
-	  	loadCheckedItem("item"+i+"-"+this.id)
-	  }
+  /* Create a communication plan card */
+	$("#prep-card-4").click(function(){
+		createList(this.id, card_lists[3]);
   });
 
 });
 
+/*updates value on the card and checked or unchecked items*/
 function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
@@ -98,6 +79,7 @@ function closePrepList(id) {
 	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items;
 }
 
+/*Creates list background and list items*/
 function createList(id, items_list) {
 	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
   $("body").append(list);
@@ -109,6 +91,7 @@ function createList(id, items_list) {
 	}	
 }
 
+/*Creates html code for given list and card*/
 function createListItems(list_items, card_id) {
 	var init = "<div>\
     						<div id='close-" + card_id + "' onclick='closePrepList(this.id)' class='col-12'>close</div>\
@@ -124,6 +107,7 @@ function createListItems(list_items, card_id) {
   return init + middle + end;
 }
 
+/*loads checked item on list*/
 function loadCheckedItem(id) {
   if(sessionStorage.getItem(id) == "true") {
 	  document.getElementById(id).checked = true;
