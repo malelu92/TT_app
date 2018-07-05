@@ -1,104 +1,56 @@
-function createList(list_items, card_id) {
-	var init = "<div>\
-    						<div id='prep-list-1-close' onclick='closePrepList()' class='col-12'>close</div>\
-    						<label class='container'>";
-  var end = "</label>\
-    								</div>";
-  var middle = "";
-  for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
-    										<span class='checkmark'></span>\
-    										</div>"; 
-  }
-  return init + middle + end;
-}
-
 $(document).ready(function() {
 
 	sessionStorage.setItem('prep-card-1-count', 0);
 	sessionStorage.setItem('prep-card-2-count', 0);
+	sessionStorage.setItem('prep-card-3-count', 0);
+	sessionStorage.setItem('prep-card-4-count', 0);
+	sessionStorage.setItem('prep-card-5-count', 0);
+	sessionStorage.setItem('prep-card-6-count', 0);
 
-	/* click on emergency contact list card */
+	var items_list_card_1 = ["Marina1", "Marina2", "Marina3"];
+	var items_list_card_2 = ["Brazil", "USA", "India", "England"];
+	var items_list_card_3 = ["Ketki", "Nishchala", "Brooke", "Marina", "Jon"];
+	document.getElementById("countdown-1").innerHTML = sessionStorage.getItem('prep-card-1-count') + " of " + items_list_card_1.length;
+	document.getElementById("countdown-2").innerHTML = sessionStorage.getItem('prep-card-2-count') + " of " + items_list_card_2.length;
+	document.getElementById("countdown-3").innerHTML = sessionStorage.getItem('prep-card-3-count') + " of " + items_list_card_3.length;
+
+	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    /*var content = $("<div>\
-    									<div id='prep-list-1-close' onclick='closePrepList()' class='col-12'>close</div>\
-    									<label class='container'>\
-    										<div class='col-12'>Marina\
-    										<input type='checkbox' id='item1' onclick='checkedItem()'>\
-    										<span class='checkmark'></span>\
-    										</div>\
-    										<div class='col-12'>Ketki\
-    										<input type='checkbox'>\
-    										<span class='checkmark'></span>\
-    										</div>\
-    										<div class='col-12'>Nish\
-    										<input type='checkbox'>\
-    										<span class='checkmark'></span>\
-    										</div>\
-    										<div class='col-12'>Brooke\
-    										<input type='checkbox'>\
-    										<span class='checkmark'></span>\
-    										</div>\
-    										<div class='col-12'>Jon\
-    										<input type='checkbox'>\
-    										<span class='checkmark'></span>\
-    										</div>\
-    									</label>\
-    								</div>");*/
-
-    var items_list = ["Marina1", "Marina2", "Marina3"];
-    var content = createList(items_list, this.id);
+    var content = createList(items_list_card_1, this.id);
     $(".preparation-list").append(content);
 
-    /*if(sessionStorage.getItem('item0') == "true") {
-	    document.getElementById("item0").checked = true;
-	  }
-	  else {
-	  	document.getElementById("item0").checked = false;
-	  }*/
-	  for (var i = 0; i < items_list.length; i++) {
+	  for (var i = 0; i < items_list_card_1.length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
 	});
 
-
-		/* click on emergency contact list card */
+	/* Emergency kit card */
 	$("#prep-card-2").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var items_list = ["Ketki", "Nishchala", "Brooke", "Marina", "lala"];
-    var content = createList(items_list, this.id);
+    var content = createList(items_list_card_2, this.id);
     $(".preparation-list").append(content);
-	  for (var i = 0; i < items_list.length; i++) {
+
+	  for (var i = 0; i < items_list_card_2.length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
   });
 
-  		/* click on emergency contact list card */
-	/*$("#prep-card-3").click(function(){
+  /* Shelter registrations card */
+	$("#prep-card-3").click(function(){
 		var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
     $("body").append(list);
-    var items_list = ["Ketki", "Nishchala", "Brooke", "Marina"];
-    var content = createList(items_list, this.id);
+    var content = createList(items_list_card_3, this.id);
     $(".preparation-list").append(content);
-	  for (var i = 0; i < items_list.length; i++) {
+
+	  for (var i = 0; i < items_list_card_3.length; i++) {
 	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
-  });*/
+  });
 
 });
-
-function loadCheckedItem(id) {
-  if(sessionStorage.getItem(id) == "true") {
-	  document.getElementById(id).checked = true;
-	}
-	else {
-	  document.getElementById(id).checked = false;
-	}
-}
-
 
 function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
@@ -124,9 +76,36 @@ function checkedItem(id) {
 
 }
 
-function closePrepList() {
+function closePrepList(id) {
 	$(".preparation-list-background").remove();
-	console.log(sessionStorage.getItem('prep-card-1-count'))
-	document.getElementById("countdown-1").innerHTML = sessionStorage.getItem('prep-card-1-count') + " of 5";
-	document.getElementById("countdown-2").innerHTML = sessionStorage.getItem('prep-card-2-count') + " of 5";
+	var card_number = (id.split('-')[3])
+	var item = id.split('-')[0] + "-";
+	var card = id.split(item)[1] + "-count";
+	var countdown = "countdown-" + card_number;
+	var total_items = (document.getElementById(countdown).innerHTML).split(" ")[2];
+	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items;
+}
+
+function createList(list_items, card_id) {
+	var init = "<div>\
+    						<div id='close-" + card_id + "' onclick='closePrepList(this.id)' class='col-12'>close</div>\
+    						<label class='container'>";
+  var end = "</label>\
+    								</div>";
+  var middle = "";
+  for (var i = 0; i < list_items.length; i++) {
+  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+    										<span class='checkmark'></span>\
+    										</div>"; 
+  }
+  return init + middle + end;
+}
+
+function loadCheckedItem(id) {
+  if(sessionStorage.getItem(id) == "true") {
+	  document.getElementById(id).checked = true;
+	}
+	else {
+	  document.getElementById(id).checked = false;
+	}
 }
