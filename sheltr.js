@@ -1,4 +1,4 @@
-function createList(list_items) {
+function createList(list_items, card_id) {
 	var init = "<div>\
     						<div id='prep-list-1-close' onclick='closePrepList()' class='col-12'>close</div>\
     						<label class='container'>";
@@ -6,7 +6,7 @@ function createList(list_items) {
     								</div>";
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + " onclick='checkedItem(this.id)'>\
+  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
     										<span class='checkmark'></span>\
     										</div>"; 
   }
@@ -48,7 +48,7 @@ $(document).ready(function() {
     								</div>");*/
 
     var items_list = ["Marina1", "Marina2", "Marina3"];
-    var content = createList(items_list);
+    var content = createList(items_list, this.id);
     $(".preparation-list").append(content);
 
     /*if(sessionStorage.getItem('item0') == "true") {
@@ -58,7 +58,7 @@ $(document).ready(function() {
 	  	document.getElementById("item0").checked = false;
 	  }*/
 	  for (var i = 0; i < items_list.length; i++) {
-	  	loadCheckedItem("item"+i)
+	  	loadCheckedItem("item"+i+"-"+this.id)
 	  }
 	});
 
@@ -75,21 +75,25 @@ function loadCheckedItem(id) {
 
 
 function checkedItem(id) {
+	var item = id.split('-')[0] + "-";
+	var card = id.split(item)[1] + "-count";
+	console.log(card)
+
 	if(!(sessionStorage.getItem(id))){
 		sessionStorage.setItem(id, true);
-    var count = parseInt(sessionStorage.getItem('prep-card-1-count'));
-    sessionStorage.setItem('prep-card-1-count', count+1);
+    var count = parseInt(sessionStorage.getItem(card));
+    sessionStorage.setItem(card, count+1);
 	}
 	else {
 		if(sessionStorage.getItem(id) == "true") {
 			sessionStorage.setItem(id, false);
-			var count = sessionStorage.getItem('prep-card-1-count');
-			sessionStorage.setItem('prep-card-1-count', count-1);
+			var count = sessionStorage.getItem(card);
+			sessionStorage.setItem(card, count-1);
 		}
 		else {
 			sessionStorage.setItem(id, true);
-    	var count = parseInt(sessionStorage.getItem('prep-card-1-count'));
-    	sessionStorage.setItem('prep-card-1-count', count+1);
+    	var count = parseInt(sessionStorage.getItem(card));
+    	sessionStorage.setItem(card, count+1);
 		}
 	}
 
