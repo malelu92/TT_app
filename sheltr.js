@@ -15,7 +15,6 @@ $(document).ready(function() {
 									["Lala", "Lele"]];
 
 	var total_items = 0;
-	var checked_items = [0,0,0,0];
 
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
@@ -27,67 +26,28 @@ $(document).ready(function() {
 		total_items += (card_lists[i-1]).length;
 	}
 
-	console.log(total_items);
-
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
 		console.log(total_items)
 		loadList(this.id, card_lists[0], total_items);
-
-
-		/*var total_checked = 0;
-  for(var i=0; i<checked_items.length; i++) {
-  	if(checked_items[i] != undefined) {
-  		total_checked += checked_items[i];
-  	}
-  }*/
-
-  /*console.log("total checked")
-  console.log(total_checked);
-  var prep_percentage = total_checked/total_items;
-  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
-
 	});
 
 	/* Emergency kit card */
 	$("#prep-card-2").click(function(){
 		loadList(this.id, card_lists[1], total_items);
-  /*}
-
-  console.log("total checked")
-  console.log(total_checked);
-  var prep_percentage = (total_checked/total_items)*100;
-  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
-
-
   });
 
   /* Shelter registrations card */
 	$("#prep-card-3").click(function(){
 		checked_items = loadList(this.id, card_lists[2], total_items);
-  /*}
-
-  console.log("total checked")
-  console.log(total_checked);
-  var prep_percentage = total_checked/total_items;
-  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
-
-
   });
 
   /* Create a communication plan card */
 	$("#prep-card-4").click(function(){
 		loadList(this.id, card_lists[3], total_items);
-  /*}
-	console.log("total checked")
-  console.log(total_checked);
-  var prep_percentage = total_checked/total_items;
-  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
-
-
-
   });
 });
+
 
 /*updates value on the card and checked or unchecked items*/
 function checkedItem(id) {
@@ -130,11 +90,7 @@ function closePrepList(id, total_items) {
 	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
 
 	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
-	console.log("***")
-	console.log(total_items);
-	console.log(sessionStorage.getItem('total_checked'))
-	console.log("***")
-	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + percentage +"% prepared";
+	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
 }
 
 /*Creates list background and list items*/
@@ -148,26 +104,6 @@ function loadList(id, items_list, total_items) {
 	for (var i = 0; i < items_list.length; i++) {
 	  checked_items += loadCheckedItem("item"+i+"-"+id)
 	}
-	/*checked_items_total[checked_id] = checked_items;*/
-
-
-	/*calculates total of checked items*/
-	/*var total_checked = 0;
-  for(var i=0; i<checked_items_total.length; i++) {
-  	total_checked += checked_items_total[i];
-  }
-
-  console.log("total checked")
-  console.log(total_checked);
-  global_total_checked = total_checked;*/
-  /*document.getElementById("preparation-bar-percentage").innerHTML = "You are " + global_total_checked +"% prepared";*/
-
-	/*$("body").append(list);
-  var content = createListItems(items_list, id, total_checked);
-  $(".preparation-list").append(content);*/
-
-
-	/*return checked_items_total;*/
 }
 
 /*Creates html code for given list and card*/
