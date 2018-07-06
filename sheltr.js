@@ -2,13 +2,6 @@ $(document).ready(function() {
 
 	sessionStorage.setItem('total_checked', 0);
 
-	/*sessionStorage.setItem('prep-card-1-count', 0);
-	sessionStorage.setItem('prep-card-2-count', 0);
-	sessionStorage.setItem('prep-card-3-count', 0);
-	sessionStorage.setItem('prep-card-4-count', 0);
-	sessionStorage.setItem('prep-card-5-count', 0);
-	sessionStorage.setItem('prep-card-6-count', 0);*/
-
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
 									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
@@ -19,16 +12,13 @@ $(document).ready(function() {
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
 		var prep_card = 'prep-card-' + i + '-count';
-		/*console.log(prep_card)
-		console.log(typeof(prep_card))*/
-		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
 		sessionStorage.setItem(prep_card, 0);
+		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
 		total_items += (card_lists[i-1]).length;
 	}
 
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
-		console.log(total_items)
 		loadList(this.id, card_lists[0], total_items);
 	});
 
