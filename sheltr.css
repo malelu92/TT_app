@@ -32,7 +32,7 @@ body {
 		float: left;
 		height:3.5vh;
 		margin: .7vh 0 0 3vw;
-		padding: 0 5vw 0 5vw;
+		padding: 1vh 5vw 1vh 5vw;
 	}
 
 	#header {
@@ -55,7 +55,7 @@ body {
 	#preparation-bar {
 	  background-color: #f0f0f5;
 	  border-radius: 25px;
-	  height: 3.5vh;
+	  height: 4.5vh;
 	  margin: 2.5vh auto 2.5vh auto;
 	  width: 80%;
 	}
@@ -63,7 +63,7 @@ body {
 	#preparation-bar-inner {
 	  background-color: #000000;
 	  border-radius: 25px;
-	  height: 3.5vh;
+	  height: 4.5vh;
 	  width: 0%;
 	}
 
@@ -74,7 +74,7 @@ body {
 	  background-color: #f0f0f5;
 	  cursor: pointer;
 	  float: left;
-	  height: 18vh;
+	  /*height: 18vh;*/
 	  margin:	2.5vw 0 2.5vw 5vw;
 	  text-align: center;
 	  width: 40%;	
@@ -97,7 +97,7 @@ body {
 	}
 
 	.preparation-card-text {
-		padding: 0 5vw 0 5vw;
+		padding: 0 5vw 5vh 5vw;
 	}
 
 	.preparation-card-why {
