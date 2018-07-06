@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	sessionStorage.setItem('total_checked', 0);
+
 	/*sessionStorage.setItem('prep-card-1-count', 0);
 	sessionStorage.setItem('prep-card-2-count', 0);
 	sessionStorage.setItem('prep-card-3-count', 0);
@@ -12,6 +14,9 @@ $(document).ready(function() {
 									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
 									["Lala", "Lele"]];
 
+	var total_items = 0;
+	var checked_items = [0,0,0,0];
+
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
 		var prep_card = 'prep-card-' + i + '-count';
@@ -19,28 +24,69 @@ $(document).ready(function() {
 		console.log(typeof(prep_card))*/
 		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
 		sessionStorage.setItem(prep_card, 0);
+		total_items += (card_lists[i-1]).length;
 	}
+
+	console.log(total_items);
 
 	/* Emergency contact card */
 	$("#prep-card-1").click(function(){
-		createList(this.id, card_lists[0]); 
+		console.log(total_items)
+		loadList(this.id, card_lists[0], total_items);
+
+
+		/*var total_checked = 0;
+  for(var i=0; i<checked_items.length; i++) {
+  	if(checked_items[i] != undefined) {
+  		total_checked += checked_items[i];
+  	}
+  }*/
+
+  /*console.log("total checked")
+  console.log(total_checked);
+  var prep_percentage = total_checked/total_items;
+  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
+
 	});
 
 	/* Emergency kit card */
 	$("#prep-card-2").click(function(){
-		createList(this.id, card_lists[1]);
+		loadList(this.id, card_lists[1], total_items);
+  /*}
+
+  console.log("total checked")
+  console.log(total_checked);
+  var prep_percentage = (total_checked/total_items)*100;
+  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
+
+
   });
 
   /* Shelter registrations card */
 	$("#prep-card-3").click(function(){
-		createList(this.id, card_lists[2]);
+		checked_items = loadList(this.id, card_lists[2], total_items);
+  /*}
+
+  console.log("total checked")
+  console.log(total_checked);
+  var prep_percentage = total_checked/total_items;
+  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
+
+
   });
 
   /* Create a communication plan card */
 	$("#prep-card-4").click(function(){
-		createList(this.id, card_lists[3]);
-  });
+		loadList(this.id, card_lists[3], total_items);
+  /*}
+	console.log("total checked")
+  console.log(total_checked);
+  var prep_percentage = total_checked/total_items;
+  document.getElementById("preparation-bar-percentage").innerHTML = "You are " + prep_percentage +"% prepared";*/
 
+
+
+  });
 });
 
 /*updates value on the card and checked or unchecked items*/
@@ -48,53 +94,86 @@ function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 
+	var count_total = parseInt(sessionStorage.getItem('total_checked'));
+
 	if(!(sessionStorage.getItem(id))){
 		sessionStorage.setItem(id, true);
     var count = parseInt(sessionStorage.getItem(card));
     sessionStorage.setItem(card, count+1);
+    sessionStorage.setItem('total_checked', count_total+1);
 	}
 	else {
 		if(sessionStorage.getItem(id) == "true") {
 			sessionStorage.setItem(id, false);
 			var count = sessionStorage.getItem(card);
 			sessionStorage.setItem(card, count-1);
+			sessionStorage.setItem('total_checked', count_total-1);
 		}
 		else {
 			sessionStorage.setItem(id, true);
     	var count = parseInt(sessionStorage.getItem(card));
     	sessionStorage.setItem(card, count+1);
+    	sessionStorage.setItem('total_checked', count_total+1);
 		}
 	}
 
 }
 
 /* closes preparation list and updates value on preparation card */
-function closePrepList(id) {
+function closePrepList(id, total_items) {
 	$(".preparation-list-background").remove();
 	var card_number = (id.split('-')[3])
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 	var countdown = "countdown-" + card_number;
-	var total_items = (document.getElementById(countdown).innerHTML).split(" ")[2];
-	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items;
+	var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
+	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
+
+	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
+	console.log("***")
+	console.log(total_items);
+	console.log(sessionStorage.getItem('total_checked'))
+	console.log("***")
+	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + percentage +"% prepared";
 }
 
 /*Creates list background and list items*/
-function createList(id, items_list) {
+function loadList(id, items_list, total_items) {
+	var checked_items = 0;
 	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
   $("body").append(list);
-  var content = createListItems(items_list, id);
+  var content = createListItems(items_list, id, total_items);
   $(".preparation-list").append(content);
 
 	for (var i = 0; i < items_list.length; i++) {
-	  loadCheckedItem("item"+i+"-"+id)
-	}	
+	  checked_items += loadCheckedItem("item"+i+"-"+id)
+	}
+	/*checked_items_total[checked_id] = checked_items;*/
+
+
+	/*calculates total of checked items*/
+	/*var total_checked = 0;
+  for(var i=0; i<checked_items_total.length; i++) {
+  	total_checked += checked_items_total[i];
+  }
+
+  console.log("total checked")
+  console.log(total_checked);
+  global_total_checked = total_checked;*/
+  /*document.getElementById("preparation-bar-percentage").innerHTML = "You are " + global_total_checked +"% prepared";*/
+
+	/*$("body").append(list);
+  var content = createListItems(items_list, id, total_checked);
+  $(".preparation-list").append(content);*/
+
+
+	/*return checked_items_total;*/
 }
 
 /*Creates html code for given list and card*/
-function createListItems(list_items, card_id) {
+function createListItems(list_items, card_id, total_items) {
 	var init = "<div>\
-    						<div id='close-" + card_id + "' onclick='closePrepList(this.id)' class='col-12'>close</div>\
+    						<div id='close-" + card_id + "' onclick='closePrepList(this.id" + "," + total_items + ")' class='col-12'>close</div>\
     						<label class='container'>";
   var end = "</label>\
     								</div>";
@@ -111,8 +190,10 @@ function createListItems(list_items, card_id) {
 function loadCheckedItem(id) {
   if(sessionStorage.getItem(id) == "true") {
 	  document.getElementById(id).checked = true;
+	  return 1;
 	}
 	else {
 	  document.getElementById(id).checked = false;
+	  return 0;
 	}
 }
