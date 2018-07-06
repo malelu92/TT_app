@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	createMap();
+
 	sessionStorage.setItem('total_checked', 0);
 
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
@@ -111,7 +113,6 @@ function createListItems(list_items, card_id, total_items) {
   }
   return init + middle + end;
 }
-
 
 function createMap() {
   var mapOptions = {
