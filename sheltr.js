@@ -91,6 +91,7 @@ function closePrepList(id, total_items) {
 
 	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
 	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
+	document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 }
 
 /*Creates list background and list items*/
