@@ -52,6 +52,11 @@ body {
     transform: scale(3); 
   }
 
+  #map {
+  	height: 50vh;
+  	width: 100%
+  }
+
 	#preparation-bar {
 	  background-color: #f0f0f5;
 	  border-radius: 25px;

@@ -96,19 +96,6 @@ function closePrepList(id, total_items) {
 	document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 }
 
-/*Creates list background and list items*/
-function loadList(id, items_list, total_items) {
-	var checked_items = 0;
-	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
-  $("body").append(list);
-  var content = createListItems(items_list, id, total_items);
-  $(".preparation-list").append(content);
-
-	for (var i = 0; i < items_list.length; i++) {
-	  checked_items += loadCheckedItem("item"+i+"-"+id)
-	}
-}
-
 /*Creates html code for given list and card*/
 function createListItems(list_items, card_id, total_items) {
 	var init = "<div>\
@@ -125,6 +112,17 @@ function createListItems(list_items, card_id, total_items) {
   return init + middle + end;
 }
 
+
+function createMap() {
+  var mapOptions = {
+      center: new google.maps.LatLng(51.5, -0.12),
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.HYBRID
+   	}
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+
+
 /*loads checked item on list*/
 function loadCheckedItem(id) {
   if(sessionStorage.getItem(id) == "true") {
@@ -134,5 +132,18 @@ function loadCheckedItem(id) {
 	else {
 	  document.getElementById(id).checked = false;
 	  return 0;
+	}
+}
+
+/*Creates list background and list items*/
+function loadList(id, items_list, total_items) {
+	var checked_items = 0;
+	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+  $("body").append(list);
+  var content = createListItems(items_list, id, total_items);
+  $(".preparation-list").append(content);
+
+	for (var i = 0; i < items_list.length; i++) {
+	  checked_items += loadCheckedItem("item"+i+"-"+id)
 	}
 }
