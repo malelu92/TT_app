@@ -5,7 +5,9 @@ $(document).ready(function() {
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
 									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
-									["Lala", "Lele"]];
+									["Lala", "Lele"],
+									["Hi"],
+									["Purple", "Blue", "Orange", "Yellow"]];
 
 	var total_items = 0;
 
@@ -35,6 +37,16 @@ $(document).ready(function() {
   /* Create a communication plan card */
 	$("#prep-card-4").click(function(){
 		loadList(this.id, card_lists[3], total_items);
+  });
+
+  /* Plan for Your Pet card */
+	$("#prep-card-5").click(function(){
+		loadList(this.id, card_lists[4], total_items);
+  });
+
+  /* Plan for Your Pet card */
+	$("#prep-card-6").click(function(){
+		loadList(this.id, card_lists[5], total_items);
   });
 });
 
