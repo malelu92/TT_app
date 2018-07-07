@@ -53,7 +53,7 @@ gestureZone.addEventListener('touchend', function(event) {
 
 
 
-	createMap();
+	initMap();
 
 	sessionStorage.setItem('total_checked', 0);
 
@@ -166,23 +166,44 @@ function createListItems(list_items, card_id, total_items) {
   }
   return init + middle + end;
 }
-var directionsDisplay,
-    directionsService,
-    map;
-function createMap() {
-  /*var mapOptions = {
+
+/*function createMap() {
+  var mapOptions = {
       center: new google.maps.LatLng(51.5, -0.12),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.HYBRID
    	}
-	var map = new google.maps.Map(document.getElementById("map"), mapOptions);*/
-  var directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
-  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-  var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: chicago }
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-  directionsDisplay.setMap(map);
-}
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}*/
+
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
+        });
+
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
+      }
 
 
 /*loads checked item on list*/
