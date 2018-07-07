@@ -1,4 +1,57 @@
+
+
+/*function handleGesture() {
+    if (touchendX <= touchstartX) {
+        console.log('Swiped left');
+    }
+    
+    if (touchendX >= touchstartX) {
+        console.log('Swiped right');
+    }
+    
+    if (touchendY <= touchstartY) {
+        console.log('Swiped up');
+    }
+    
+    if (touchendY >= touchstartY) {
+        console.log('Swiped down');
+    }
+    
+    if (touchendY === touchstartY) {
+        console.log('Tap');
+    }
+}*/
+
+
+
+
 $(document).ready(function() {
+
+
+
+
+
+/*let touchstartX = 0;
+let touchstartY = 0;
+let touchendX = 0;
+let touchendY = 0;
+
+const gestureZone = document.getElementById('evacuation-plan');
+console.log(gestureZone)*/
+/*gestureZone.addEventListener('touchstart', function(event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+gestureZone.addEventListener('touchend', function(event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false); */
+
+
+
+
 
 	createMap();
 
@@ -113,14 +166,22 @@ function createListItems(list_items, card_id, total_items) {
   }
   return init + middle + end;
 }
-
+var directionsDisplay,
+    directionsService,
+    map;
 function createMap() {
-  var mapOptions = {
+  /*var mapOptions = {
       center: new google.maps.LatLng(51.5, -0.12),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.HYBRID
    	}
-	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);*/
+  var directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: chicago }
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  directionsDisplay.setMap(map);
 }
 
 

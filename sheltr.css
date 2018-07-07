@@ -25,6 +25,15 @@ body {
 	  float: left; 
 	}
 
+	#evacuation-plan {
+		background-color: blue;
+		border-style: solid;
+	  border-width: 2px;
+	  height: 100px;
+	  margin: 20px 20px 20px 20px;
+	  width: 80%;
+	}
+
 	.filter-item {
 		  border-style: solid;
 	    border-width: 2px;
