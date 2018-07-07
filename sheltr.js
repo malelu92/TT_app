@@ -55,7 +55,7 @@ gestureZone.addEventListener('touchend', function(event) {
 
 	initMap();
 
-	sessionStorage.setItem('total_checked', 0);
+	/*sessionStorage.setItem('total_checked', 0);
 
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
@@ -74,35 +74,35 @@ gestureZone.addEventListener('touchend', function(event) {
 		total_items += (card_lists[i-1]).length;
 	}
 
-	/* Emergency contact card */
+	/* Emergency contact card *
 	$("#prep-card-1").click(function(){
 		loadList(this.id, card_lists[0], total_items);
 	});
 
-	/* Emergency kit card */
+	/* Emergency kit card *
 	$("#prep-card-2").click(function(){
 		loadList(this.id, card_lists[1], total_items);
   });
 
-  /* Shelter registrations card */
+  /* Shelter registrations card *
 	$("#prep-card-3").click(function(){
 		checked_items = loadList(this.id, card_lists[2], total_items);
   });
 
-  /* Create a communication plan card */
+  /* Create a communication plan card *
 	$("#prep-card-4").click(function(){
 		loadList(this.id, card_lists[3], total_items);
   });
 
-  /* Plan for Your Pet card */
+  /* Plan for Your Pet card *
 	$("#prep-card-5").click(function(){
 		loadList(this.id, card_lists[4], total_items);
   });
 
-  /* Plan for Your Pet card */
+  /* Plan for Your Pet card *
 	$("#prep-card-6").click(function(){
 		loadList(this.id, card_lists[5], total_items);
-  });
+  });*/
 });
 
 

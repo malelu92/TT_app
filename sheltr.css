@@ -1,7 +1,12 @@
-body {
+/*body {
   font-family: 'Roboto';
   margin: 0;
- }
+ }*/
+       html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
 	#bottom-nav-bar {
 	  border-style: solid;
@@ -63,7 +68,7 @@ body {
 
   #map {
   	height: 100%;
-  	width: 100%;
+  	/*width: 100%;*/
   }
 
 	#preparation-bar {
