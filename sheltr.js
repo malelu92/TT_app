@@ -50,22 +50,24 @@ gestureZone.addEventListener('touchend', function(event) {
 
 
 
-
-	initMap();
-
-	sessionStorage.setItem('total_checked', 0);
-
-	var card_lists = [["Marina1", "Marina2", "Marina3"],
-									["Brazil", "USA", "India", "England"],
-									["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
-									["Lala", "Lele"],
-									["Hi"],
-									["Purple", "Blue", "Orange", "Yellow"]];
-
-	var total_items = 0;
+/* Only load if evacuation screen */
+	if(document.getElementById("map")) {
+		initMap();
+	}
 
 	/* Only load if preparation screen */
 	if(document.getElementById("prep-card-1")) {
+		sessionStorage.setItem('total_checked', 0);
+
+		var card_lists = [["Marina1", "Marina2", "Marina3"],
+										["Brazil", "USA", "India", "England"],
+										["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
+										["Lala", "Lele"],
+										["Hi"],
+										["Purple", "Blue", "Orange", "Yellow"]];
+
+		var total_items = 0;
+
 		for (var i=1; i<=card_lists.length; i++) {
 			var countdown = "countdown-" + i;
 			var prep_card = 'prep-card-' + i + '-count';
@@ -169,43 +171,14 @@ function createListItems(list_items, card_id, total_items) {
   return init + middle + end;
 }
 
-/*function createMap() {
-  var mapOptions = {
-      center: new google.maps.LatLng(51.5, -0.12),
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.HYBRID
-   	}
-	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-}*/
-
-	      var map;
-	      function initMap() {
-	        map = new google.maps.Map(document.getElementById('map'), {
-	          zoom: 2,
-	          center: new google.maps.LatLng(2.8,-187.3),
-	          mapTypeId: 'terrain'
-	        });
-
-	        // Create a <script> tag and set the USGS URL as the source.
-	        var script = document.createElement('script');
-	        // This example uses a local copy of the GeoJSON stored at
-	        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-	        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-	        document.getElementsByTagName('head')[0].appendChild(script);
-	      }
-
-	      // Loop through the results array and place a marker for each
-	      // set of coordinates.
-	      window.eqfeed_callback = function(results) {
-	        for (var i = 0; i < results.features.length; i++) {
-	          var coords = results.features[i].geometry.coordinates;
-	          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-	          var marker = new google.maps.Marker({
-	            position: latLng,
-	            map: map
-	          });
-	        }
-	      }
+	var map;
+	function initMap() {
+	  map = new google.maps.Map(document.getElementById('map'), {
+	        	zoom: 13,
+	        	center: new google.maps.LatLng(27.923966, -82.520319),
+	        	mapTypeId: 'terrain'
+	      	});
+	}
 
 
 /*loads checked item on list*/
