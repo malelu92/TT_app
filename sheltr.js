@@ -53,6 +53,12 @@ gestureZone.addEventListener('touchend', function(event) {
 /* Only load if evacuation screen */
 	if(document.getElementById("map")) {
 		initMap();
+
+		var el = document.getElementById('swipezone');
+		swipedetect(el, function(swipedir){
+    // swipedir contains either "none", "left", "right", "top", or "down"
+    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
+});
 	}
 
 	/* Only load if preparation screen */
@@ -267,14 +273,6 @@ function swipedetect(el, callback){
         e.preventDefault()
     }, false)
 }
-  
-//USAGE:
-
-var el = document.getElementById('swipezone');
-swipedetect(el, function(swipedir){
-    // swipedir contains either "none", "left", "right", "top", or "down"
-    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
-});
 
 
 
