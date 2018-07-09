@@ -52,13 +52,14 @@ gestureZone.addEventListener('touchend', function(event) {
 
 /* Only load if evacuation screen */
 	if(document.getElementById("map")) {
-		initMap();
-
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
+		console.log("antes mapa")
+		initMap();
+			console.log("depois mapa")
 	}
 
 	/* Only load if preparation screen */
@@ -228,6 +229,8 @@ function loadList(id, items_list, total_items) {
 
 // credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
 function swipedetect(el, callback){
+
+		console.log("entrou")
   
     var touchsurface = el,
     swipedir,
