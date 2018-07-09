@@ -173,11 +173,19 @@ function createListItems(list_items, card_id, total_items) {
 
 	var map;
 	function initMap() {
+		var myLatLng = {lat: 27.923966, lng: -82.520319};
+
 	  map = new google.maps.Map(document.getElementById('map'), {
 	        	zoom: 13,
-	        	center: new google.maps.LatLng(27.923966, -82.520319),
+	        	center: myLatLng,
 	        	mapTypeId: 'terrain'
 	      	});
+
+	  var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'My house'
+        });
 	}
 
 
