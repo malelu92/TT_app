@@ -56,7 +56,7 @@ gestureZone.addEventListener('touchend', function(event) {
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
     if (swipedir = "left") {
-    	document.getElementById("evacuation-plan")style.marginLeft("-20px")
+    	document.getElementById("evacuation-plan").style.marginLeft("-20px")
     }
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
