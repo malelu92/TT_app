@@ -29,8 +29,6 @@ $(document).ready(function() {
 
 
 
-
-
 /*let touchstartX = 0;
 let touchstartY = 0;
 let touchendX = 0;
@@ -55,7 +53,7 @@ gestureZone.addEventListener('touchend', function(event) {
 
 	initMap();
 
-	/*sessionStorage.setItem('total_checked', 0);
+	sessionStorage.setItem('total_checked', 0);
 
 	var card_lists = [["Marina1", "Marina2", "Marina3"],
 									["Brazil", "USA", "India", "England"],
@@ -66,43 +64,47 @@ gestureZone.addEventListener('touchend', function(event) {
 
 	var total_items = 0;
 
-	for (var i=1; i<=card_lists.length; i++) {
-		var countdown = "countdown-" + i;
-		var prep_card = 'prep-card-' + i + '-count';
-		sessionStorage.setItem(prep_card, 0);
-		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
-		total_items += (card_lists[i-1]).length;
+	/* Only load if preparation screen */
+	if(document.getElementById("prep-card-1")) {
+		for (var i=1; i<=card_lists.length; i++) {
+			var countdown = "countdown-" + i;
+			var prep_card = 'prep-card-' + i + '-count';
+			sessionStorage.setItem(prep_card, 0);
+			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+			total_items += (card_lists[i-1]).length;
+		}
+
+		/* Emergency contact card */
+		$("#prep-card-1").click(function(){
+			loadList(this.id, card_lists[0], total_items);
+		});
+
+		/* Emergency kit card */
+		$("#prep-card-2").click(function(){
+			loadList(this.id, card_lists[1], total_items);
+	  });
+
+	  /* Shelter registrations card */
+		$("#prep-card-3").click(function(){
+			checked_items = loadList(this.id, card_lists[2], total_items);
+	  });
+
+	  /* Create a communication plan card */
+		$("#prep-card-4").click(function(){
+			loadList(this.id, card_lists[3], total_items);
+	  });
+
+	  /* Plan for Your Pet card */
+		$("#prep-card-5").click(function(){
+			loadList(this.id, card_lists[4], total_items);
+	  });
+
+	  /* Plan for Your Pet card */
+		$("#prep-card-6").click(function(){
+			loadList(this.id, card_lists[5], total_items);
+	  });
 	}
 
-	/* Emergency contact card *
-	$("#prep-card-1").click(function(){
-		loadList(this.id, card_lists[0], total_items);
-	});
-
-	/* Emergency kit card *
-	$("#prep-card-2").click(function(){
-		loadList(this.id, card_lists[1], total_items);
-  });
-
-  /* Shelter registrations card *
-	$("#prep-card-3").click(function(){
-		checked_items = loadList(this.id, card_lists[2], total_items);
-  });
-
-  /* Create a communication plan card *
-	$("#prep-card-4").click(function(){
-		loadList(this.id, card_lists[3], total_items);
-  });
-
-  /* Plan for Your Pet card *
-	$("#prep-card-5").click(function(){
-		loadList(this.id, card_lists[4], total_items);
-  });
-
-  /* Plan for Your Pet card *
-	$("#prep-card-6").click(function(){
-		loadList(this.id, card_lists[5], total_items);
-  });*/
 });
 
 
@@ -176,34 +178,34 @@ function createListItems(list_items, card_id, total_items) {
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }*/
 
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: new google.maps.LatLng(2.8,-187.3),
-          mapTypeId: 'terrain'
-        });
+	      var map;
+	      function initMap() {
+	        map = new google.maps.Map(document.getElementById('map'), {
+	          zoom: 2,
+	          center: new google.maps.LatLng(2.8,-187.3),
+	          mapTypeId: 'terrain'
+	        });
 
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
-      }
+	        // Create a <script> tag and set the USGS URL as the source.
+	        var script = document.createElement('script');
+	        // This example uses a local copy of the GeoJSON stored at
+	        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+	        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+	        document.getElementsByTagName('head')[0].appendChild(script);
+	      }
 
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
-      window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-        }
-      }
+	      // Loop through the results array and place a marker for each
+	      // set of coordinates.
+	      window.eqfeed_callback = function(results) {
+	        for (var i = 0; i < results.features.length; i++) {
+	          var coords = results.features[i].geometry.coordinates;
+	          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+	          var marker = new google.maps.Marker({
+	            position: latLng,
+	            map: map
+	          });
+	        }
+	      }
 
 
 /*loads checked item on list*/
