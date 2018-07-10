@@ -56,7 +56,62 @@
 
 /*angular.module('app', ['ngTouch']).controller('MainController', MainController);*/
 
+function swipeCardLeft (card) {
+	var pos = 0;/*card_pos.left;*/
+	console.log(pos)
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == -810) {
+	    clearInterval(id);
+	    return;
+	  }
+	  else {
+	  	console.log(pos);
+	    pos = pos - 3; 
+	    card.style.left = pos + 'px'; 
+	  }
+	}
+}
 
+function swipeAllCardsLeft (card_1, card_2, card_3) {
+	
+/*var card_1_pos = card_1.getBoundingClientRect();
+console.log(card_1_pos.left);*/
+	swipeCardLeft(card_1);
+
+/*var card_2_pos = card_2.getBoundingClientRect();
+console.log(card_1_pos.left);*/
+	swipeCardLeft(card_2);
+
+	swipeCardLeft(card_3);
+
+	/*var pos = card_1_pos.left;
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == -350) {
+	    clearInterval(id);
+	  }
+	  else {
+	    pos = pos - 3; 
+	    card_1.style.left = pos + 'px'; 
+	  }
+	}*/
+}
+
+function swipeCardRight (card_1, card_2) {
+	/*var elem = document.getElementById("evacuation-plan");*/  
+	var pos = 0;
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == 350) {
+	    clearInterval(id);
+	  }
+	  else {
+	    pos = pos + 3; 
+	    card_1.style.left = pos + 'px'; 
+	  }
+	}
+}
 
 
 $(document).ready(function() {
@@ -70,15 +125,16 @@ $(document).ready(function() {
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
-    if (swipedir == "left") {
-    	document.getElementById("evacuation-plan").style.marginLeft = "-20px"
+
+
+
+    if (swipedir == "left") {  
+	  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
     }    
     if (swipedir == "right") {
-    	document.getElementById("evacuation-plan").style.marginLeft = "40px"
+    	swipeCardRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"));	
     }
-    if (swipedir == "up") {
-    	console.log("up")
-    }
+
     /*el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';*/
     console.log(swipedir)
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
