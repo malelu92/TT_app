@@ -30,9 +30,9 @@
 	  float: left; 
 	}
 
-	.container {
+	/*.container {
   	display: flex;
-	}
+	}*/
 
 	#evacuation-plan {
 		background-color: white;
@@ -192,6 +192,101 @@
   cursor: pointer;
   font-size: 30px;
 }
+
+
+
+
+
+
+
+
+.container {
+  background: yellow;
+  padding-top: 50px;
+  width: 100vw; height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.people-card-media {
+  position: absolute; bottom: 10px; left: 110vw;
+  transition: 0.5s ease-out;
+
+  box-sizing: border-box;
+  width: 90vw; height: 90px;
+  padding: 15px 10px;
+  border-bottom: 1px solid #dcdcdc;
+  overflow: hidden;
+  background: lightgray;
+}
+
+.people-card-media.current {
+  left: 0;
+  transition: 0.5s ease-out;
+}
+
+.people-card-media.next-up {
+  left: 90vw;
+  transition: 0.5s ease-out;
+}
+
+.people-card-media.previous {
+  left: -100vw;
+  transition: 0.5s ease-out;
+}
+
+.people-card-media .flex-it-align-top {
+  display: flex;
+  justify-content: space-between;
+}
+.people-card-media .media-body {
+  width: 100%;
+}
+.people-card-media .media-left {
+  width: 80px;
+}
+.people-card-media .media-right {
+  width: 90px;
+}
+.people-card-media .people_name_title .title {
+  font-size: 17px;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+.people-card-media .people_name_title .list__subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+.people-card-media .people_name_title .list__sub_subtitle {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.people-card-media .media-right .status {
+  font-size: 14px;
+  margin-bottom: 0px;
+  color: #5cb85c;
+}
+.people-card-media .media-right .time-into {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

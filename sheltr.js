@@ -1,26 +1,60 @@
+/*function MainController($scope) {
+  $scope.name="superman";
+  $scope.heroes = [
+    {
+    "name":"superman",
+    "photo":"https://placehold.it/50/000000",
+    "number":"123124234234"
+    },
+     {
+    "name":"batman",
+    "photo":"https://placehold.it/50/006600",
+    "number":"123124234234"
+    },
+     {
+    "name":"ironman",
+    "photo":"https://placehold.it/50/660000",
+    "number":"123124234234"
+    },
+     {
+    "name":"daredevil",
+    "photo":"https://placehold.it/50/49311C",
+    "number":"123124234234"
+    },
+     {
+    "name":"flash",
+    "photo":"https://placehold.it/50x50",
+    "number":"123124234234"
+    }
+  ];
+  $scope.heroes[0].displayClass = 'current';
+  $scope.heroes[1].displayClass = 'next-up';
+  
+  $scope.gonext = function () {
+    for (var i=0, len=$scope.heroes.length; i<len; i++) {
+      if ($scope.heroes[i].displayClass == 'current') {
+        $scope.heroes[i].displayClass = 'previous';
+        if (i<len-1) $scope.heroes[i+1].displayClass = 'current';
+        if (i<len-2) $scope.heroes[i+2].displayClass = 'next-up';
+        i=len;
+      };
+    };
+  };
 
-
-/*function handleGesture() {
-    if (touchendX <= touchstartX) {
-        console.log('Swiped left');
-    }
-    
-    if (touchendX >= touchstartX) {
-        console.log('Swiped right');
-    }
-    
-    if (touchendY <= touchstartY) {
-        console.log('Swiped up');
-    }
-    
-    if (touchendY >= touchstartY) {
-        console.log('Swiped down');
-    }
-    
-    if (touchendY === touchstartY) {
-        console.log('Tap');
-    }
+  $scope.goprev = function () {
+    for (var i=0, len=$scope.heroes.length; i<len; i++) {
+      if ($scope.heroes[i].displayClass == 'current') {
+        $scope.heroes[i].displayClass = 'next-up';
+        if (i>=1) $scope.heroes[i-1].displayClass = 'current';
+        if (i>=2) $scope.heroes[i-2].displayClass = 'previous';
+        if (i<len-1) $scope.heroes[i+1].displayClass = '';
+        i=len;
+      };
+    };
+  };
 }*/
+
+/*angular.module('app', ['ngTouch']).controller('MainController', MainController);*/
 
 
 
@@ -28,27 +62,7 @@
 $(document).ready(function() {
 
 
-
-/*let touchstartX = 0;
-let touchstartY = 0;
-let touchendX = 0;
-let touchendY = 0;
-
-const gestureZone = document.getElementById('evacuation-plan');
-console.log(gestureZone)*/
-/*gestureZone.addEventListener('touchstart', function(event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-}, false);
-
-gestureZone.addEventListener('touchend', function(event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
-    handleGesture();
-}, false); */
-
-
-
+/*angular.module('app', ['ngTouch']).controller('MainController', MainController);*/
 
 /* Only load if evacuation screen */
 	if(document.getElementById("map")) {
@@ -66,8 +80,8 @@ gestureZone.addEventListener('touchend', function(event) {
     if (swipedir == "up") {
     	console.log("up")
     }
-    el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';
-    /*el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';*/
+    /*el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';*/
+    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
 		console.log("antes mapa")
 		initMap();
