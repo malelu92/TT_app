@@ -63,6 +63,9 @@ gestureZone.addEventListener('touchend', function(event) {
     	document.getElementById('teste').innerHTML("dir")
     	document.getElementById("evacuation-plan").style.marginLeft("40px")
     }*/
+    if (swipedir == "up") {
+    	console.log("up")
+    }
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
 		console.log("antes mapa")
