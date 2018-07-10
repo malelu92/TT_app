@@ -66,25 +66,25 @@ $(document).ready(function() {
 
 /* Only load if evacuation screen */
 	if(document.getElementById("map")) {
+		console.log("lala")
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
-    /*if (swipedir == "left") {
-    	document.getElementById('teste').innerHTML("esq")
-    	document.getElementById("evacuation-plan").style.marginLeft("-20px")
+    if (swipedir == "left") {
+    	document.getElementById("evacuation-plan").style.marginLeft = "-20px"
     }    
     if (swipedir == "right") {
-    	document.getElementById('teste').innerHTML("dir")
-    	document.getElementById("evacuation-plan").style.marginLeft("40px")
-    }*/
+    	document.getElementById("evacuation-plan").style.marginLeft = "40px"
+    }
     if (swipedir == "up") {
     	console.log("up")
     }
     /*el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';*/
+    console.log(swipedir)
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
 		console.log("antes mapa")
-		initMap();
+		/*initMap();*/
 			console.log("depois mapa")
 	}
 
@@ -204,7 +204,7 @@ function createListItems(list_items, card_id, total_items) {
   return init + middle + end;
 }
 
-	var map;
+	/*var map;
 	function initMap() {
 		var myLatLng = {lat: 27.923966, lng: -82.520319};
 
@@ -219,7 +219,7 @@ function createListItems(list_items, card_id, total_items) {
           map: map,
           title: 'My house'
         });
-	}
+	}*/
 
 
 /*loads checked item on list*/

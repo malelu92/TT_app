@@ -30,9 +30,9 @@
 	  float: left; 
 	}
 
-	/*.container {
+	.container {
   	display: flex;
-	}*/
+	}
 
 	#evacuation-plan {
 		background-color: white;
@@ -200,7 +200,7 @@
 
 
 
-.container {
+/*.container {
   background: yellow;
   padding-top: 50px;
   width: 100vw; height: 200px;
@@ -270,7 +270,7 @@
 .people-card-media .media-right .time-into {
   font-size: 12px;
   margin-bottom: 0px;
-}
+}*/
 
 
 
