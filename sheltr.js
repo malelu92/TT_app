@@ -55,14 +55,14 @@ gestureZone.addEventListener('touchend', function(event) {
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
-    if (swipedir == "left") {
+    /*if (swipedir == "left") {
     	document.getElementById('teste').innerHTML("esq")
     	document.getElementById("evacuation-plan").style.marginLeft("-20px")
     }    
     if (swipedir == "right") {
     	document.getElementById('teste').innerHTML("dir")
     	document.getElementById("evacuation-plan").style.marginLeft("40px")
-    }
+    }*/
     el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 });
 		console.log("antes mapa")
