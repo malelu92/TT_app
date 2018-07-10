@@ -66,7 +66,8 @@ gestureZone.addEventListener('touchend', function(event) {
     if (swipedir == "up") {
     	console.log("up")
     }
-    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
+    el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';
+    /*el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';*/
 });
 		console.log("antes mapa")
 		initMap();
