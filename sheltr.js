@@ -1,64 +1,10 @@
-/*function MainController($scope) {
-  $scope.name="superman";
-  $scope.heroes = [
-    {
-    "name":"superman",
-    "photo":"https://placehold.it/50/000000",
-    "number":"123124234234"
-    },
-     {
-    "name":"batman",
-    "photo":"https://placehold.it/50/006600",
-    "number":"123124234234"
-    },
-     {
-    "name":"ironman",
-    "photo":"https://placehold.it/50/660000",
-    "number":"123124234234"
-    },
-     {
-    "name":"daredevil",
-    "photo":"https://placehold.it/50/49311C",
-    "number":"123124234234"
-    },
-     {
-    "name":"flash",
-    "photo":"https://placehold.it/50x50",
-    "number":"123124234234"
-    }
-  ];
-  $scope.heroes[0].displayClass = 'current';
-  $scope.heroes[1].displayClass = 'next-up';
-  
-  $scope.gonext = function () {
-    for (var i=0, len=$scope.heroes.length; i<len; i++) {
-      if ($scope.heroes[i].displayClass == 'current') {
-        $scope.heroes[i].displayClass = 'previous';
-        if (i<len-1) $scope.heroes[i+1].displayClass = 'current';
-        if (i<len-2) $scope.heroes[i+2].displayClass = 'next-up';
-        i=len;
-      };
-    };
-  };
 
-  $scope.goprev = function () {
-    for (var i=0, len=$scope.heroes.length; i<len; i++) {
-      if ($scope.heroes[i].displayClass == 'current') {
-        $scope.heroes[i].displayClass = 'next-up';
-        if (i>=1) $scope.heroes[i-1].displayClass = 'current';
-        if (i>=2) $scope.heroes[i-2].displayClass = 'previous';
-        if (i<len-1) $scope.heroes[i+1].displayClass = '';
-        i=len;
-      };
-    };
-  };
-}*/
-
-/*angular.module('app', ['ngTouch']).controller('MainController', MainController);*/
 
 function swipeCardLeft (card) {
-	var pos = 0;/*card_pos.left;*/
-	console.log(pos)
+	console.log(card.getAttribute("id"))
+	var card_pos = sessionStorage.getItem(card);
+	console.log(card_pos)
+	var pos = /*card_pos.left;*/ 0;
 	var id = setInterval(frame, 1);
   function frame() {
 	  if (pos == -810) {
@@ -66,8 +12,7 @@ function swipeCardLeft (card) {
 	    return;
 	  }
 	  else {
-	  	console.log(pos);
-	    pos = pos - 3; 
+	    pos = pos - 2; 
 	    card.style.left = pos + 'px'; 
 	  }
 	}
@@ -84,18 +29,6 @@ console.log(card_1_pos.left);*/
 	swipeCardLeft(card_2);
 
 	swipeCardLeft(card_3);
-
-	/*var pos = card_1_pos.left;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == -350) {
-	    clearInterval(id);
-	  }
-	  else {
-	    pos = pos - 3; 
-	    card_1.style.left = pos + 'px'; 
-	  }
-	}*/
 }
 
 function swipeCardRight (card_1, card_2) {
@@ -104,6 +37,7 @@ function swipeCardRight (card_1, card_2) {
 	var id = setInterval(frame, 1);
   function frame() {
 	  if (pos == 350) {
+
 	    clearInterval(id);
 	  }
 	  else {
@@ -121,6 +55,12 @@ $(document).ready(function() {
 
 /* Only load if evacuation screen */
 	if(document.getElementById("map")) {
+
+		sessionStorage.setItem('card_1', 0);
+		sessionStorage.setItem('card_2', 0);
+		sessionStorage.setItem('card_3', 0);
+
+
 		console.log("lala")
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
@@ -165,32 +105,32 @@ $(document).ready(function() {
 			total_items += (card_lists[i-1]).length;
 		}
 
-		/* Emergency contact card */
+		/* Load list of emergency contact card */
 		$("#prep-card-1").click(function(){
 			loadList(this.id, card_lists[0], total_items);
 		});
 
-		/* Emergency kit card */
+		/* Load list of emergency kit card */
 		$("#prep-card-2").click(function(){
 			loadList(this.id, card_lists[1], total_items);
 	  });
 
-	  /* Shelter registrations card */
+	  /* Load list of shelter registrations card */
 		$("#prep-card-3").click(function(){
-			checked_items = loadList(this.id, card_lists[2], total_items);
+			loadList(this.id, card_lists[2], total_items);
 	  });
 
-	  /* Create a communication plan card */
+	  /* Load list of create a communication plan card */
 		$("#prep-card-4").click(function(){
 			loadList(this.id, card_lists[3], total_items);
 	  });
 
-	  /* Plan for Your Pet card */
+	  /* Load list of plan for your pet card */
 		$("#prep-card-5").click(function(){
 			loadList(this.id, card_lists[4], total_items);
 	  });
 
-	  /* Plan for Your Pet card */
+	  /* Load list of know your evacuation route card */
 		$("#prep-card-6").click(function(){
 			loadList(this.id, card_lists[5], total_items);
 	  });
@@ -199,7 +139,11 @@ $(document).ready(function() {
 });
 
 
-/*updates value on the card and checked or unchecked items*/
+/* 
+Updates sessionStorage of checked or unchecked items on specific list and the total number of checked items accross all cards.
+Parameters:
+	id: id of specific item, for example: item1-prep-card-5 (string).
+*/
 function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
@@ -229,7 +173,11 @@ function checkedItem(id) {
 
 }
 
-/* closes preparation list and updates value on preparation card */
+/* Closes preparation list and updates number of checked items on preparation card and the percentage on preparation bar.
+Parameters:
+	id: id of the card that the list relates to (string).
+	total_items: total number of items in all lists added (integer).
+*/
 function closePrepList(id, total_items) {
 	$(".preparation-list-background").remove();
 	var card_number = (id.split('-')[3])
@@ -244,7 +192,15 @@ function closePrepList(id, total_items) {
 	document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 }
 
-/*Creates html code for given list and card*/
+
+
+/*
+Creates html code for a given list.
+Parameters:
+	list_items: items on the list (array of strings).
+	card_id: id of the card that the list relates to (string).
+	total_items: total number of items in all lists added (integer).
+*/
 function createListItems(list_items, card_id, total_items) {
 	var init = "<div>\
     						<div id='close-" + card_id + "' onclick='closePrepList(this.id" + "," + total_items + ")' class='col-12'>close</div>\
@@ -278,7 +234,12 @@ function createListItems(list_items, card_id, total_items) {
 	}*/
 
 
-/*loads checked item on list*/
+
+/*
+Loads checked item on list.
+Parameter:
+	id: item id in specific list (string). 
+*/
 function loadCheckedItem(id) {
   if(sessionStorage.getItem(id) == "true") {
 	  document.getElementById(id).checked = true;
@@ -290,7 +251,15 @@ function loadCheckedItem(id) {
 	}
 }
 
-/*Creates list background and list items*/
+
+
+/*
+Loads list of items on the card.
+Parameters:
+	id: card id (string).
+	items_list: items on the list (array of strings).
+	total_items: total number of items in all lists (integer).
+*/
 function loadList(id, items_list, total_items) {
 	var checked_items = 0;
 	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
@@ -305,14 +274,9 @@ function loadList(id, items_list, total_items) {
 
 
 
-
-
-
-
+/* TO DO: edit this function to make it proper to the given plans. */
 // credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
 function swipedetect(el, callback){
-
-		console.log("entrou")
   
     var touchsurface = el,
     swipedir,
