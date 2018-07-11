@@ -204,7 +204,7 @@ Parameters:
 function createListItems(list_items, card_id, total_items) {
 	var init = "<div>\
     						<div id='close-" + card_id + "' onclick='closePrepList(this.id" + "," + total_items + ")' class='col-12'>close</div>\
-    						<label class='container'>";
+    						<label class='list-container'>";
   var end = "</label>\
     								</div>";
   var middle = "";
