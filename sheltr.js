@@ -23,7 +23,7 @@ $(document).ready(function() {
 		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
 	    }    
 	    if (swipedir == "right") {
-	    	swipeCardRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"));	
+	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));	
 	    }
 
 	    console.log(swipedir)
@@ -248,13 +248,64 @@ function swipeAllCardsLeft (card_1, card_2, card_3) {
 	
 /*var card_1_pos = card_1.getBoundingClientRect();
 console.log(card_1_pos.left);*/
-	swipeCardLeft(card_1);
-
-/*var card_2_pos = card_2.getBoundingClientRect();
-console.log(card_1_pos.left);*/
+	/*swipeCardLeft(card_1);
 	swipeCardLeft(card_2);
+	swipeCardLeft(card_3);*/
 
-	swipeCardLeft(card_3);
+	/*var card_pos = sessionStorage.getItem(card_id);*/
+	var card_pos = sessionStorage.getItem("plan-card");
+	console.log(card_pos)
+	/*var card_2_pos = card_2.getBoundingClientRect();*/
+	var pos = card_pos; /*card_pos.left; 0;*/
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == card_pos - 810) {
+	  	sessionStorage.setItem("plan-card", pos);
+	    clearInterval(id);
+	    return;
+	  }
+	  else {
+	    pos = pos - 2; 
+	    card_1.style.left = pos + 'px'; 
+	    card_2.style.left = pos + 'px'; 
+	    card_3.style.left = pos + 'px'; 
+	    if(pos == -1620){
+	    	console.log(pos)
+	  	}
+	  }
+	}
+
+
+}
+
+function swipeAllCardsRight (card_1, card_2, card_3) {
+
+	/*swipeCardRight(card_1);
+	swipeCardRight(card_2);
+	swipeCardRight(card_3);*/
+
+	var card_pos = parseInt(sessionStorage.getItem("plan-card"));
+	console.log(card_pos)
+	/*var card_2_pos = card_2.getBoundingClientRect();*/
+	var pos = parseInt(card_pos); /*card_pos.left; 0;*/
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == card_pos + 810) {
+	  	sessionStorage.setItem("plan-card", pos);
+	    clearInterval(id);
+	    return;
+	  }
+	  else {
+	    pos = pos + 2; 
+	    console.log(pos)
+	    card_1.style.left = pos + 'px'; 
+	    card_2.style.left = pos + 'px'; 
+	    card_3.style.left = pos + 'px'; 
+	    if(pos == 1620){
+	    	console.log(pos)
+	  	}
+	  }
+	}
 }
 
 
@@ -287,9 +338,35 @@ function swipeCardLeft (card) {
 
 
 /* TO DO: finish function*/
-function swipeCardRight (card_1, card_2) {
+function swipeCardRight (card) {
+
+	card_id = card.getAttribute("id");
+	console.log(card.getAttribute("id"))
+	/*var card_pos = sessionStorage.getItem(card_id);*/
+	var card_pos = sessionStorage.getItem("plan-card");
+	console.log(card_pos)
+	/*var card_2_pos = card_2.getBoundingClientRect();*/
+	var pos = parseInt(card_pos); /*card_pos.left; 0;*/
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == card_pos + 810) {
+	  	sessionStorage.setItem("plan-card", pos);
+	    clearInterval(id);
+	    return;
+	  }
+	  else {
+	    pos = pos + 2; 
+	    console.log(pos)
+	    card.style.left = pos + 'px'; 
+	    if(pos == 1620){
+	    	console.log(pos)
+	  	}
+	  }
+	}
+
+
 	/*var elem = document.getElementById("evacuation-plan");*/  
-	var pos = 0;
+	/*var pos = 0;
 	var id = setInterval(frame, 1);
   function frame() {
 	  if (pos == 350) {
@@ -300,7 +377,7 @@ function swipeCardRight (card_1, card_2) {
 	    pos = pos + 3; 
 	    card_1.style.left = pos + 'px'; 
 	  }
-	}
+	}*/
 }
 
 
