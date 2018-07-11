@@ -11,9 +11,10 @@ $(document).ready(function() {
 	/* TO DO: finish swipe functions */
 	if(document.getElementById("map")) {
 
-		sessionStorage.setItem('plan-1-card', 0);
+		/*sessionStorage.setItem('plan-1-card', 0);
 		sessionStorage.setItem('plan-2-card', 0);
-		sessionStorage.setItem('plan-3-card', 0);
+		sessionStorage.setItem('plan-3-card', 0);*/
+		sessionStorage.setItem('plan-card', 0);
 
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
@@ -262,20 +263,24 @@ console.log(card_1_pos.left);*/
 function swipeCardLeft (card) {
 	card_id = card.getAttribute("id");
 	console.log(card.getAttribute("id"))
-	var card_pos = sessionStorage.getItem(card_id);
+	/*var card_pos = sessionStorage.getItem(card_id);*/
+	var card_pos = sessionStorage.getItem("plan-card");
 	console.log(card_pos)
 	/*var card_2_pos = card_2.getBoundingClientRect();*/
-	var pos = sessionStorage.getItem(card_id); /*card_pos.left; 0;*/
+	var pos = card_pos; /*card_pos.left; 0;*/
 	var id = setInterval(frame, 1);
   function frame() {
-	  if (pos == - sessionStorage.getItem(card_id) - 810) {
+	  if (pos == card_pos - 810) {
+	  	sessionStorage.setItem("plan-card", pos);
 	    clearInterval(id);
-	    sessionStorage.setItem(card_id, pos);
 	    return;
 	  }
 	  else {
 	    pos = pos - 2; 
 	    card.style.left = pos + 'px'; 
+	    if(pos == -1620){
+	    	console.log(pos)
+	  	}
 	  }
 	}
 }
