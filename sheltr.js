@@ -1,109 +1,51 @@
-
-
-function swipeCardLeft (card) {
-	console.log(card.getAttribute("id"))
-	var card_pos = sessionStorage.getItem(card);
-	console.log(card_pos)
-	var pos = /*card_pos.left;*/ 0;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == -810) {
-	    clearInterval(id);
-	    return;
-	  }
-	  else {
-	    pos = pos - 2; 
-	    card.style.left = pos + 'px'; 
-	  }
-	}
-}
-
-function swipeAllCardsLeft (card_1, card_2, card_3) {
-	
-/*var card_1_pos = card_1.getBoundingClientRect();
-console.log(card_1_pos.left);*/
-	swipeCardLeft(card_1);
-
-/*var card_2_pos = card_2.getBoundingClientRect();
-console.log(card_1_pos.left);*/
-	swipeCardLeft(card_2);
-
-	swipeCardLeft(card_3);
-}
-
-function swipeCardRight (card_1, card_2) {
-	/*var elem = document.getElementById("evacuation-plan");*/  
-	var pos = 0;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == 350) {
-
-	    clearInterval(id);
-	  }
-	  else {
-	    pos = pos + 3; 
-	    card_1.style.left = pos + 'px'; 
-	  }
-	}
-}
+/***********************************************************************
+**	MHCI Capstone Project - Sheltr.
+**	Brooke Sachs, Ketki Jadhav, Marina Leao Lucena, Nishchala Singhal.
+**	July 2018
+************************************************************************/
 
 
 $(document).ready(function() {
 
-
-/*angular.module('app', ['ngTouch']).controller('MainController', MainController);*/
-
-/* Only load if evacuation screen */
+	/* Only load if evacuation screen */
+	/* TO DO: finish swipe functions */
 	if(document.getElementById("map")) {
 
 		sessionStorage.setItem('card_1', 0);
 		sessionStorage.setItem('card_2', 0);
 		sessionStorage.setItem('card_3', 0);
 
-
-		console.log("lala")
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
+	    if (swipedir == "left") {  
+		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+	    }    
+	    if (swipedir == "right") {
+	    	swipeCardRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"));	
+	    }
 
-
-
-    if (swipedir == "left") {  
-	  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
-    }    
-    if (swipedir == "right") {
-    	swipeCardRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"));	
-    }
-
-    /*el.innerHTML = 'Swiped <span style="color:yellow">' + string(typeof(swipedir)) +'</span>';*/
-    console.log(swipedir)
-    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
-});
-		console.log("antes mapa")
+	    console.log(swipedir)
+	    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
+		});
 		/*initMap();*/
-			console.log("depois mapa")
 	}
+
 
 	/* Only load if preparation screen */
 	if(document.getElementById("prep-card-1")) {
 		sessionStorage.setItem('total_checked', 0);
 
-		var card_lists = [["Marina1", "Marina2", "Marina3"],
-										["Brazil", "USA", "India", "England"],
-										["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
-										["Lala", "Lele"],
-										["Hi"],
-										["Purple", "Blue", "Orange", "Yellow"]];
+		var card_lists = [
+			["Marina1", "Marina2", "Marina3"],
+			["Brazil", "USA", "India", "England"],
+			["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
+			["Lala", "Lele"],
+			["Hi"],
+			["Purple", "Blue", "Orange", "Yellow"]
+		];
 
-		var total_items = 0;
-
-		for (var i=1; i<=card_lists.length; i++) {
-			var countdown = "countdown-" + i;
-			var prep_card = 'prep-card-' + i + '-count';
-			sessionStorage.setItem(prep_card, 0);
-			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
-			total_items += (card_lists[i-1]).length;
-		}
+		var total_items = calculateTotalItems(card_lists);
 
 		/* Load list of emergency contact card */
 		$("#prep-card-1").click(function(){
@@ -140,9 +82,29 @@ $(document).ready(function() {
 
 
 /* 
-Updates sessionStorage of checked or unchecked items on specific list and the total number of checked items accross all cards.
-Parameters:
-	id: id of specific item, for example: item1-prep-card-5 (string).
+** Calculates total number of items based on all the lists.
+** Parameters:
+** 	cards_lists: array containing all the lists in the preparation cards (array of arrays (strings)).
+** Return:
+** 	total_items: total number of items contained in the cards' lists (integer).
+*/
+function calculateTotalItems(card_lists) {
+		var total_items = 0;
+		for (var i=1; i<=card_lists.length; i++) {
+			var countdown = "countdown-" + i;
+			var prep_card = 'prep-card-' + i + '-count';
+			sessionStorage.setItem(prep_card, 0);
+			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+			total_items += (card_lists[i-1]).length;
+		}
+		return total_items;
+}
+
+
+/* 
+** Updates sessionStorage of checked or unchecked items on specific list and the total number of checked items accross all cards.
+** Parameters:
+** 	id: id of specific item, for example: item1-prep-card-5 (string).
 */
 function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
@@ -170,13 +132,15 @@ function checkedItem(id) {
     	sessionStorage.setItem('total_checked', count_total+1);
 		}
 	}
-
 }
 
-/* Closes preparation list and updates number of checked items on preparation card and the percentage on preparation bar.
-Parameters:
-	id: id of the card that the list relates to (string).
-	total_items: total number of items in all lists added (integer).
+
+
+/* 
+** Closes preparation list and updates number of checked items on preparation card and the percentage on preparation bar.
+** Parameters:
+**	id: id of the card that the list relates to (string).
+**	total_items: total number of items in all lists added (integer).
 */
 function closePrepList(id, total_items) {
 	$(".preparation-list-background").remove();
@@ -195,11 +159,11 @@ function closePrepList(id, total_items) {
 
 
 /*
-Creates html code for a given list.
-Parameters:
-	list_items: items on the list (array of strings).
-	card_id: id of the card that the list relates to (string).
-	total_items: total number of items in all lists added (integer).
+** Creates html code for a given list.
+** Parameters:
+**	list_items: items on the list (array of strings).
+**	card_id: id of the card that the list relates to (string).
+**	total_items: total number of items in all lists added (integer).
 */
 function createListItems(list_items, card_id, total_items) {
 	var init = "<div>\
@@ -216,6 +180,11 @@ function createListItems(list_items, card_id, total_items) {
   return init + middle + end;
 }
 
+
+/*
+TO DO: fix card swipe before activating this function (even if not called, brings an exception on debugging. 
+Load Google Maps on the evacuation screen.
+*/
 	/*var map;
 	function initMap() {
 		var myLatLng = {lat: 27.923966, lng: -82.520319};
@@ -236,9 +205,9 @@ function createListItems(list_items, card_id, total_items) {
 
 
 /*
-Loads checked item on list.
-Parameter:
-	id: item id in specific list (string). 
+** Loads checked item on list.
+** Parameter:
+**	id: item id in specific list (string). 
 */
 function loadCheckedItem(id) {
   if(sessionStorage.getItem(id) == "true") {
@@ -254,11 +223,11 @@ function loadCheckedItem(id) {
 
 
 /*
-Loads list of items on the card.
-Parameters:
-	id: card id (string).
-	items_list: items on the list (array of strings).
-	total_items: total number of items in all lists (integer).
+** Loads list of items on the card.
+** Parameters:
+**	id: card id (string).
+**	items_list: items on the list (array of strings).
+**	total_items: total number of items in all lists (integer).
 */
 function loadList(id, items_list, total_items) {
 	var checked_items = 0;
@@ -269,6 +238,60 @@ function loadList(id, items_list, total_items) {
 
 	for (var i = 0; i < items_list.length; i++) {
 	  checked_items += loadCheckedItem("item"+i+"-"+id)
+	}
+}
+
+
+/* TO DO: finish function*/
+function swipeAllCardsLeft (card_1, card_2, card_3) {
+	
+/*var card_1_pos = card_1.getBoundingClientRect();
+console.log(card_1_pos.left);*/
+	swipeCardLeft(card_1);
+
+/*var card_2_pos = card_2.getBoundingClientRect();
+console.log(card_1_pos.left);*/
+	swipeCardLeft(card_2);
+
+	swipeCardLeft(card_3);
+}
+
+
+
+/* TO DO: finish function*/
+function swipeCardLeft (card) {
+	console.log(card.getAttribute("id"))
+	var card_pos = sessionStorage.getItem(card);
+	console.log(card_pos)
+	var pos = /*card_pos.left;*/ 0;
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == -810) {
+	    clearInterval(id);
+	    return;
+	  }
+	  else {
+	    pos = pos - 2; 
+	    card.style.left = pos + 'px'; 
+	  }
+	}
+}
+
+
+/* TO DO: finish function*/
+function swipeCardRight (card_1, card_2) {
+	/*var elem = document.getElementById("evacuation-plan");*/  
+	var pos = 0;
+	var id = setInterval(frame, 1);
+  function frame() {
+	  if (pos == 350) {
+
+	    clearInterval(id);
+	  }
+	  else {
+	    pos = pos + 3; 
+	    card_1.style.left = pos + 'px'; 
+	  }
 	}
 }
 
@@ -322,23 +345,4 @@ function swipedetect(el, callback){
         e.preventDefault()
     }, false)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
