@@ -11,9 +11,9 @@ $(document).ready(function() {
 	/* TO DO: finish swipe functions */
 	if(document.getElementById("map")) {
 
-		sessionStorage.setItem('card_1', 0);
-		sessionStorage.setItem('card_2', 0);
-		sessionStorage.setItem('card_3', 0);
+		sessionStorage.setItem('plan-1-card', 0);
+		sessionStorage.setItem('plan-2-card', 0);
+		sessionStorage.setItem('plan-3-card', 0);
 
 		var el = document.getElementById('swipezone');
 		swipedetect(el, function(swipedir){
@@ -260,14 +260,17 @@ console.log(card_1_pos.left);*/
 
 /* TO DO: finish function*/
 function swipeCardLeft (card) {
+	card_id = card.getAttribute("id");
 	console.log(card.getAttribute("id"))
-	var card_pos = sessionStorage.getItem(card);
+	var card_pos = sessionStorage.getItem(card_id);
 	console.log(card_pos)
-	var pos = /*card_pos.left;*/ 0;
+	/*var card_2_pos = card_2.getBoundingClientRect();*/
+	var pos = sessionStorage.getItem(card_id); /*card_pos.left; 0;*/
 	var id = setInterval(frame, 1);
   function frame() {
-	  if (pos == -810) {
+	  if (pos == - sessionStorage.getItem(card_id) - 810) {
 	    clearInterval(id);
+	    sessionStorage.setItem(card_id, pos);
 	    return;
 	  }
 	  else {
