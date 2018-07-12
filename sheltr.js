@@ -34,12 +34,13 @@ $(document).ready(function() {
 
 		var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
+			var swipe_position_movement = 390;
     // swipedir contains either "none", "left", "right", "top", or "down"
 	    if (swipedir == "left") {  
-		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_position_movement);
 	    }    
 	    if (swipedir == "right") {
-	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));	
+	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_position_movement);	
 	    }
 		});
 
@@ -263,7 +264,7 @@ function loadList(id, items_list, total_items) {
 
 
 /* TO DO: finish function*/
-function swipeAllCardsLeft (card_1, card_2, card_3) {
+function swipeAllCardsLeft (card_1, card_2, card_3, swipe_movement) {
 	
 /*var card_1_pos = card_1.getBoundingClientRect();
 console.log(card_1_pos.left);*/
@@ -278,9 +279,29 @@ console.log(card_1_pos.left);*/
 	var pos = card_pos; /*card_pos.left; 0;*/
 	var id = setInterval(frame, 1);
   function frame() {
-	  if (pos == card_pos - 390) {
+	  if (pos == card_pos - swipe_movement) {
 	  	sessionStorage.setItem("plan-card", pos);
 	    clearInterval(id);
+
+
+
+	    console.log("pos")
+	    console.log(pos)
+	    console.log("swipe mov")
+	    console.log(swipe_movement)
+
+	    /* plan B card on screen */
+	    if (pos == -swipe_movement) {
+	    	console.log("entrou2")
+	    	document.getElementById("map-image").src = "images/planB_background.jpg";
+	    }
+
+	    /* plan C card on screen */
+	    if (pos == -(2*swipe_movement)) {
+	    	console.log("entrou3")
+	    	document.getElementById("map-image").src = "images/planC_background.jpg";
+	    }
+
 	    return;
 	  }
 	  else {
@@ -288,7 +309,7 @@ console.log(card_1_pos.left);*/
 	    card_1.style.left = pos + 'px'; 
 	    card_2.style.left = pos + 'px'; 
 	    card_3.style.left = pos + 'px'; 
-	    if(pos == -780){
+	    if(pos == -(swipe_movement*2)){
 	    	console.log(pos)
 	  	}
 	  }
@@ -297,7 +318,7 @@ console.log(card_1_pos.left);*/
 
 }
 
-function swipeAllCardsRight (card_1, card_2, card_3) {
+function swipeAllCardsRight (card_1, card_2, card_3, swipe_movement) {
 
 	/*swipeCardRight(card_1);
 	swipeCardRight(card_2);
@@ -307,20 +328,38 @@ function swipeAllCardsRight (card_1, card_2, card_3) {
 	console.log(card_pos)
 	/*var card_2_pos = card_2.getBoundingClientRect();*/
 	var pos = parseInt(card_pos); /*card_pos.left; 0;*/
-	var id = setInterval(frame, 1);
+	var id = setInterval(frame, 10);
   function frame() {
-	  if (pos == card_pos + 390) {
+	  if (pos == card_pos + swipe_movement) {
 	  	sessionStorage.setItem("plan-card", pos);
 	    clearInterval(id);
+
+	    console.log("pos")
+	    console.log(pos)
+	    console.log("swipe mov")
+	    console.log(swipe_movement)
+
+
+	    /* plan A card on screen */
+	    if (pos == 0) {
+	    	console.log("entrou1")
+	    	document.getElementById("map-image").src = "images/planA_background.png";
+	    }
+
+	    /* plan B card on screen */
+	    if (pos == -swipe_movement) {
+	    	console.log("entrou2")
+	    	document.getElementById("map-image").src = "images/planB_background.jpg";
+	    }
+
 	    return;
 	  }
 	  else {
 	    pos = pos + 2; 
-	    console.log(pos)
 	    card_1.style.left = pos + 'px'; 
 	    card_2.style.left = pos + 'px'; 
 	    card_3.style.left = pos + 'px'; 
-	    if(pos == 780){
+	    if(pos == (swipe_movement*2)){
 	    	console.log(pos)
 	  	}
 	  }
@@ -328,80 +367,6 @@ function swipeAllCardsRight (card_1, card_2, card_3) {
 }
 
 
-
-/* TO DO: finish function*/
-function swipeCardLeft (card) {
-	card_id = card.getAttribute("id");
-	console.log(card.getAttribute("id"))
-	/*var card_pos = sessionStorage.getItem(card_id);*/
-	var card_pos = sessionStorage.getItem("plan-card");
-	console.log(card_pos)
-	/*var card_2_pos = card_2.getBoundingClientRect();*/
-	var pos = card_pos; /*card_pos.left; 0;*/
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == card_pos - 810) {
-	  	sessionStorage.setItem("plan-card", pos);
-	    clearInterval(id);
-	    return;
-	  }
-	  else {
-	    pos = pos - 2; 
-	    card.style.left = pos + 'px'; 
-	    if(pos == -1620){
-	    	console.log(pos)
-	  	}
-	  }
-	}
-}
-
-
-/* TO DO: finish function*/
-function swipeCardRight (card) {
-
-	card_id = card.getAttribute("id");
-	console.log(card.getAttribute("id"))
-	/*var card_pos = sessionStorage.getItem(card_id);*/
-	var card_pos = sessionStorage.getItem("plan-card");
-	console.log(card_pos)
-	/*var card_2_pos = card_2.getBoundingClientRect();*/
-	var pos = parseInt(card_pos); /*card_pos.left; 0;*/
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == card_pos + 810) {
-	  	sessionStorage.setItem("plan-card", pos);
-	    clearInterval(id);
-	    return;
-	  }
-	  else {
-	    pos = pos + 2; 
-	    console.log(pos)
-	    card.style.left = pos + 'px'; 
-	    if(pos == 1620){
-	    	console.log(pos)
-	  	}
-	  }
-	}
-
-
-	/*var elem = document.getElementById("evacuation-plan");*/  
-	/*var pos = 0;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == 350) {
-
-	    clearInterval(id);
-	  }
-	  else {
-	    pos = pos + 3; 
-	    card_1.style.left = pos + 'px'; 
-	  }
-	}*/
-}
-
-
-
-/* TO DO: edit this function to make it proper to the given plans. */
 // credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
 function swipedetect(el, callback){
   
