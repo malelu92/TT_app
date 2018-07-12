@@ -195,7 +195,7 @@
 
 
 #toggle {
-		background-color: #ffffff;
+		background-color: #232752;
 		border-radius: 50px;
 	  height: 5%;
 	  position: absolute;
@@ -203,7 +203,7 @@
 }
 
 #toggle-bar {
-		background-color: #232752;
+		background-color: #ffffff;
 		border-radius: 50px;
 	  height: 100%;
 	  position: absolute;
@@ -211,6 +211,7 @@
 }
 
 .toggle-item {
+	color: #ffffff;
 	display: block;
 	margin: 2% 5% 0 5%;
 	position: relative;
@@ -219,7 +220,7 @@
 }
 
 .toggle-item.left {
-	color: white;
+	color: #232752;
 }
 
 

@@ -12,8 +12,8 @@ function switchRight() {
 						for (var i = 0; i < 2; i++) {
 		  if (pos == parseInt(toggle_width/2)) {
 		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#000000"; 
-		  	document.getElementById("list_view").style.color = "#ffffff"; 
+		  	document.getElementById("map_view").style.color = "#ffffff"; 
+		  	document.getElementById("list_view").style.color = "#000000"; 
 		    clearInterval(id);
 		    return;
 		  }
@@ -34,8 +34,8 @@ function switchLeft() {
 						for (var i = 0; i < 2; i++) {
 		  if (pos == 0) {
 		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#ffffff"; 
-		  	document.getElementById("list_view").style.color = "#000000"; 
+		  	document.getElementById("map_view").style.color = "#000000"; 
+		  	document.getElementById("list_view").style.color = "#ffffff"; 
 		    clearInterval(id);
 		    return;
 		  }
@@ -58,18 +58,18 @@ function updateCardsToListView(card_1, card_2, card_3) {
 
 	var id = setInterval(function() {
 		for (var i = 0; i < 20; i++) {
-		  if (pos == card_pos - 100) {
+		  if (pos == card_pos - 300) {
 
 		  	sessionStorage.setItem("plan-card", pos);
 		    clearInterval(id);
 
 		    /* plan B card on screen */
-		    if (pos == -100) {
+		    if (pos == -300) {
 		    	document.getElementById("map-image").src = "images/planB_background.jpg";
 		    }
 
 		    /* plan C card on screen */
-		    if (pos == -(2*100)) {
+		    if (pos == -(2*300)) {
 		    	document.getElementById("map-image").src = "images/planC_background.jpg";
 		    }
 
@@ -138,6 +138,7 @@ $(document).ready(function() {
 	if(document.getElementById("map")) {
 
 		sessionStorage.setItem('plan-card', 0);
+		sessionStorage.setItem('toggle', "left");
 
 		/* Positions second and third cards based on screen size. */
 		var card_margin = 6;
@@ -162,7 +163,7 @@ $(document).ready(function() {
 		});
 
 
-		$("#map_view").click(function(){
+		/*$("#map_view").click(function(){
 			console.log("map")
 			switchRight();
 			updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
@@ -172,6 +173,22 @@ $(document).ready(function() {
 			console.log("list")
 			switchLeft();
 			updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
+	  });*/
+
+	  $("#toggle").click(function(){
+	  	console.log(sessionStorage.getItem('toggle'))
+	  	if(sessionStorage.getItem('toggle') == "left") {
+	  		sessionStorage.setItem('toggle', "right");
+	  		switchRight();
+	  		console.log(sessionStorage.getItem('toggle'))
+	  		updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+	  	}
+	  	else {
+	  		switchLeft();
+	  		console.log("lala")
+	  		sessionStorage.setItem('toggle', "left");
+	  		updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+	  	}
 	  });
 
 
