@@ -43,10 +43,17 @@
 	  border-width: 2px;
 	  /*height: 30%;*/
 	  height: 60%;
-	  margin: 32vh 20vw 20vh 20vw;
+	  /*margin: 32vh 20vw 20vh 20vw;*/
 	  position: absolute;
 	  width: 80%;
 	  z-index: 1;
+
+
+    display: block;
+    margin-bottom: 32vh;
+    margin-top: 32vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 	.evacuation-plan.plan-1 {
@@ -54,12 +61,10 @@
 	}
 
 	.evacuation-plan.plan-2 {
-	  /*margin: 32vh 20vw 20vh 900px;*/
 	  margin-left: 390px;
 	}
 
 	.evacuation-plan.plan-3 {
-	  /*margin: 32vh 20vw 20vh 1780px;*/
 	  margin-left: 780px;
 	}
 
