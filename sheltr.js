@@ -16,8 +16,8 @@ $(document).ready(function() {
 		sessionStorage.setItem('plan-3-card', 0);*/
 		sessionStorage.setItem('plan-card', 0);
 
-		var el = document.getElementById('swipezone');
-		/*swipedetect(el, function(swipedir){
+		/*var el = document.getElementById('swipezone');
+		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
 	    if (swipedir == "left") {  
 		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
@@ -30,7 +30,9 @@ $(document).ready(function() {
 	    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 		});*/
 
-		var el = document.getElementById('swipe-area');
+
+
+		/*var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
 	    if (swipedir == "left") {  
@@ -39,10 +41,7 @@ $(document).ready(function() {
 	    if (swipedir == "right") {
 	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));	
 	    }
-
-	    console.log(swipedir)
-	    /*el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';*/
-		});
+		});*/
 
 
 
