@@ -278,7 +278,7 @@ console.log(card_1_pos.left);*/
 	var pos = card_pos; /*card_pos.left; 0;*/
 	var id = setInterval(frame, 1);
   function frame() {
-	  if (pos == card_pos - 810) {
+	  if (pos == card_pos - 390) {
 	  	sessionStorage.setItem("plan-card", pos);
 	    clearInterval(id);
 	    return;
@@ -288,7 +288,7 @@ console.log(card_1_pos.left);*/
 	    card_1.style.left = pos + 'px'; 
 	    card_2.style.left = pos + 'px'; 
 	    card_3.style.left = pos + 'px'; 
-	    if(pos == -1620){
+	    if(pos == -780){
 	    	console.log(pos)
 	  	}
 	  }
@@ -309,7 +309,7 @@ function swipeAllCardsRight (card_1, card_2, card_3) {
 	var pos = parseInt(card_pos); /*card_pos.left; 0;*/
 	var id = setInterval(frame, 1);
   function frame() {
-	  if (pos == card_pos + 810) {
+	  if (pos == card_pos + 390) {
 	  	sessionStorage.setItem("plan-card", pos);
 	    clearInterval(id);
 	    return;
@@ -320,7 +320,7 @@ function swipeAllCardsRight (card_1, card_2, card_3) {
 	    card_1.style.left = pos + 'px'; 
 	    card_2.style.left = pos + 'px'; 
 	    card_3.style.left = pos + 'px'; 
-	    if(pos == 1620){
+	    if(pos == 780){
 	    	console.log(pos)
 	  	}
 	  }
