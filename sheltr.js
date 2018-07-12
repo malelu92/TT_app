@@ -7,28 +7,32 @@
 
 $(document).ready(function() {
 
-	/* Only load if evacuation screen */
-	/* TO DO: finish swipe functions */
+	/* Only load if evacuation screen. */
 	if(document.getElementById("map")) {
 
-		sessionStorage.setItem('card_1', 0);
-		sessionStorage.setItem('card_2', 0);
-		sessionStorage.setItem('card_3', 0);
+		sessionStorage.setItem('plan-card', 0);
 
-		var el = document.getElementById('swipezone');
+		/* Positions second and third cards based on screen size. */
+		var card_margin = 3;
+
+		var margin_left_plan_b = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().right) + card_margin;
+		document.getElementById("plan-2-card").style.marginLeft = margin_left_plan_b + "px";
+
+		var margin_left_plan_c = parseInt(document.getElementById("plan-2-card").getBoundingClientRect().right) + card_margin;
+		document.getElementById("plan-3-card").style.marginLeft = margin_left_plan_c + "px";
+
+		/* Swipes cards. */
+		var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
-    // swipedir contains either "none", "left", "right", "top", or "down"
+			var swipe_pixels = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().width) + card_margin;
+
 	    if (swipedir == "left") {  
-		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_pixels);
 	    }    
 	    if (swipedir == "right") {
-	    	swipeCardRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"));	
+	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_pixels);	
 	    }
-
-	    console.log(swipedir)
-	    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
 		});
-		/*initMap();*/
 	}
 
 
@@ -77,7 +81,6 @@ $(document).ready(function() {
 			loadList(this.id, card_lists[5], total_items);
 	  });
 	}
-
 });
 
 
@@ -181,27 +184,6 @@ function createListItems(list_items, card_id, total_items) {
 }
 
 
-/*
-TO DO: fix card swipe before activating this function (even if not called, brings an exception on debugging. 
-Load Google Maps on the evacuation screen.
-*/
-	/*var map;
-	function initMap() {
-		var myLatLng = {lat: 27.923966, lng: -82.520319};
-
-	  map = new google.maps.Map(document.getElementById('map'), {
-	        	zoom: 13,
-	        	center: myLatLng,
-	        	mapTypeId: 'terrain'
-	      	});
-
-	  var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'My house'
-        });
-	}*/
-
 
 
 /*
@@ -242,62 +224,93 @@ function loadList(id, items_list, total_items) {
 }
 
 
-/* TO DO: finish function*/
-function swipeAllCardsLeft (card_1, card_2, card_3) {
-	
-/*var card_1_pos = card_1.getBoundingClientRect();
-console.log(card_1_pos.left);*/
-	swipeCardLeft(card_1);
+/*
+** Swipes all cards left.
+** Parameters:
+**	card_1: first card's id (string).
+**	card_2: second card's id (string).
+**	card_3: third card's id (string).
+**	swipe_pixels: number of pixels cards will swipe left (integer).
+*/
+function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 
-/*var card_2_pos = card_2.getBoundingClientRect();
-console.log(card_1_pos.left);*/
-	swipeCardLeft(card_2);
+	var card_pos = sessionStorage.getItem("plan-card");
+	var pos = card_pos;
 
-	swipeCardLeft(card_3);
+	var id = setInterval(function() {
+		for (var i = 0; i < 20; i++) {
+		  if (pos == card_pos - swipe_pixels) {
+
+		  	sessionStorage.setItem("plan-card", pos);
+		    clearInterval(id);
+
+		    /* plan B card on screen */
+		    if (pos == -swipe_pixels) {
+		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    }
+
+		    /* plan C card on screen */
+		    if (pos == -(2*swipe_pixels)) {
+		    	document.getElementById("map-image").src = "images/planC_background.jpg";
+		    }
+
+		    return;
+		  }
+		  else {
+		    pos = pos - 1;
+		    card_1.style.left = pos + 'px'; 
+		    card_2.style.left = pos + 'px'; 
+		    card_3.style.left = pos + 'px'; 
+  		}
+		}
+	}, 10);
 }
 
 
 
-/* TO DO: finish function*/
-function swipeCardLeft (card) {
-	console.log(card.getAttribute("id"))
-	var card_pos = sessionStorage.getItem(card);
-	console.log(card_pos)
-	var pos = /*card_pos.left;*/ 0;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == -810) {
-	    clearInterval(id);
-	    return;
-	  }
-	  else {
-	    pos = pos - 2; 
-	    card.style.left = pos + 'px'; 
-	  }
-	}
+
+/*
+** Swipes all cards right.
+** Parameters:
+**	card_1: first card's id (string).
+**	card_2: second card's id (string).
+**	card_3: third card's id (string).
+**	swipe_pixels: number of pixels cards will swipe right (integer).
+*/
+function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
+
+	var card_pos = parseInt(sessionStorage.getItem("plan-card"));
+	var pos = parseInt(card_pos);
+
+	var id = setInterval(function() {
+		for (var i = 0; i < 20; i++) {
+		  if (pos == card_pos + swipe_pixels) {
+		  	sessionStorage.setItem("plan-card", pos);
+		    clearInterval(id);
+
+		    /* plan A card on screen */
+		    if (pos == 0) {
+		    	document.getElementById("map-image").src = "images/planA_background.png";
+		    }
+
+		    /* plan B card on screen */
+		    if (pos == -swipe_pixels) {
+		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    }
+		    return;
+		  }
+		  else 
+		  {
+		    pos = pos + 1; 
+		    card_1.style.left = pos + 'px'; 
+		    card_2.style.left = pos + 'px'; 
+		    card_3.style.left = pos + 'px'; 
+			}
+		}
+	}, 10);
 }
 
 
-/* TO DO: finish function*/
-function swipeCardRight (card_1, card_2) {
-	/*var elem = document.getElementById("evacuation-plan");*/  
-	var pos = 0;
-	var id = setInterval(frame, 1);
-  function frame() {
-	  if (pos == 350) {
-
-	    clearInterval(id);
-	  }
-	  else {
-	    pos = pos + 3; 
-	    card_1.style.left = pos + 'px'; 
-	  }
-	}
-}
-
-
-
-/* TO DO: edit this function to make it proper to the given plans. */
 // credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
 function swipedetect(el, callback){
   

@@ -30,31 +30,43 @@
 	  float: left; 
 	}
 
-	.container {
+	/*.container {
   	display: flex;
-	}
+  	position: fixed;
+  	height: 50%;
+  	width: 100%;
+	}*/
 
 	.evacuation-plan {
 		background-color: white;
 		border-style: solid;
 	  border-width: 2px;
-	  height: 30%;
+	  /*height: 30%;*/
+	  height: 60%;
+	  /*margin: 32vh 20vw 20vh 20vw;*/
 	  position: absolute;
 	  width: 80%;
 	  z-index: 1;
+
+
+    display: block;
+    margin-bottom: 32vh;
+    margin-top: 32vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 	.evacuation-plan.plan-1 {
-	  margin: 20px 20px 20px 20px;
+	  margin-left: 10vw;
 	}
 
-	.evacuation-plan.plan-2 {
-	  margin: 20px 20px 20px 900px;
+	/*.evacuation-plan.plan-2 {
+	  margin-left: 390px;
 	}
 
 	.evacuation-plan.plan-3 {
-	  margin: 20px 20px 20px 1780px;
-	}
+	  margin-left: 780px;
+	}*/
 
 	.filter-item {
 		  border-style: solid;
@@ -83,9 +95,14 @@
     transform: scale(3); 
   }
 
-  #map {
+  /*#map {
+  	height: 50%;
+  	width: 50%;
+  }*/
+
+  .map-background {
   	height: 100%;
-  	/*width: 100%;*/
+  	width: 100%;
   }
 
 	#preparation-bar {
@@ -181,16 +198,23 @@
 		margin: 0 0 0 3vw;
 	}
 
-
+#swipe-area {
+  	display: flex;
+  	position: fixed;
+  	height: 60%;
+  	margin: 40% 0 0 0;
+  	width: 100%;
+	/*overflow:hidden;*/
+}
 
 #swipezone{
   width: 80%;
   height: 50vh;
-  text-align: center;
+  /*text-align: center;
   background: #000;
   color: #fff;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 30px;*/
 }
 
 
