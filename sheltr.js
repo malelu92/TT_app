@@ -7,66 +7,32 @@
 
 $(document).ready(function() {
 
-	/* Only load if evacuation screen */
-	/* TO DO: finish swipe functions */
+	/* Only load if evacuation screen. */
 	if(document.getElementById("map")) {
 
-		/*sessionStorage.setItem('plan-1-card', 0);
-		sessionStorage.setItem('plan-2-card', 0);
-		sessionStorage.setItem('plan-3-card', 0);*/
 		sessionStorage.setItem('plan-card', 0);
 
-		/*var el = document.getElementById('swipezone');
-		swipedetect(el, function(swipedir){
-    // swipedir contains either "none", "left", "right", "top", or "down"
-	    if (swipedir == "left") {  
-		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
-	    }    
-	    if (swipedir == "right") {
-	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));	
-	    }
-
-	    console.log(swipedir)
-	    el.innerHTML = 'Swiped <span style="color:yellow">' + swipedir +'</span>';
-		});*/
-
-		/*console.log(document.getElementById("plan-1-card").getBoundingClientRect().right)*/
-
+		/* Positions second and third cards based on screen size. */
 		var card_margin = 3;
+
 		var margin_left_plan_b = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().right) + card_margin;
 		document.getElementById("plan-2-card").style.marginLeft = margin_left_plan_b + "px";
 
 		var margin_left_plan_c = parseInt(document.getElementById("plan-2-card").getBoundingClientRect().right) + card_margin;
 		document.getElementById("plan-3-card").style.marginLeft = margin_left_plan_c + "px";
-		/*card_3.style.left = pos + 'px'; */
 
-		console.log(document.getElementById("plan-1-card").getBoundingClientRect())
-		console.log(document.getElementById("plan-1-card").getBoundingClientRect().width)
-		console.log(document.getElementById("plan-1-card").getBoundingClientRect().left)
-		console.log(document.getElementById("plan-2-card").getBoundingClientRect().left)
-		console.log(document.getElementById("plan-3-card").getBoundingClientRect().left)
-
-		console.log(window.innerWidth);
+		/* Swipes cards. */
 		var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
-			var swipe_position_movement = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().width) + card_margin;
-			console.log("mov")
-			console.log(swipe_position_movement)
-    // swipedir contains either "none", "left", "right", "top", or "down"
+			var swipe_pixels = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().width) + card_margin;
+
 	    if (swipedir == "left") {  
-		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_position_movement);
+		  	swipeAllCardsLeft(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_pixels);
 	    }    
 	    if (swipedir == "right") {
-	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_position_movement);	
+	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_pixels);	
 	    }
 		});
-
-
-
-
-
-
-		/*initMap();*/
 	}
 
 
@@ -115,7 +81,6 @@ $(document).ready(function() {
 			loadList(this.id, card_lists[5], total_items);
 	  });
 	}
-
 });
 
 
@@ -219,27 +184,6 @@ function createListItems(list_items, card_id, total_items) {
 }
 
 
-/*
-TO DO: fix card swipe before activating this function (even if not called, brings an exception on debugging. 
-Load Google Maps on the evacuation screen.
-*/
-	/*var map;
-	function initMap() {
-		var myLatLng = {lat: 27.923966, lng: -82.520319};
-
-	  map = new google.maps.Map(document.getElementById('map'), {
-	        	zoom: 13,
-	        	center: myLatLng,
-	        	mapTypeId: 'terrain'
-	      	});
-
-	  var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'My house'
-        });
-	}*/
-
 
 
 /*
@@ -280,26 +224,33 @@ function loadList(id, items_list, total_items) {
 }
 
 
-/* TO DO: finish function*/
-function swipeAllCardsLeft (card_1, card_2, card_3, swipe_movement) {
+/*
+** Swipes all cards left.
+** Parameters:
+**	card_1: first card's id (string).
+**	card_2: second card's id (string).
+**	card_3: third card's id (string).
+**	swipe_pixels: number of pixels cards will swipe left (integer).
+*/
+function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 
 	var card_pos = sessionStorage.getItem("plan-card");
 	var pos = card_pos;
 
 	var id = setInterval(function() {
 		for (var i = 0; i < 20; i++) {
-		  if (pos == card_pos - swipe_movement) {
+		  if (pos == card_pos - swipe_pixels) {
 
 		  	sessionStorage.setItem("plan-card", pos);
 		    clearInterval(id);
 
 		    /* plan B card on screen */
-		    if (pos == -swipe_movement) {
+		    if (pos == -swipe_pixels) {
 		    	document.getElementById("map-image").src = "images/planB_background.jpg";
 		    }
 
 		    /* plan C card on screen */
-		    if (pos == -(2*swipe_movement)) {
+		    if (pos == -(2*swipe_pixels)) {
 		    	document.getElementById("map-image").src = "images/planC_background.jpg";
 		    }
 
@@ -315,14 +266,25 @@ function swipeAllCardsLeft (card_1, card_2, card_3, swipe_movement) {
 	}, 10);
 }
 
-function swipeAllCardsRight (card_1, card_2, card_3, swipe_movement) {
+
+
+
+/*
+** Swipes all cards right.
+** Parameters:
+**	card_1: first card's id (string).
+**	card_2: second card's id (string).
+**	card_3: third card's id (string).
+**	swipe_pixels: number of pixels cards will swipe right (integer).
+*/
+function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
 
 	var card_pos = parseInt(sessionStorage.getItem("plan-card"));
 	var pos = parseInt(card_pos);
 
 	var id = setInterval(function() {
 		for (var i = 0; i < 20; i++) {
-		  if (pos == card_pos + swipe_movement) {
+		  if (pos == card_pos + swipe_pixels) {
 		  	sessionStorage.setItem("plan-card", pos);
 		    clearInterval(id);
 
@@ -332,7 +294,7 @@ function swipeAllCardsRight (card_1, card_2, card_3, swipe_movement) {
 		    }
 
 		    /* plan B card on screen */
-		    if (pos == -swipe_movement) {
+		    if (pos == -swipe_pixels) {
 		    	document.getElementById("map-image").src = "images/planB_background.jpg";
 		    }
 		    return;
