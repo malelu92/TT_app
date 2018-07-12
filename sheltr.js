@@ -4,6 +4,133 @@
 **	July 2018
 ************************************************************************/
 
+function switchRight() {
+			var toggle_width = document.getElementById("toggle").getBoundingClientRect().width;
+			var pos= 0;
+
+			var id = setInterval(function() {
+						for (var i = 0; i < 2; i++) {
+		  if (pos == parseInt(toggle_width/2)) {
+		  	/*sessionStorage.setItem("plan-card", pos);*/
+		  	document.getElementById("map_view").style.color = "#000000"; 
+		  	document.getElementById("list_view").style.color = "#ffffff"; 
+		    clearInterval(id);
+		    return;
+		  }
+		  else 
+		  {
+		    pos = pos + 1; 
+		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
+			}
+		}
+	}, 10);
+}
+
+
+function switchLeft() {
+			var pos= 100;
+
+			var id = setInterval(function() {
+						for (var i = 0; i < 2; i++) {
+		  if (pos == 0) {
+		  	/*sessionStorage.setItem("plan-card", pos);*/
+		  	document.getElementById("map_view").style.color = "#ffffff"; 
+		  	document.getElementById("list_view").style.color = "#000000"; 
+		    clearInterval(id);
+		    return;
+		  }
+		  else 
+		  {
+		    pos = pos - 1; 
+		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
+			}
+		}
+	}, 10);
+}
+
+
+
+
+function updateCardsToListView(card_1, card_2, card_3) {
+
+	var card_pos = sessionStorage.getItem("plan-card");
+	var pos = card_pos;
+
+	var id = setInterval(function() {
+		for (var i = 0; i < 20; i++) {
+		  if (pos == card_pos - 100) {
+
+		  	sessionStorage.setItem("plan-card", pos);
+		    clearInterval(id);
+
+		    /* plan B card on screen */
+		    if (pos == -100) {
+		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    }
+
+		    /* plan C card on screen */
+		    if (pos == -(2*100)) {
+		    	document.getElementById("map-image").src = "images/planC_background.jpg";
+		    }
+
+		    return;
+		  }
+		  else {
+		    pos = pos - 1;
+		    card_1.style.top = pos + 'px'; 
+		    card_2.style.top = pos + 'px'; 
+		    card_3.style.top = pos + 'px'; 
+  		}
+		}
+	}, 10);
+}
+
+
+
+function updateCardsToMapView(card_1, card_2, card_3) {
+
+	console.log("lala")
+
+	var card_pos = sessionStorage.getItem("plan-card");
+	var pos = parseInt(card_pos);
+
+	console.log(sessionStorage.getItem("plan-card"));
+
+	var id = setInterval(function() {
+		for (var i = 0; i < 20; i++) {
+		  if (pos == 0) {
+		  	console.log(pos)
+
+		  	sessionStorage.setItem("plan-card", pos);
+		    clearInterval(id);
+
+		    /* plan B card on screen */
+		    if (pos == 0) {
+		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    }
+
+		    /* plan C card on screen */
+		    if (pos == -(100)) {
+		    	document.getElementById("map-image").src = "images/planC_background.jpg";
+		    }
+
+		    return;
+		  }
+		  else {
+		  	console.log(pos)
+		    pos = pos + 1;
+		    card_1.style.top = pos + 'px'; 
+		    card_2.style.top = pos + 'px'; 
+		    card_3.style.top = pos + 'px'; 
+  		}
+		}
+	}, 10);
+}
+
+
+
+
+
 
 $(document).ready(function() {
 
@@ -13,7 +140,7 @@ $(document).ready(function() {
 		sessionStorage.setItem('plan-card', 0);
 
 		/* Positions second and third cards based on screen size. */
-		var card_margin = 3;
+		var card_margin = 6;
 
 		var margin_left_plan_b = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().right) + card_margin;
 		document.getElementById("plan-2-card").style.marginLeft = margin_left_plan_b + "px";
@@ -33,6 +160,21 @@ $(document).ready(function() {
 	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"), swipe_pixels);	
 	    }
 		});
+
+
+		$("#map_view").click(function(){
+			console.log("map")
+			switchRight();
+			updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
+	  });
+
+		$("#list_view").click(function(){
+			console.log("list")
+			switchLeft();
+			updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
+	  });
+
+
 	}
 
 

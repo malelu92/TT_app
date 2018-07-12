@@ -9,6 +9,7 @@
       }
 
 	#bottom-nav-bar {
+		background-color: #ffffff;
 	  border-style: solid;
 	    border-width: 2px;
 	  bottom:0;
@@ -16,7 +17,6 @@
 	}
 
 	.bottom-nav-bar-item {
-		background-color: #ffffff;
 		float: left;
 		height: 5vh;
 		text-align: center;
@@ -38,9 +38,8 @@
 	}*/
 
 	.evacuation-plan {
-		background-color: white;
-		border-style: solid;
-	  border-width: 2px;
+		background-color: #ffffff;
+		border-radius: 5px;
 	  /*height: 30%;*/
 	  height: 60%;
 	  /*margin: 32vh 20vw 20vh 20vw;*/
@@ -121,13 +120,10 @@
 	}
 
 	.preparation-card {
-	  /*border-style: solid;
-	    border-width: 2px;*/
 	  border-radius: 5px;
 	  background-color: #f0f0f5;
 	  cursor: pointer;
 	  float: left;
-	  /*height: 18vh;*/
 	  margin:	2.5vw 0 2.5vw 5vw;
 	  text-align: center;
 	  width: 40%;	
@@ -192,6 +188,141 @@
 #prep-list-1-close {
 	cursor: pointer;
 }
+
+
+
+
+
+
+#toggle {
+		background-color: #ffffff;
+		border-radius: 50px;
+	  height: 5%;
+	  position: absolute;
+	  width: 60%;
+}
+
+#toggle-bar {
+		background-color: #232752;
+		border-radius: 50px;
+	  height: 100%;
+	  position: absolute;
+	  width: 50%;
+}
+
+.toggle-item {
+	display: block;
+	margin: 2% 5% 0 5%;
+	position: relative;
+	float: left;
+	z-index: 1;
+}
+
+.toggle-item.left {
+	color: white;
+}
+
+
+
+.lala {
+	background-color: black;
+	height: 10px;
+  width: 100%;
+}
+
+.test {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	position: absolute;
+  background: white;
+  border-radius: 15px;
+  height: 10px;
+  width: 100px;
+}
+
+
+.dd {
+	margin: 3vh 0 0 0;
+  position: absolute;
+  width: 50%;
+  height: 34px;
+
+
+	  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+.toggle-switch {
+	  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  width: 60%;
+  height: 34px;
+}
+
+.toggle-switch input {
+	display:none;
+}
+
+.slider {
+
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+  width: 40%;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  width: 40%;
+}
+
+
+
+
+
 
 	.subtitle {
 		font-size: 1.3em;
