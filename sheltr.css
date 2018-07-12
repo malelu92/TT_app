@@ -85,7 +85,7 @@
 
   #map {
   	height: 100%;
-  	/*width: 100%;*/
+  	width: 100%;
   }
 
 	#preparation-bar {
@@ -186,11 +186,11 @@
 #swipezone{
   width: 80%;
   height: 50vh;
-  text-align: center;
+  /*text-align: center;
   background: #000;
   color: #fff;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 30px;*/
 }
 
 
