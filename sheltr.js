@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 
 
-		/*var el = document.getElementById('swipe-area');
+		var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
     // swipedir contains either "none", "left", "right", "top", or "down"
 	    if (swipedir == "left") {  
@@ -41,7 +41,7 @@ $(document).ready(function() {
 	    if (swipedir == "right") {
 	    	swipeAllCardsRight(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));	
 	    }
-		});*/
+		});
 
 
 
