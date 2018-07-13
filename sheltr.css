@@ -41,7 +41,7 @@
 		background-color: #ffffff;
 		border-radius: 5px;
 	  /*height: 30%;*/
-	  height: 60%;
+	  height: 40%;
 	  /*margin: 32vh 20vw 20vh 20vw;*/
 	  position: absolute;
 	  width: 80%;
@@ -50,7 +50,7 @@
 
     display: block;
     margin-bottom: 32vh;
-    margin-top: 32vh;
+    margin-top: 40vh;
     margin-left: auto;
     margin-right: auto;
 }
@@ -229,8 +229,6 @@
  75% { -webkit-transform: translate(100px, 390px) ; }
  100.0000% { -webkit-transform: translate(200px, 400px) ; }
 
-
-
 }
 
 @-webkit-keyframes diagonal_lala {
@@ -253,13 +251,6 @@
 
 }
 
-.rec-transform {
-    /*-webkit-animation: diagonal .5s;
-    animation: diagonal .5s;
-    animation-fill-mode: forwards;
-    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);*/
-}
-
 .rec-transform-active {
     -webkit-animation: diagonal .2s;
     animation: diagonal .2s;
@@ -275,8 +266,108 @@
 }
 
 
+@-webkit-keyframes evac_map_mode {
+  42.6056% { -webkit-transform: translate(-24.7px, -162.3px) ; }
+  37.3330% { -webkit-transform: translate(-20.4px, -189.1px) ; }
+  26.2381% { -webkit-transform: translate(-13.4px, -217.5px) ; }
+  13.9271% { -webkit-transform: translate(-3.5px, -247.8px) ; }
+  0.0000% { -webkit-transform: translate(0px, -315.0px) ; }
+}
+
+@-webkit-keyframes evac_map_mode_middle_card {
+  50.0023% { -webkit-transform: translate(-220.0px, 26.0px) ; }
+  44.6703% { -webkit-transform: translate(-230.4px, 0.5px) ; }
+  33.0285% { -webkit-transform: translate(-250.0px, -30.8px) ; }
+  6.8181% { -webkit-transform: translate(-280.7px, -68.5px) ; }
+  0.0000% { -webkit-transform: translate(-305.0px, -153.0px) ; }
+}
 
 
+
+@-webkit-keyframes evac_list_mode {
+  0.0000% { -webkit-transform: translate(89.0px, 92.0px) ; }
+  13.9271% { -webkit-transform: translate(48.6px, 44.2px) ; }
+  26.2381% { -webkit-transform: translate(16.3px, -0.7px) ; }
+  37.3330% { -webkit-transform: translate(-7.4px, -44.6px) ; }
+  42.6056% { -webkit-transform: translate(-15.8px, -66.8px) ; }
+  47.8121% { -webkit-transform: translate(-21.8px, -89.4px) ; }
+  53.0579% { -webkit-transform: translate(-25.3px, -112.7px) ; }
+  58.4553% { -webkit-transform: translate(-26.3px, -136.9px) ; }
+  64.1180% { -webkit-transform: translate(-24.7px, -162.3px) ; }
+  70.1566% { -webkit-transform: translate(-20.4px, -189.1px) ; }
+  76.6741% { -webkit-transform: translate(-13.4px, -217.5px) ; }
+  83.7653% { -webkit-transform: translate(-3.5px, -247.8px) ; }
+  100.0000% { -webkit-transform: translate(0px, -335.0px) ; }
+}
+
+
+@-webkit-keyframes evac_list_mode_middle_card {
+  0.0000% { -webkit-transform: translate(89.0px, 92.0px) ; }
+  6.8181% { -webkit-transform: translate(56.8px, 90.9px) ; }
+  33.0285% { -webkit-transform: translate(-67.3px, 91.8px) ; }
+  44.6703% { -webkit-transform: translate(-122.2px, 87.5px) ; }
+  50.0023% { -webkit-transform: translate(-146.9px, 82.1px) ; }
+  55.0455% { -webkit-transform: translate(-169.3px, 73.9px) ; }
+  59.9142% { -webkit-transform: translate(-189.1px, 62.2px) ; }
+  64.8101% { -webkit-transform: translate(-206.1px, 46.4px) ; }
+  70.0138% { -webkit-transform: translate(-220.0px, 26.0px) ; }
+  75.8435% { -webkit-transform: translate(-230.4px, 0.5px) ; }
+  82.6079% { -webkit-transform: translate(-250.0px, -30.8px) ; }
+  90.5810% { -webkit-transform: translate(-280.7px, -68.5px) ; }
+  100.0000% { -webkit-transform: translate(-305.0px, -163.0px) ; }
+}
+
+
+@-webkit-keyframes evac_list_mode_third_card {
+  0.0000% { -webkit-transform: translate(89.0px, 92.0px) ; }
+  11.2939% { -webkit-transform: translate(16.0px, 90.7px) ; }
+  39.9621% { -webkit-transform: translate(-169.1px, 94.7px) ; }
+  54.6017% { -webkit-transform: translate(-263.7px, 93.9px) ; }
+  68.5444% { -webkit-transform: translate(-353.6px, 87.6px) ; }
+  75.0138% { -webkit-transform: translate(-394.9px, 81.5px) ; }
+  81.0419% { -webkit-transform: translate(-432.9px, 72.9px) ; }
+  86.5782% { -webkit-transform: translate(-500.8px, 61.5px) ; }
+  91.6137% { -webkit-transform: translate(-530.9px, 47.0px) ; }
+  96.2089% { -webkit-transform: translate(-550.5px, 29.0px) ; }
+  100.0000% { -webkit-transform: translate(-610.0px, 10.0px) ; }
+}
+
+
+
+.evacuation-transform-list-mode {
+    -webkit-animation: evac_list_mode .4s;
+    animation: evac_list_mode .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.evacuation-transform-list-mode.card-2 {
+    -webkit-animation: evac_list_mode_middle_card .4s;
+    animation: evac_list_mode_middle_card .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.evacuation-transform-list-mode.card-3 {
+    -webkit-animation: evac_list_mode_third_card .4s;
+    animation: evac_list_mode_third_card .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.evacuation-transform-map-mode {
+    -webkit-animation: evac_map_mode .4s;
+    animation: evac_map_mode .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.evacuation-transform-map-mode.card-2 {
+    -webkit-animation: evac_map_mode_middle_card .4s;
+    animation: evac_list_map_middle_card .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
 
 
 
