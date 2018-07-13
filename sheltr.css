@@ -67,6 +67,26 @@
 	  margin-left: 780px;
 	}*/
 
+
+.evac-plan-transform-active {
+    -webkit-animation: diagonal .5s;
+    animation: diagonal .5s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.rec-transform-active-2 {
+    -webkit-animation: diagonal_lala .5s;
+    animation: diagonal_lala .5s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+
+
+
+
+
 	.filter-item {
 		  border-style: solid;
 	    border-width: 2px;
@@ -191,6 +211,73 @@
 
 
 
+@-webkit-keyframes diagonal {
+/*0.0000% { -webkit-transform: translate(0.0px, 00px) ; }
+ 15.4289% { -webkit-transform: translate(4px, 260px) ; }
+ 28.5107% { -webkit-transform: translate(38px, 477px) ; }
+ 39.7697% { -webkit-transform: translate(105px, 654px) ; }
+ 50.0000% { -webkit-transform: translate(208px, 793px) ; }
+ 60.2303% { -webkit-transform: translate(346px, 895px) ; }
+ 71.4893% { -webkit-transform: translate(523px, 962px) ; }
+ 84.5711% { -webkit-transform: translate(740px, 996px) ; }
+ 100.0000% { -webkit-transform: translate(1000px, 1000px) ; }*/
+
+
+0.0000% { -webkit-transform: translate(0, 0) ; }
+ 25% { -webkit-transform: translate(7px, 180px) ; }
+ 50.0000% { -webkit-transform: translate(40px, 320px) ; }
+ 75% { -webkit-transform: translate(100px, 390px) ; }
+ 100.0000% { -webkit-transform: translate(200px, 400px) ; }
+
+
+
+}
+
+@-webkit-keyframes diagonal_lala {
+0.0000% { -webkit-transform: translate(200px, 400px) ; }
+ 25% { -webkit-transform: translate(100px, 390px) ; }
+ 50.0000% { -webkit-transform: translate(40px, 320px) ; }
+ 75% { -webkit-transform: translate(7px, 180px) ; }
+ 100.0000% { -webkit-transform: translate(0, 0) ; }
+}
+
+
+.rec {
+	margin-left: 40%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+  position: absolute;
+  background-color: red;
+
+
+}
+
+.rec-transform {
+    /*-webkit-animation: diagonal .5s;
+    animation: diagonal .5s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);*/
+}
+
+.rec-transform-active {
+    -webkit-animation: diagonal .2s;
+    animation: diagonal .2s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.rec-transform-active-2 {
+    -webkit-animation: diagonal_lala .2s;
+    animation: diagonal_lala .2s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+
+
+
+
 
 
 
@@ -225,37 +312,8 @@
 
 
 
-.lala {
-	background-color: black;
-	height: 10px;
-  width: 100%;
-}
-
-.test {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-	position: absolute;
-  background: white;
-  border-radius: 15px;
-  height: 10px;
-  width: 100px;
-}
 
 
-.dd {
-	margin: 3vh 0 0 0;
-  position: absolute;
-  width: 50%;
-  height: 34px;
-
-
-	  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-
-}
 
 .toggle-switch {
 	  display: block;

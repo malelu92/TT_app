@@ -12,8 +12,8 @@ function switchRight() {
 						for (var i = 0; i < 2; i++) {
 		  if (pos == parseInt(toggle_width/2)) {
 		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#ffffff"; 
-		  	document.getElementById("list_view").style.color = "#000000"; 
+		  	document.getElementById("map_view").style.color = "#000000"; 
+		  	document.getElementById("list_view").style.color = "#ffffff"; 
 		    clearInterval(id);
 		    return;
 		  }
@@ -34,8 +34,8 @@ function switchLeft() {
 						for (var i = 0; i < 2; i++) {
 		  if (pos == 0) {
 		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#000000"; 
-		  	document.getElementById("list_view").style.color = "#ffffff"; 
+		  	document.getElementById("map_view").style.color = "#ffffff"; 
+		  	document.getElementById("list_view").style.color = "#000000"; 
 		    clearInterval(id);
 		    return;
 		  }
@@ -181,13 +181,15 @@ $(document).ready(function() {
 	  		sessionStorage.setItem('toggle', "right");
 	  		switchRight();
 	  		console.log(sessionStorage.getItem('toggle'))
-	  		updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+	  		/*updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
+	  		$('.rec-transform').toggleClass('rec-transform-active');
 	  	}
 	  	else {
 	  		switchLeft();
 	  		console.log("lala")
 	  		sessionStorage.setItem('toggle', "left");
-	  		updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));
+	  		/*updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
+	  		$('.rec-transform').toggleClass('rec-transform-active-2');
 	  	}
 	  });
 
