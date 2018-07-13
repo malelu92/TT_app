@@ -180,18 +180,20 @@ $(document).ready(function() {
 	  	if(sessionStorage.getItem('toggle') == "left") {
 	  		sessionStorage.setItem('toggle', "right");
 	  		switchRight();
-	  		console.log(sessionStorage.getItem('toggle'))
 	  		/*updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
 	  		$('.rec-transform').toggleClass('rec-transform-active');
 	  		$('.evacuation-transform').toggleClass('evacuation-transform-list-mode');
+	  		console.log("add")
+	  		/*document.getElementById('plan-1-card').classList.add('evacuation-transform-list-mode');*/
 	  	}
 	  	else {
 	  		switchLeft();
-	  		console.log("lala")
 	  		sessionStorage.setItem('toggle', "left");
 	  		/*updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
 	  		$('.rec-transform').toggleClass('rec-transform-active-2');
 	  		$('.evacuation-transform').toggleClass('evacuation-transform-map-mode');
+	  		/*document.getElementById('plan-1-card').classList.remove('evacuation-transform-list-mode');
+	  		document.getElementById('plan-1-card').classList.add('evacuation-transform-map-mode');*/
 	  	}
 	  });
 

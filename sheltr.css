@@ -37,6 +37,13 @@
   	width: 100%;
 	}*/
 
+	.evacuation-plan-advice {
+		color: #5a3eff;
+		font-size: .6em;
+		margin: 1vh 0 1vh 5vw;
+		text-transform: uppercase;
+	}
+
 	.evacuation-plan {
 		background-color: #ffffff;
 		border-radius: 5px;
@@ -59,12 +66,40 @@
 	  margin-left: 10vw;
 	}
 
-	/*.evacuation-plan.plan-2 {
-	  margin-left: 390px;
+	.evacuation-plan-building {
+		color: #232752;
+		font-size: 1.2em;
+		margin: 1vh 0 1vh 5vw;
 	}
 
-	.evacuation-plan.plan-3 {
-	  margin-left: 780px;
+	.evacuation-plan-item{
+		color: #232752;
+		font-size: .8em;
+		margin: 1vh 0 1vh 5vw;
+	}
+
+	.evacuation-plan-risk {
+		background-color: #FF004C;
+		color: #ffffff;
+	}
+
+	.evacuation-plan-risk-text {
+		color: #ffffff;
+		font-size: .8em;
+		margin: 1vh 0 1vh 10vw;
+		padding: 1.2vh 0 1.2vh 0;
+	}
+
+	/*.evacuation-plan-time {
+		color: #232752;
+		font-size: .8em;
+		margin: 1vh 0 1vh 5vw;
+	}
+
+	.evacuation-plan-utilities {
+		color: #232752;
+		font-size: .8em;
+		margin: 1vh 0 1vh 5vw;
 	}*/
 
 
@@ -282,6 +317,14 @@
   0.0000% { -webkit-transform: translate(-305.0px, -153.0px) ; }
 }
 
+@-webkit-keyframes evac_map_mode_third_card {
+  68.5444% { -webkit-transform: translate(-432.9px, 72.9px) ; }
+  54.6017% { -webkit-transform: translate(-500.8px, 61.5px) ; }
+  39.9621% { -webkit-transform: translate(-530.9px, 47.0px) ; }
+  11.2939% { -webkit-transform: translate(-550.5px, 29.0px) ; }
+  0.0000% { -webkit-transform: translate(-610.0px, 10.0px) ; }
+}
+
 
 
 @-webkit-keyframes evac_list_mode {
@@ -364,7 +407,14 @@
 
 .evacuation-transform-map-mode.card-2 {
     -webkit-animation: evac_map_mode_middle_card .4s;
-    animation: evac_list_map_middle_card .4s;
+    animation: evac_map_mode_middle_card .4s;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
+}
+
+.evacuation-transform-map-mode.card-3 {
+    -webkit-animation: evac_map_mode_third_card .4s;
+    animation: evac_map_mode_third_card .4s;
     animation-fill-mode: forwards;
     transition-timing-function: cubic-bezier(.1,1.01,.09,.93);
 }
