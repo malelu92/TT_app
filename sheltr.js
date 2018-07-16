@@ -197,6 +197,26 @@ $(document).ready(function() {
 	  	}
 	  });
 
+	  $("#plan-1-card").click(function(){
+	  	/* if on list view*/
+	  	if(sessionStorage.getItem('toggle') == "right") {
+	  		switchLeft();
+	  		sessionStorage.setItem('toggle', "left");
+	  		$(".evacuation-transform").removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
+	  	}
+	  });
+
+	  $("#plan-2-card").click(function(){
+	  	/* if on list view*/
+	  	console.log("card 1")
+	  	if(sessionStorage.getItem('toggle') == "right") {
+	  		switchLeft();
+	  		sessionStorage.setItem('toggle', "left");
+	  		$(".evacuation-transform").removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode-middle-card-clicked');
+	  		document.getElementById("map-image").src = "images/planB_background.jpg";
+	  	}
+	  });
+
 
 	}
 
