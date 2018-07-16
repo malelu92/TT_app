@@ -4,133 +4,6 @@
 **	July 2018
 ************************************************************************/
 
-function switchRight() {
-			var toggle_width = document.getElementById("toggle").getBoundingClientRect().width;
-			var pos= 0;
-
-			var id = setInterval(function() {
-						for (var i = 0; i < 2; i++) {
-		  if (pos == parseInt(toggle_width/2)) {
-		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#ffffff"; 
-		  	document.getElementById("list_view").style.color = "#000000"; 
-		    clearInterval(id);
-		    return;
-		  }
-		  else 
-		  {
-		    pos = pos + 1; 
-		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
-			}
-		}
-	}, 10);
-}
-
-
-function switchLeft() {
-			var pos= 100;
-
-			var id = setInterval(function() {
-						for (var i = 0; i < 2; i++) {
-		  if (pos == 0) {
-		  	/*sessionStorage.setItem("plan-card", pos);*/
-		  	document.getElementById("map_view").style.color = "#000000"; 
-		  	document.getElementById("list_view").style.color = "#ffffff"; 
-		    clearInterval(id);
-		    return;
-		  }
-		  else 
-		  {
-		    pos = pos - 1; 
-		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
-			}
-		}
-	}, 10);
-}
-
-
-
-
-function updateCardsToListView(card_1, card_2, card_3) {
-
-	var card_pos = sessionStorage.getItem("plan-card");
-	var pos = card_pos;
-
-	var id = setInterval(function() {
-		for (var i = 0; i < 20; i++) {
-		  if (pos == card_pos - 300) {
-
-		  	sessionStorage.setItem("plan-card", pos);
-		    clearInterval(id);
-
-		    /* plan B card on screen */
-		    if (pos == -300) {
-		    	document.getElementById("map-image").src = "images/planB_background.jpg";
-		    }
-
-		    /* plan C card on screen */
-		    if (pos == -(2*300)) {
-		    	document.getElementById("map-image").src = "images/planC_background.jpg";
-		    }
-
-		    return;
-		  }
-		  else {
-		    pos = pos - 1;
-		    card_1.style.top = pos + 'px'; 
-		    card_2.style.top = pos + 'px'; 
-		    card_3.style.top = pos + 'px'; 
-  		}
-		}
-	}, 10);
-}
-
-
-
-function updateCardsToMapView(card_1, card_2, card_3) {
-
-	console.log("lala")
-
-	var card_pos = sessionStorage.getItem("plan-card");
-	var pos = parseInt(card_pos);
-
-	console.log(sessionStorage.getItem("plan-card"));
-
-	var id = setInterval(function() {
-		for (var i = 0; i < 20; i++) {
-		  if (pos == 0) {
-		  	console.log(pos)
-
-		  	sessionStorage.setItem("plan-card", pos);
-		    clearInterval(id);
-
-		    /* plan B card on screen */
-		    if (pos == 0) {
-		    	document.getElementById("map-image").src = "images/planB_background.jpg";
-		    }
-
-		    /* plan C card on screen */
-		    if (pos == -(100)) {
-		    	document.getElementById("map-image").src = "images/planC_background.jpg";
-		    }
-
-		    return;
-		  }
-		  else {
-		  	console.log(pos)
-		    pos = pos + 1;
-		    card_1.style.top = pos + 'px'; 
-		    card_2.style.top = pos + 'px'; 
-		    card_3.style.top = pos + 'px'; 
-  		}
-		}
-	}, 10);
-}
-
-
-
-
-
 
 $(document).ready(function() {
 
@@ -140,7 +13,7 @@ $(document).ready(function() {
 		sessionStorage.setItem('plan-card', 0);
 		sessionStorage.setItem('toggle', "left");
 
-		/* Positions second and third cards based on screen size. */
+		/* Position second and third cards based on screen size. */
 		var card_margin = 6;
 
 		var margin_left_plan_b = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().right) + card_margin;
@@ -149,7 +22,7 @@ $(document).ready(function() {
 		var margin_left_plan_c = parseInt(document.getElementById("plan-2-card").getBoundingClientRect().right) + card_margin;
 		document.getElementById("plan-3-card").style.marginLeft = margin_left_plan_c + "px";
 
-		/* Swipes cards. */
+		/* Swipe cards. */
 		var el = document.getElementById('swipe-area');
 		swipedetect(el, function(swipedir){
 			var swipe_pixels = parseInt(document.getElementById("plan-1-card").getBoundingClientRect().width) + card_margin;
@@ -162,43 +35,22 @@ $(document).ready(function() {
 	    }
 		});
 
-
-		/*$("#map_view").click(function(){
-			console.log("map")
-			switchRight();
-			updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
-	  });
-
-		$("#list_view").click(function(){
-			console.log("list")
-			switchLeft();
-			updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"))
-	  });*/
-
+		/* Update view when clicking on toggle switch*/
 	  $("#toggle").click(function(){
-	  	console.log(sessionStorage.getItem('toggle'))
 	  	if(sessionStorage.getItem('toggle') == "left") {
-	  		sessionStorage.setItem('toggle', "right");
 	  		switchRight();
-	  		/*updateCardsToListView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
-	  		$('.rec-transform').toggleClass('rec-transform-active');
-	  		/*$('.evacuation-transform').toggleClass('evacuation-transform-list-mode');*/
+	  		sessionStorage.setItem('toggle', "right");
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-map-mode').addClass('evacuation-transform-list-mode');
-	  		console.log("add")
-	  		/*document.getElementById('plan-1-card').classList.add('evacuation-transform-list-mode');*/
 	  	}
 	  	else {
 	  		switchLeft();
 	  		sessionStorage.setItem('toggle', "left");
-	  		/*updateCardsToMapView(document.getElementById("plan-1-card"), document.getElementById("plan-2-card"), document.getElementById("plan-3-card"));*/
-	  		$('.rec-transform').toggleClass('rec-transform-active-2');
-	  		/*$('.evacuation-transform').toggleClass('evacuation-transform-map-mode');*/
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
 	  	}
 	  });
 
+	  /* Update view when clicking on first card on list view*/
 	  $("#plan-1-card").click(function(){
-	  	/* if on list view*/
 	  	if(sessionStorage.getItem('toggle') == "right") {
 	  		switchLeft();
 	  		sessionStorage.setItem('toggle', "left");
@@ -206,8 +58,9 @@ $(document).ready(function() {
 	  	}
 	  });
 
-	  $("#plan-2-card").click(function(){
-	  	/* if on list view*/
+	/* Update view when clicking on second card on list view*/
+	/* TODO: make it responsive */
+	  /*$("#plan-2-card").click(function(){
 	  	console.log("card 1")
 	  	if(sessionStorage.getItem('toggle') == "right") {
 	  		switchLeft();
@@ -215,7 +68,7 @@ $(document).ready(function() {
 	  		$(".evacuation-transform").removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode-middle-card-clicked');
 	  		document.getElementById("map-image").src = "images/planB_background.jpg";
 	  	}
-	  });
+	  });*/
 
 
 	}
@@ -406,6 +259,53 @@ function loadList(id, items_list, total_items) {
 	for (var i = 0; i < items_list.length; i++) {
 	  checked_items += loadCheckedItem("item"+i+"-"+id)
 	}
+}
+
+
+/*
+** Moves toggle switch left.
+*/
+function switchLeft() {
+	var pos= 100;
+
+	var id = setInterval(function() {
+		for (var i = 0; i < 2; i++) {
+		  if (pos == 0) {
+		  	document.getElementById("map_view").style.color = "#000000"; 
+		  	document.getElementById("list_view").style.color = "#ffffff"; 
+		    clearInterval(id);
+		    return;
+		  }
+		  else {
+		    pos = pos - 1; 
+		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
+			}
+		}
+	}, 10);
+}
+
+/*
+** Moves toggle switch right.
+*/
+function switchRight() {
+	var toggle_width = document.getElementById("toggle").getBoundingClientRect().width;
+	var pos= 0;
+
+	var id = setInterval(function() {
+		for (var i = 0; i < 2; i++) {
+		  if (pos == parseInt(toggle_width/2)) {
+		  	document.getElementById("map_view").style.color = "#ffffff"; 
+		  	document.getElementById("list_view").style.color = "#000000"; 
+		    clearInterval(id);
+		    return;
+		  }
+		  else 
+		  {
+		    pos = pos + 1; 
+		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
+			}
+		}
+	}, 10);
 }
 
 
