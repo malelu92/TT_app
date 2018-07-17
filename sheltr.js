@@ -257,7 +257,7 @@ function closePrepList(id, total_items) {
 **	total_items: total number of items in all lists added (integer).
 */
 function createListItems(list_items, card_id, total_items) {
-	var init = "<div>\
+	var init = "<div id=list-items>\
     						<div id='close-" + card_id + "' onclick='closePrepList(this.id" + "," + total_items + ")' class='col-12'>close</div>\
     						<label class='list-container'>";
   var end = "</label>\
@@ -312,29 +312,23 @@ function loadList(id, items_list, total_items) {
 }
 
 function loadListEvac(id, items_list) {
-	console.log(id)
 	var id_string = "#" + id;
+
 	console.log(sessionStorage.getItem('card_expanded'))
 	if (sessionStorage.getItem('card_expanded') == "yes") {
-		console.log("lli")
 		$(id_string).removeClass('card-transform');
 		sessionStorage.setItem('card_expanded', "no");
+
+		var content = document.getElementById('list-items');
+		content.remove();
+
 	}
 	else {
-		console.log("entrou")
 		$(id_string).addClass('card-transform');
 		sessionStorage.setItem('card_expanded', "yes");
+		var content = createListItems(items_list, id, null);
+  	$(id_string).append(content);
 	}
-
-	/*var checked_items = 0;
-	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
-  $("body").append(list);
-  var content = createListItems(items_list, id, total_items);
-  $(".preparation-list").append(content);
-
-	for (var i = 0; i < items_list.length; i++) {
-	  checked_items += loadCheckedItem("item"+i+"-"+id)
-	}*/
 }
 
 

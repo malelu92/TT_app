@@ -43,8 +43,11 @@ html, body {
 	}
 
 	.card-transform {
+		background: #ffffff;
 		height: 400px;
     width: 90%;
+    /*position: fixed;
+    z-index: 1;*/
 }
 
 	.evacuation-plan-advice {
