@@ -70,7 +70,6 @@ $(document).ready(function() {
 	  	}
 	  });*/
 
-
 	}
 
 
@@ -119,6 +118,57 @@ $(document).ready(function() {
 			loadList(this.id, card_lists[5], total_items);
 	  });
 	}
+
+
+	/* Only load if evacuation screen */
+	if(document.getElementById("evac-card-1")) {
+
+		sessionStorage.setItem('card_expanded', "no");
+
+		var card_lists = [
+			["Name", "Last name", "Lala"],
+			["Ola"],
+			["Ferrari"],
+			["I have medical conditions :("],
+			["Au au"],
+			["No clue", "lele"]
+		];
+
+		/* Load list of emergency contact card */
+		$("#evac-card-1").click(function(){
+			loadListEvac(this.id, card_lists[0]);
+		});
+
+		/* Load list of emergency kit card */
+		$("#evac-card-2").click(function(){
+			loadListEvac(this.id, card_lists[1]);
+	  });
+
+	  /* Load list of shelter registrations card */
+		$("#evac-card-3").click(function(){
+			loadListEvac(this.id, card_lists[2]);
+	  });
+
+	  /* Load list of create a communication plan card */
+		$("#evac-card-4").click(function(){
+			loadListEvac(this.id, card_lists[3]);
+	  });
+
+	  /* Load list of plan for your pet card */
+		$("#evac-card-5").click(function(){
+			loadListEvac(this.id, card_lists[4]);
+	  });
+
+	  /* Load list of know your evacuation route card */
+		$("#evac-card-6").click(function(){
+			loadListEvac(this.id, card_lists[5]);
+	  });
+	}
+
+
+
+
+
 });
 
 
@@ -259,6 +309,32 @@ function loadList(id, items_list, total_items) {
 	for (var i = 0; i < items_list.length; i++) {
 	  checked_items += loadCheckedItem("item"+i+"-"+id)
 	}
+}
+
+function loadListEvac(id, items_list) {
+	console.log(id)
+	var id_string = "#" + id;
+	console.log(sessionStorage.getItem('card_expanded'))
+	if (sessionStorage.getItem('card_expanded') == "yes") {
+		console.log("lli")
+		$(id_string).removeClass('card-transform');
+		sessionStorage.setItem('card_expanded', "no");
+	}
+	else {
+		console.log("entrou")
+		$(id_string).addClass('card-transform');
+		sessionStorage.setItem('card_expanded', "yes");
+	}
+
+	/*var checked_items = 0;
+	var list = $("<div class='preparation-list-background'><div class='preparation-list'></div>");
+  $("body").append(list);
+  var content = createListItems(items_list, id, total_items);
+  $(".preparation-list").append(content);
+
+	for (var i = 0; i < items_list.length; i++) {
+	  checked_items += loadCheckedItem("item"+i+"-"+id)
+	}*/
 }
 
 
