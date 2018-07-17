@@ -124,6 +124,7 @@ $(document).ready(function() {
 	if(document.getElementById("evac-card-1")) {
 
 		sessionStorage.setItem('card_expanded', "no");
+		sessionStorage.setItem('saved', "no");
 
 		var card_lists = [
 			["Name", "Last name", "Lala"],
@@ -163,6 +164,11 @@ $(document).ready(function() {
 		$("#evac-card-6").click(function(){
 			loadListEvac(this.id, card_lists[5]);
 	  });
+
+		$("#button-save").click(function(){
+			console.log("save")
+	  });
+
 	}
 
 
@@ -311,25 +317,79 @@ function loadList(id, items_list, total_items) {
 	}
 }
 
+
+
+
 function loadListEvac(id, items_list) {
 	var id_string = "#" + id;
 
 	console.log(sessionStorage.getItem('card_expanded'))
-	if (sessionStorage.getItem('card_expanded') == "yes") {
+	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
+		console.log("---")
+		$(id_string).addClass('card-transform');
+		sessionStorage.setItem('card_expanded', "yes");
+		var content = createListItemsEvac(items_list, id, null);
+  	$(id_string).append(content);
+	}
+	else {
+		sessionStorage.setItem('saved', "no");
+		/*console.log(id_string)
 		$(id_string).removeClass('card-transform');
 		sessionStorage.setItem('card_expanded', "no");
 
 		var content = document.getElementById('list-items');
-		content.remove();
+		content.remove();*/
 
 	}
-	else {
-		$(id_string).addClass('card-transform');
-		sessionStorage.setItem('card_expanded', "yes");
-		var content = createListItems(items_list, id, null);
-  	$(id_string).append(content);
+}
+
+
+
+
+
+function buttonSave(card_id) {
+	console.log("card_id")
+	console.log(card_id)
+	var card_string = "#" + card_id;
+	if (sessionStorage.getItem('card_expanded') == "yes") {
+		console.log("***")
+			/*$(".card").removeClass('card-transform');*/
+		$(card_string).removeClass('card-transform');
+		sessionStorage.setItem('card_expanded', "no");
+		sessionStorage.setItem('saved', "yes");
+
+		var content = document.getElementById('list-items');
+		content.remove();
+		var content = document.getElementById('list-items');
+		if (content) {
+			content.remove();
+		}
+
+
+		/*$("#evac-card-2").addClass('card-transform');
+		sessionStorage.setItem('card_expanded', "yes");*/
+
 	}
 }
+
+
+function createListItemsEvac(list_items, card_id, total_items) {
+	console.log(card_id)
+	var init = "<div id=list-items>\
+    						<label class='list-container'>";
+  var end = '<button onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
+    								</div>';
+  var middle = "";
+  for (var i = 0; i < list_items.length; i++) {
+  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+    										<span class='checkmark'></span>\
+    										</div>"; 
+  }
+  return init + middle + end;
+}
+
+
+
 
 
 /*

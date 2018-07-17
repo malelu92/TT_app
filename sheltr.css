@@ -10,7 +10,8 @@ html, body {
 	  border-style: solid;
 	    border-width: 2px;
 	  bottom:0;
-	  position: fixed;
+	  position: absolute;
+	  left:0;
 	}
 
 	.bottom-nav-bar-item {
