@@ -1,5 +1,6 @@
 
 html, body {
+	color: #232752;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ html, body {
 	  border-style: solid;
 	    border-width: 2px;
 	  bottom:0;
-	  position: absolute;
+	  position: fixed;
 	  left:0;
 	}
 
@@ -31,9 +32,10 @@ html, body {
 
 
 	.card {
-		border-width: 2px;
+		box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 6px 0 rgba(0,0,0,0.66);
+		/*border-width: 2px;*/
 	  border-radius: 5px;
-	  border-style: solid;
+	  /*border-width: 2px;*/
 	  cursor: pointer;
 	  float: left;
 	  margin:	2.5vw 0 2.5vw 5vw;
@@ -43,6 +45,11 @@ html, body {
 	  position: relative;	
     -webkit-transition: width 2s, height 2s; /* For Safari 3.1 to 6.0 */
     transition: width 2s, height 2s;
+	}
+
+
+	.card-text {
+		padding: 3vh 5vw 5vh 5vw;
 	}
 
 	.card-transform {
@@ -218,12 +225,17 @@ html, body {
 	}
 
 	#header {
-		  border-style: solid;
-	    border-width: 2px;
-	    font-size: 1.2em;
-	  height: 10vh;
+		box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
+		  /*border-style: solid;
+	    border-width: 2px;*/
+	    font-size: 1.1em;
+	  height: 8vh;
 	  margin: 0 0 1vh 0;
 	  width: 100%;	
+	}
+
+	#header-text {
+		padding: 2vh 0 0 2vw;
 	}
 
 	input[type=checkbox] {
@@ -316,50 +328,18 @@ html, body {
 	cursor: pointer;
 }
 
-#registration-guarantee {
-	transition: margin-top 1s;
-	padding: 5vh 0 3vh 25vw;
-	width:70%;
+.registration-florida-health {
+	float: left;
+	height: 15vh;
+	margin: 0 0 0 6vw;
+
 }
 
 #registration-guarantee {
-    -webkit-transition: opacity 1000ms linear;
-    transition: opacity 1000ms linear;
-	padding: 5vh 0 3vh 25vw;
-	width:70%;
+	float: left;
+	padding: 1vh 1vw 3vh 3vw;
+	width:60%;
 }
-
-
-#registration-guarantee:first-child {
-	margin-top: -38px;
-}
-
-.notifications {
-    left: 0px;
-    top: 0px;
-    width: 400px;
-    height: 300px;
-    position: relative;
-    border: solid 1px green;
-    padding-top: 40px;
-    transition: padding-top 1s;
-}
-
-.notifications:empty {
-    padding-top: 0px;
-}
-
-.notification {
-    height: 40px;
-    background: lightblue;
-    margin: 2px;
-    transition: margin-top 1s;
-}
-
-.notification:first-child {
-    margin-top: -38px;
-}
-
 
 
 
@@ -370,7 +350,7 @@ html, body {
 
 
 #registration-message {
-	background-color: #b3b3cc;
+	box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
 	height:20%;
 	width: 100%;
 }
@@ -413,8 +393,8 @@ html, body {
 }
 
 .subtitle {
-	font-size: 1.3em;
-	margin: 0 0 0 3vw;
+	font-size: 1.1em;
+	margin: 6vh 0 0 5vw;
 }
 
 #swipe-area {
@@ -548,7 +528,7 @@ html, body {
 @media only screen and (max-width: 767px) {
 
 	body {
-	  font-family: 'Roboto';
+	  font-family: 'Helvetica';
 	  font-size: 1.2em;
 	  margin: 0;
 	 }
