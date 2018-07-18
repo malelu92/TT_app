@@ -33,18 +33,24 @@ html, body {
 
 	.card {
 		box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 6px 0 rgba(0,0,0,0.66);
-		/*border-width: 2px;*/
 	  border-radius: 5px;
-	  /*border-width: 2px;*/
 	  cursor: pointer;
-	  float: left;
-	  margin:	2.5vw 0 2.5vw 5vw;
 	  text-align: center;
 	  height: 100px;
 	  width: 40%;	
 	  position: relative;	
     -webkit-transition: width 2s, height 2s; /* For Safari 3.1 to 6.0 */
     transition: width 2s, height 2s;
+	}
+
+	.card.left {
+		float: left;
+		margin:	1.5vh 0 1.5vh 8.5vw;
+	}
+
+	.card.right {
+		float: right;
+		margin:	1.5vh 8.5vw 1.5vh 0;
 	}
 
 
@@ -290,14 +296,6 @@ html, body {
 	  position: relative;
 	}
 
-	#preparation-cards-body {
-	  border-style: solid;
-	    border-width: 2px;
-	    width: 100%;
-
-	  margin: 2vh 0 2vh 0;
-	}
-
 	.preparation-card-countdown {
 		bottom:0;
 		font-size: .8em;
@@ -344,14 +342,14 @@ html, body {
 .registration-florida-health {
 	float: left;
 	height: 15vh;
-	margin: 0 0 0 6vw;
-
+	padding: 1vh 0 9vh 3vw;
 }
 
 #registration-guarantee {
 	float: left;
 	padding: 1vh 1vw 3vh 3vw;
 	width:60%;
+	padding: 1vh 0 8vh 3vw;
 }
 
 
@@ -364,7 +362,6 @@ html, body {
 
 #registration-message {
 	box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
-	height:20%;
 	width: 100%;
 }
 
@@ -407,7 +404,7 @@ html, body {
 
 .subtitle {
 	font-size: 1.1em;
-	margin: 6vh 0 0 5vw;
+	margin: 6vh 0 0 8.5vw;
 }
 
 #swipe-area {
@@ -542,7 +539,7 @@ html, body {
 
 	body {
 	  font-family: 'Helvetica';
-	  font-size: 1.2em;
+	  font-size: 1.1em;
 	  margin: 0;
 	 }
 }
