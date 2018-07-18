@@ -165,10 +165,10 @@ $(document).ready(function() {
 			loadListEvac(this.id, card_lists[5]);
 	  });
 
-		$("#button-save").click(function(){
-			console.log("save")
+		$("#registration-close").click(function(){
+			console.log("lele")
+			$("#registration-message").remove();
 	  });
-
 	}
 
 

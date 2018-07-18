@@ -64,6 +64,11 @@ html, body {
 }
 
 
+#registration-close {
+	cursor: pointer;
+	text-align: right;
+	width: 95%;
+}
 
 .registration-list {
   background: white;
@@ -312,9 +317,57 @@ html, body {
 }
 
 #registration-guarantee {
-	padding: 3vh 0 3vh 25vw;
+	transition: margin-top 1s;
+	padding: 5vh 0 3vh 25vw;
 	width:70%;
 }
+
+#registration-guarantee {
+    -webkit-transition: opacity 1000ms linear;
+    transition: opacity 1000ms linear;
+	padding: 5vh 0 3vh 25vw;
+	width:70%;
+}
+
+
+#registration-guarantee:first-child {
+	margin-top: -38px;
+}
+
+.notifications {
+    left: 0px;
+    top: 0px;
+    width: 400px;
+    height: 300px;
+    position: relative;
+    border: solid 1px green;
+    padding-top: 40px;
+    transition: padding-top 1s;
+}
+
+.notifications:empty {
+    padding-top: 0px;
+}
+
+.notification {
+    height: 40px;
+    background: lightblue;
+    margin: 2px;
+    transition: margin-top 1s;
+}
+
+.notification:first-child {
+    margin-top: -38px;
+}
+
+
+
+
+
+
+
+
+
 
 #registration-message {
 	background-color: #b3b3cc;
