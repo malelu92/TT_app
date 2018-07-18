@@ -28,6 +28,8 @@ html, body {
 	  float: left; 
 	}
 
+
+
 	.card {
 		border-width: 2px;
 	  border-radius: 5px;
@@ -46,10 +48,43 @@ html, body {
 	.card-transform {
 		background: #ffffff;
 		height: 400px;
+		margin: 5vh 0 0 5vw;
     width: 90%;
-    /*position: fixed;
-    z-index: 1;*/
+    position: fixed;
+    z-index: 1;
 }
+
+	.card-retransform {
+		background: #ffffff;
+		/*height: 100px;
+		margin:	2.5vw 0 2.5vw 5vw;
+    width: 40%;
+    position: fixed;*/
+    z-index: 1;
+}
+
+
+
+.registration-list {
+  background: white;
+  border-radius: 15px;
+  font-size: 1.5em;
+  margin: 2em .5em 0 .5em;
+  height: 80%;
+  width: 80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 	.evacuation-plan-advice {
 		color: #5a3eff;

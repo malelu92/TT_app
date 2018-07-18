@@ -323,8 +323,10 @@ function loadList(id, items_list, total_items) {
 function loadListEvac(id, items_list) {
 	var id_string = "#" + id;
 
-	console.log(sessionStorage.getItem('card_expanded'))
+
 	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
+			var list = $("<div class='preparation-list-background'>");
+  $("body").append(list);
 		console.log("---")
 		$(id_string).addClass('card-transform');
 		sessionStorage.setItem('card_expanded', "yes");
@@ -333,6 +335,9 @@ function loadListEvac(id, items_list) {
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
+		setTimeout(function(){
+            $(".preparation-list-background").remove();
+    }, 1600);
 		/*console.log(id_string)
 		$(id_string).removeClass('card-transform');
 		sessionStorage.setItem('card_expanded', "no");
@@ -348,13 +353,11 @@ function loadListEvac(id, items_list) {
 
 
 function buttonSave(card_id) {
-	console.log("card_id")
-	console.log(card_id)
 	var card_string = "#" + card_id;
 	if (sessionStorage.getItem('card_expanded') == "yes") {
-		console.log("***")
 			/*$(".card").removeClass('card-transform');*/
 		$(card_string).removeClass('card-transform');
+		$(card_string).addClass('card-retransform');
 		sessionStorage.setItem('card_expanded', "no");
 		sessionStorage.setItem('saved', "yes");
 
@@ -365,16 +368,11 @@ function buttonSave(card_id) {
 			content.remove();
 		}
 
-
-		/*$("#evac-card-2").addClass('card-transform');
-		sessionStorage.setItem('card_expanded', "yes");*/
-
 	}
 }
 
 
 function createListItemsEvac(list_items, card_id, total_items) {
-	console.log(card_id)
 	var init = "<div id=list-items>\
     						<label class='list-container'>";
   var end = '<button onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
