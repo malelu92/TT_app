@@ -1,5 +1,10 @@
 
-html, body {
+a {
+	color: #232752;
+	text-decoration: none;
+}
+
+	html, body {
 	color: #232752;
   height: 100%;
   margin: 0;
@@ -8,19 +13,34 @@ html, body {
 
 	#bottom-nav-bar {
 		background-color: #ffffff;
+		border-color: #A0A0A0;
 	  border-style: solid;
-	    border-width: 2px;
+	  border-width: .2px;
 	  bottom:0;
 	  position: fixed;
 	  left:0;
 	}
 
 	.bottom-nav-bar-item {
+		border-color: #A0A0A0;
+	  border-style: solid;
+	  border-width: .2px;
 		float: left;
 		height: 5vh;
+		margin: auto;
 		text-align: center;
-		text-transform: uppercase;
-		width: 25%;
+		width: 24.9%;
+	}
+
+	.bottom-nav-link {
+
+		bottom: 0;
+	}
+
+	.bottom-nav-selected {
+		background-color: #F5A623;
+		height: .5vh;
+		width: 100%;
 	}
 
 	[class*="col-"] {
