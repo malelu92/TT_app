@@ -7,7 +7,7 @@
 
 $(document).ready(function() {
 
-	/* Only load if evacuation screen. */
+	/* Load if evacuation screen. */
 	if(document.getElementById("map")) {
 
 		sessionStorage.setItem('plan-card', 0);
@@ -114,49 +114,69 @@ $(document).ready(function() {
 	}
 
 
-	/* Only load if evacuation screen */
-	if(document.getElementById("evac-card-1")) {
+	/* Only load if registration screen */
+	if(document.getElementById("reg-card-1")) {
 
 		sessionStorage.setItem('card_expanded', "no");
 		sessionStorage.setItem('saved', "no");
 
 		var card_lists = [
-			["Name", "Last name", "Lala"],
-			["Ola"],
-			["Ferrari"],
-			["I have medical conditions :("],
-			["Au au"],
-			["No clue", "lele"]
+			["First Name", "Last name", "Street Address", "Address Line 2", "P.O. Box", "City, State", "Phone Number"],
+			["First Name", "Last name", "Street Address", "Address Line 2", "P.O. Box", "City, State", "Phone Number"],
+			["Blind/Low Vision", "Deaf/Hard of hearing", "Contagious Disease", "Frail/Elderly", "Speech Impediment", "Physical Disability",
+			"Bedridden", "Mentally/Memory Impaired", "Dementia/Alzheimer's", "Dialysis", "Requires contants skilled nursing", "Assistance with medication",
+			"Assistance with insulin", "Requires refrigerated medication", "Medications", "Austism", "Sepcial dietary needs", "Seizures", "Other"],
+			["Ventilator", "Suction machine", "Catheters", "Feeding tube", "Oxygen concentrator", "Other"],
+			["Items"],
+			["Items"],
+			["Items"],
+			["Items"],
+			["Items"]	
 		];
 
 		/* Load list of emergency contact card */
-		$("#evac-card-1").click(function(){
-			loadListEvac(this.id, card_lists[0]);
+		$("#reg-card-1").click(function(){
+			loadListEvac(this.id, card_lists[0], "text");
 		});
 
 		/* Load list of emergency kit card */
-		$("#evac-card-2").click(function(){
-			loadListEvac(this.id, card_lists[1]);
+		$("#reg-card-2").click(function(){
+			loadListEvac(this.id, card_lists[1], "text");
 	  });
 
 	  /* Load list of shelter registrations card */
-		$("#evac-card-3").click(function(){
-			loadListEvac(this.id, card_lists[2]);
+		$("#reg-card-3").click(function(){
+			loadListEvac(this.id, card_lists[2], "check");
 	  });
 
 	  /* Load list of create a communication plan card */
-		$("#evac-card-4").click(function(){
-			loadListEvac(this.id, card_lists[3]);
+		$("#reg-card-4").click(function(){
+			loadListEvac(this.id, card_lists[3], "check");
 	  });
 
 	  /* Load list of plan for your pet card */
-		$("#evac-card-5").click(function(){
-			loadListEvac(this.id, card_lists[4]);
+		$("#reg-card-5").click(function(){
+			loadListEvac(this.id, card_lists[4], "check");
 	  });
 
 	  /* Load list of know your evacuation route card */
-		$("#evac-card-6").click(function(){
-			loadListEvac(this.id, card_lists[5]);
+		$("#reg-card-6").click(function(){
+			loadListEvac(this.id, card_lists[5], "check");
+	  });
+
+	  /* Load list of know your evacuation route card */
+		$("#reg-card-7").click(function(){
+			loadListEvac(this.id, card_lists[6], "check");
+	  });
+
+	  /* Load list of know your evacuation route card */
+		$("#reg-card-8").click(function(){
+			loadListEvac(this.id, card_lists[7], "check");
+	  });
+
+	  /* Load list of know your evacuation route card */
+		$("#reg-card-9").click(function(){
+			loadListEvac(this.id, card_lists[8], "check");
 	  });
 
 		$("#registration-close").click(function(){
@@ -182,10 +202,10 @@ $(document).ready(function() {
 function calculateTotalItems(card_lists) {
 		var total_items = 0;
 		for (var i=1; i<=card_lists.length; i++) {
-			var countdown = "countdown-" + i;
+			/*var countdown = "countdown-" + i;
 			var prep_card = 'prep-card-' + i + '-count';
 			sessionStorage.setItem(prep_card, 0);
-			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;*/
 			total_items += (card_lists[i-1]).length;
 		}
 		return total_items;
@@ -239,8 +259,8 @@ function closePrepList(id, total_items) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 	var countdown = "countdown-" + card_number;
-	var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
-	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
+	/*var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
+	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;*/
 
 	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
 	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
@@ -311,10 +331,7 @@ function loadList(id, items_list, total_items) {
 	}
 }
 
-
-
-
-function loadListEvac(id, items_list) {
+function loadListEvac(id, items_list, type) {
 	var id_string = "#" + id;
 
 
@@ -324,7 +341,12 @@ function loadListEvac(id, items_list) {
 		console.log("---")
 		$(id_string).addClass('card-transform');
 		sessionStorage.setItem('card_expanded', "yes");
-		var content = createListItemsEvac(items_list, id, null);
+		if (type == "check") {
+			var content = createListItemsEvac(items_list, id, null);
+		}
+		else {
+			var content = createTextBoxItemsEvac(items_list, id, null);
+		}
   	$(id_string).append(content);
 	}
 	else {
@@ -340,6 +362,20 @@ function loadListEvac(id, items_list) {
 		content.remove();*/
 
 	}
+}
+
+
+function createTextBoxItemsEvac(list_items, card_id, total_items) {
+	var init = "<div id=list-items>\
+    						<label class='list-container'>";
+  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
+    								</div>';
+  var middle = "";
+  for (var i = 0; i < list_items.length; i++) {
+  	middle = middle + "<div class='col-12'><div class='card-sub-item'>" + list_items[i] + "</div><input type='textbox' class='text-box' col-12' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+    										</div>"; 
+  }
+  return init + middle + end;
 }
 
 
@@ -369,13 +405,16 @@ function buttonSave(card_id) {
 function createListItemsEvac(list_items, card_id, total_items) {
 	var init = "<div id=list-items>\
     						<label class='list-container'>";
-  var end = '<button onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
+  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
     								</div>';
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
-    										<span class='checkmark'></span>\
-    										</div>"; 
+  	middle = middle + "<div class='col-12 checkbox-line'>\
+  											<label class='checkbox-container'><div class='checkbox-text'>" + list_items[i] +"</div>\
+  												<input type='checkbox' id='item'" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+    											<span class='checkmark'></span>\
+    										</label>\
+    									</div>"; 
   }
   return init + middle + end;
 }
