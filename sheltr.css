@@ -293,46 +293,28 @@ a {
 	#preparation-bar {
 	  background-color: #f0f0f5;
 	  border-radius: 25px;
-	  height: 4.5vh;
-	  margin: 2.5vh auto 2.5vh auto;
+	  height: 1.5vh;
+	  margin: 1vh auto 1vh auto;
 	  width: 80%;
 	}
 
 	#preparation-bar-inner {
-	  background-color: #000000;
+	  background-color: #5E39FF;
 	  border-radius: 25px;
-	  height: 4.5vh;
+	  height: 1.5vh;
 	  width: 0%;
 	}
 
-	.preparation-card {
-	  border-radius: 5px;
-	  background-color: #f0f0f5;
-	  cursor: pointer;
-	  float: left;
-	  margin:	2.5vw 0 2.5vw 5vw;
-	  text-align: center;
-	  width: 40%;	
-	  position: relative;
-	}
+#preparation-bar-percentage {
+	font-size: 1.1em;
+	margin: 1vh 0 0 11.5vw;
+}
 
 	.preparation-card-countdown {
 		bottom:0;
 		font-size: .8em;
 	  margin: 0 0 2% 60%;
 	  position: absolute;
-	}
-
-	.preparation-card-text {
-		padding: 0 5vw 5vh 5vw;
-	}
-
-	.preparation-card-why {
-		background-color: #b3b3cc;
-	  border-radius: 50%;
-	  height: 4vh;
-	  margin: 2% 0 0 75%;
-	  width: 4vh;
 	}
 
 .preparation-list-background {
@@ -353,6 +335,10 @@ a {
   margin: 2em .5em 0 .5em;
   height: 80%;
   width: 80%;
+}
+
+#preparation-score {
+	margin: 2vh 0 0 0;
 }
 
 #prep-list-1-close {

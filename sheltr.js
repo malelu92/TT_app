@@ -82,8 +82,7 @@ $(document).ready(function() {
 			["Brazil", "USA", "India", "England"],
 			["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
 			["Lala", "Lele"],
-			["Hi"],
-			["Purple", "Blue", "Orange", "Yellow"]
+			["Hi"]
 		];
 
 		var total_items = calculateTotalItems(card_lists);
@@ -111,11 +110,6 @@ $(document).ready(function() {
 	  /* Load list of plan for your pet card */
 		$("#prep-card-5").click(function(){
 			loadList(this.id, card_lists[4], total_items);
-	  });
-
-	  /* Load list of know your evacuation route card */
-		$("#prep-card-6").click(function(){
-			loadList(this.id, card_lists[5], total_items);
 	  });
 	}
 
