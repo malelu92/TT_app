@@ -90,12 +90,12 @@ $(document).ready(function() {
 
 		/* Load list of emergency contact card */
 		$("#prep-card-1").click(function(){
-			loadList(this.id, card_lists[0], total_items);
+			loadListEvac(this.id, card_lists[0], "check", total_items);
 		});
 
 		/* Load list of emergency kit card */
 		$("#prep-card-2").click(function(){
-			loadList(this.id, card_lists[1], total_items);
+			loadListEvac(this.id, card_lists[1], "check", total_items);
 	  });
 
 	  /* Load list of shelter registrations card */
@@ -106,12 +106,12 @@ $(document).ready(function() {
 
 	  /* Load list of create a communication plan card */
 		$("#prep-card-4").click(function(){
-			loadList(this.id, card_lists[3], total_items);
+			loadListEvac(this.id, card_lists[3], "check", total_items);
 	  });
 
 	  /* Load list of plan for your pet card */
 		$("#prep-card-5").click(function(){
-			loadList(this.id, card_lists[4], total_items);
+			loadListEvac(this.id, card_lists[4], "check", total_items);
 	  });
 	}
 
@@ -451,10 +451,16 @@ function buttonSave(card_id, total_items) {
 			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
 			document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
 
+			console.log(card_number)
 
+			var prep_bar_inner_id = "preparation-bar-inner-card-" + card_number;
+			console.log(prep_bar_inner_id)
 
 			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
-			document.getElementById("preparation-bar-inner-card").style.width = (String(parseInt(card_percentage))+"%");
+			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
+			document.getElementById(prep_bar_inner_id).style.height = "1vh";
+			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#5E39FF";
+			document.getElementById(prep_bar_inner_id).style.borderRadius = "25px";
 			console.log("card_percentage")
 			console.log(card_percentage)
 

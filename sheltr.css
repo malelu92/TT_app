@@ -421,12 +421,12 @@ input:focus {
 	  width: 0%;
 	}
 
-	#preparation-bar-inner-card {
+	/*#preparation-bar-inner-card {
 	  background-color: #5E39FF;
 	  border-radius: 25px;
 	  height: 1vh;
 	  width: 0%;
-	}
+	}*/
 
 #preparation-bar-percentage {
 	font-size: 1.1em;
