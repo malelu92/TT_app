@@ -234,7 +234,8 @@ function buttonSave(card_id, total_items) {
 
 		setTimeout(function(){
       $(card_string).removeClass('card-retransform');
-    }, 1600);
+      $(".preparation-list-background").remove();
+    }, 300);
 
 
 
@@ -447,9 +448,9 @@ function loadList(id, items_list, type, total_items) {
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
-		setTimeout(function(){
+		/*setTimeout(function(){
       $(".preparation-list-background").remove();
-    }, 1600);
+    }, 1600);*/
 
 	}
 }
