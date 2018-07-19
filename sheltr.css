@@ -405,10 +405,26 @@ input:focus {
 	  width: 80%;
 	}
 
+	#preparation-bar-card {
+	  background-color: #f0f0f5;
+	  border-radius: 25px;
+	  bottom: 0;
+	  height: 1vh;
+	  position: absolute;
+	  width: 100%;
+	}
+
 	#preparation-bar-inner {
 	  background-color: #5E39FF;
 	  border-radius: 25px;
 	  height: 1.5vh;
+	  width: 0%;
+	}
+
+	#preparation-bar-inner-card {
+	  background-color: #5E39FF;
+	  border-radius: 25px;
+	  height: 1vh;
 	  width: 0%;
 	}
 
@@ -418,10 +434,11 @@ input:focus {
 }
 
 	.preparation-card-countdown {
-		bottom:0;
+		/*bottom:0;
 		font-size: .8em;
 	  margin: 0 0 2% 60%;
-	  position: absolute;
+	  position: absolute;*/
+	  display: none;
 	}
 
 .preparation-list-background {

@@ -443,12 +443,20 @@ function buttonSave(card_id, total_items) {
 			var item = card_id.split('-')[0] + "-";
 			var card = "prep-" + card_id.split(item)[1] + "-count";
 			var countdown = "countdown-" + card_number;
-			console.log(countdown)
-			console.log(card)
 
 
+
+			/*document.getElementById("preparation-bar-inner-card").style.width = (String(parseInt(card_percentage))+"%");*/
+			
 			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
 			document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
+
+
+
+			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
+			document.getElementById("preparation-bar-inner-card").style.width = (String(parseInt(card_percentage))+"%");
+			console.log("card_percentage")
+			console.log(card_percentage)
 
 			var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
 			document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
