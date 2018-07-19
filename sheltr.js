@@ -115,7 +115,6 @@ $(document).ready(function() {
 
 	  /* Load list of shelter registrations card */
 		$("#prep-card-3").click(function(){
-			console.log("prep")
 			loadList(this.id, card_lists[2], "check", total_items);
 			/*loadList(this.id, card_lists[2], total_items);*/
 	  });
@@ -232,6 +231,12 @@ function buttonSave(card_id, total_items) {
 		if (content) {
 			content.remove();
 		}
+
+		setTimeout(function(){
+      $(card_string).removeClass('card-retransform');
+    }, 1600);
+
+
 
 	}
 }
