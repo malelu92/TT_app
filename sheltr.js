@@ -97,38 +97,11 @@ $(document).ready(function() {
 
 
 		for(var i=1; i<=card_lists.length; i++) {
-
-
 			var card_id = "prep-card-" + i;
-			var card_number = (card_id.split('-')[2])
-			var item = card_id.split('-')[0] + "-";
-			var card = "prep-" + card_id.split(item)[1] + "-count";
-			var countdown = "countdown-" + card_number;
-
-			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
-			var prep_bar_inner_id = "preparation-bar-inner-card-" + card_number;
-
-					/* updates card bar */
-			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
-
-			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
-			document.getElementById(prep_bar_inner_id).style.height = "1vh";
-			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#5E39FF";
-			document.getElementById(prep_bar_inner_id).style.borderRadius = "25px";
-
-
+			updatePercentageBarCard(card_id);
 		}
-
 			/* updates overall bar */
-			updatePercentageBar(total_items);
-
-
-
-
-
-
-		console.log("*************")
-		console.log(sessionStorage.getItem('total_checked'))
+		updatePercentageBar(total_items);
 
 		/* Load list of emergency contact card */
 		$("#prep-card-1").click(function(){
@@ -249,29 +222,7 @@ function buttonSave(card_id, total_items) {
 		var screen = card_id.split('-')[0];
 
 		if (screen == "prep") {
-
-
-
-			var card_number = (card_id.split('-')[2])
-			var item = card_id.split('-')[0] + "-";
-			var card = "prep-" + card_id.split(item)[1] + "-count";
-			var countdown = "countdown-" + card_number;
-			
-			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
-			var prep_bar_inner_id = "preparation-bar-inner-card-" + card_number;
-
-
-			console.log("card...")
-			console.log(card)
-			console.log(sessionStorage.getItem(card))
-
-			/* updates card bar */
-			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
-			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
-			document.getElementById(prep_bar_inner_id).style.height = "1vh";
-			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#5E39FF";
-			document.getElementById(prep_bar_inner_id).style.borderRadius = "25px";
-
+			updatePercentageBarCard(card_id);
 			updatePercentageBar(total_items);
 		}
 
@@ -693,6 +644,30 @@ function updatePercentageBar(total_items) {
 			if (percentage > 50) {
 				document.getElementById("preparation-image").src = "images/prep_two.png";
 			}	
+}
+
+function updatePercentageBarCard(card_id) {
+
+			var card_number = (card_id.split('-')[2])
+			var item = card_id.split('-')[0] + "-";
+			var card = "prep-" + card_id.split(item)[1] + "-count";
+			var countdown = "countdown-" + card_number;
+			
+			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
+			var prep_bar_inner_id = "preparation-bar-inner-card-" + card_number;
+
+
+			console.log("card...")
+			console.log(card)
+			console.log(sessionStorage.getItem(card))
+
+			/* updates card bar */
+			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
+			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
+			document.getElementById(prep_bar_inner_id).style.height = "1vh";
+			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#5E39FF";
+			document.getElementById(prep_bar_inner_id).style.borderRadius = "25px";
+
 }
 
 
