@@ -7,14 +7,14 @@
 
 $(document).ready(function() {
 
-			sessionStorage.setItem('card_expanded', "no");
-		sessionStorage.setItem('saved', "no");
+			localStorage.setItem('card_expanded', "no");
+		localStorage.setItem('saved', "no");
 
 	/* Load if evacuation screen. */
 	if(document.getElementById("map")) {
 
-		sessionStorage.setItem('plan-card', 0);
-		sessionStorage.setItem('toggle', "left");
+		localStorage.setItem('plan-card', 0);
+		localStorage.setItem('toggle', "left");
 
 		/* Position second and third cards based on screen size. */
 		var card_margin = 6;
@@ -40,23 +40,23 @@ $(document).ready(function() {
 
 		/* Update view when clicking on toggle switch*/
 	  $("#toggle").click(function(){
-	  	if(sessionStorage.getItem('toggle') == "left") {
+	  	if(localStorage.getItem('toggle') == "left") {
 	  		switchRight();
-	  		sessionStorage.setItem('toggle', "right");
+	  		localStorage.setItem('toggle', "right");
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-map-mode').addClass('evacuation-transform-list-mode');
 	  	}
 	  	else {
 	  		switchLeft();
-	  		sessionStorage.setItem('toggle', "left");
+	  		localStorage.setItem('toggle', "left");
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
 	  	}
 	  });
 
 	  /* Update view when clicking on first card on list view*/
 	  $("#plan-1-card").click(function(){
-	  	if(sessionStorage.getItem('toggle') == "right") {
+	  	if(localStorage.getItem('toggle') == "right") {
 	  		switchLeft();
-	  		sessionStorage.setItem('toggle', "left");
+	  		localStorage.setItem('toggle', "left");
 	  		$(".evacuation-transform").removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
 	  	}
 	  });
@@ -65,9 +65,9 @@ $(document).ready(function() {
 	/* TODO: make it responsive */
 	  /*$("#plan-2-card").click(function(){
 	  	console.log("card 1")
-	  	if(sessionStorage.getItem('toggle') == "right") {
+	  	if(localStorage.getItem('toggle') == "right") {
 	  		switchLeft();
-	  		sessionStorage.setItem('toggle', "left");
+	  		localStorage.setItem('toggle', "left");
 	  		$(".evacuation-transform").removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode-middle-card-clicked');
 	  		document.getElementById("map-image").src = "images/planB_background.jpg";
 	  	}
@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 	/* Only load if preparation screen */
 	if(document.getElementById("prep-card-1")) {
-		sessionStorage.setItem('total_checked', 0);
+		localStorage.setItem('total_checked', 0);
 
 		var card_lists = [
 			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
@@ -123,8 +123,8 @@ $(document).ready(function() {
 	/* Only load if registration screen */
 	if(document.getElementById("reg-card-1")) {
 
-		/*sessionStorage.setItem('card_expanded', "no");
-		sessionStorage.setItem('saved', "no");*/
+		/*localStorage.setItem('card_expanded', "no");
+		localStorage.setItem('saved', "no");*/
 
 		var card_lists = [
 			["First Name", "Last name", "Street Address", "Address Line 2", "P.O. Box", "City, State", "Phone Number"],
@@ -202,11 +202,11 @@ $(document).ready(function() {
 */
 function buttonSave(card_id, total_items) {
 	var card_string = "#" + card_id;
-	if (sessionStorage.getItem('card_expanded') == "yes") {
+	if (localStorage.getItem('card_expanded') == "yes") {
 		$(card_string).removeClass('card-transform');
 		$(card_string).addClass('card-retransform');
-		sessionStorage.setItem('card_expanded', "no");
-		sessionStorage.setItem('saved', "yes");
+		localStorage.setItem('card_expanded', "no");
+		localStorage.setItem('saved', "yes");
 		var screen = card_id.split('-')[0];
 
 		if (screen == "prep") {
@@ -220,16 +220,21 @@ function buttonSave(card_id, total_items) {
 
 
 			/* updates card bar */
-			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
+			var card_percentage = (localStorage.getItem(card)/total_items_list)*100;
 			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
 			document.getElementById(prep_bar_inner_id).style.height = "1vh";
 			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#5E39FF";
 			document.getElementById(prep_bar_inner_id).style.borderRadius = "25px";
 
 			/* updates overall bar */
-			var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
+			var percentage = (localStorage.getItem('total_checked')/total_items)*100;
 			document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
 			document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
+
+
+			if (percentage > 50) {
+				document.getElementById("preparation-image").src = "images/prep_two.png";
+			}
 		}
 
 		var content = document.getElementById('list-items');
@@ -256,8 +261,8 @@ function calculateTotalItems(card_lists) {
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = "countdown-" + i;
 		var prep_card = 'prep-card-' + i + '-count';
-		sessionStorage.setItem(prep_card, 0);
-		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+		localStorage.setItem(prep_card, 0);
+		document.getElementById(countdown).innerHTML = localStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
 		total_items += (card_lists[i-1]).length;
 	}
 	return total_items;
@@ -265,7 +270,7 @@ function calculateTotalItems(card_lists) {
 
 
 /* 
-** Updates sessionStorage of checked or unchecked items on specific list and the total number of checked items accross all cards.
+** Updates localStorage of checked or unchecked items on specific list and the total number of checked items accross all cards.
 ** Parameters:
 ** 	id: id of specific item, for example: item1-prep-card-5 (string).
 */
@@ -276,32 +281,32 @@ function checkedItem(id) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 
-	var count_total = parseInt(sessionStorage.getItem('total_checked'));
+	var count_total = parseInt(localStorage.getItem('total_checked'));
 
-	if(!(sessionStorage.getItem(id))){
+	if(!(localStorage.getItem(id))){
 		console.log("entrou")
-		sessionStorage.setItem(id, true);
-    var count = parseInt(sessionStorage.getItem(card));
-    sessionStorage.setItem(card, count+1);
-    sessionStorage.setItem('total_checked', count_total+1);
+		localStorage.setItem(id, true);
+    var count = parseInt(localStorage.getItem(card));
+    localStorage.setItem(card, count+1);
+    localStorage.setItem('total_checked', count_total+1);
 	}
 	else {
 		console.log("entrou else")
-		if(sessionStorage.getItem(id) == "true") {
-			sessionStorage.setItem(id, false);
-			var count = sessionStorage.getItem(card);
-			sessionStorage.setItem(card, count-1);
-			sessionStorage.setItem('total_checked', count_total-1);
+		if(localStorage.getItem(id) == "true") {
+			localStorage.setItem(id, false);
+			var count = localStorage.getItem(card);
+			localStorage.setItem(card, count-1);
+			localStorage.setItem('total_checked', count_total-1);
 		}
 		else {
-			sessionStorage.setItem(id, true);
-    	var count = parseInt(sessionStorage.getItem(card));
-    	sessionStorage.setItem(card, count+1);
-    	sessionStorage.setItem('total_checked', count_total+1);
+			localStorage.setItem(id, true);
+    	var count = parseInt(localStorage.getItem(card));
+    	localStorage.setItem(card, count+1);
+    	localStorage.setItem('total_checked', count_total+1);
 		}
 	}
 	console.log("total checked")
-	console.log(sessionStorage.getItem('total_checked'))
+	console.log(localStorage.getItem('total_checked'))
 }
 
 
@@ -319,9 +324,9 @@ function closePrepList(id, total_items) {
 	var card = id.split(item)[1] + "-count";
 	var countdown = "countdown-" + card_number;
 	var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
-	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
+	document.getElementById(countdown).innerHTML = localStorage.getItem(card) + " of " + total_items_list;
 
-	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
+	var percentage = (localStorage.getItem('total_checked')/total_items)*100;
 	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
 	document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 }
@@ -390,7 +395,7 @@ function createTextBoxItems(list_items, card_id, total_items) {
 */
 function loadCheckedItem(id) {
 	console.log("load checked")
-  if(sessionStorage.getItem(id) == "true") {
+  if(localStorage.getItem(id) == "true") {
   	console.log(id)
   	console.log("lelele")
 	  document.getElementById(id).checked = true;
@@ -419,16 +424,16 @@ function loadList(id, items_list, type, total_items) {
 	var checked_items = 0;
 
 
-	console.log(sessionStorage.getItem('card_expanded'))
-	console.log(sessionStorage.getItem('saved') == "no")
+	console.log(localStorage.getItem('card_expanded'))
+	console.log(localStorage.getItem('saved') == "no")
 
 
-	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
+	if ((localStorage.getItem('card_expanded') == "no") & (localStorage.getItem('saved') == "no")){
 		console.log("lala")
 			var list = $("<div class='preparation-list-background'>");
   		$("body").append(list);
 			$(id_string).addClass('card-transform');
-			sessionStorage.setItem('card_expanded', "yes");
+			localStorage.setItem('card_expanded', "yes");
 			if (type == "check") {
 				var content = createListItems(items_list, id, total_items);
 				$(id_string).append(content);
@@ -443,7 +448,7 @@ function loadList(id, items_list, type, total_items) {
 	}
 	else {
 		console.log("lele")
-		sessionStorage.setItem('saved', "no");
+		localStorage.setItem('saved', "no");
 		setTimeout(function(){
       $(".preparation-list-background").remove();
     }, 1600);
@@ -510,14 +515,14 @@ function switchRight() {
 */
 function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 
-	var card_pos = sessionStorage.getItem("plan-card");
+	var card_pos = localStorage.getItem("plan-card");
 	var pos = card_pos;
 
 	var id = setInterval(function() {
 		for (var i = 0; i < 20; i++) {
 		  if (pos == card_pos - swipe_pixels) {
 
-		  	sessionStorage.setItem("plan-card", pos);
+		  	localStorage.setItem("plan-card", pos);
 		    clearInterval(id);
 
 		    /* plan B card on screen */
@@ -555,13 +560,13 @@ function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 */
 function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
 
-	var card_pos = parseInt(sessionStorage.getItem("plan-card"));
+	var card_pos = parseInt(localStorage.getItem("plan-card"));
 	var pos = parseInt(card_pos);
 
 	var id = setInterval(function() {
 		for (var i = 0; i < 20; i++) {
 		  if (pos == card_pos + swipe_pixels) {
-		  	sessionStorage.setItem("plan-card", pos);
+		  	localStorage.setItem("plan-card", pos);
 		    clearInterval(id);
 
 		    /* plan A card on screen */
