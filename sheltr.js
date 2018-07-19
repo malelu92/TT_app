@@ -204,10 +204,11 @@ $(document).ready(function() {
 function calculateTotalItems(card_lists) {
 		var total_items = 0;
 		for (var i=1; i<=card_lists.length; i++) {
-			/*var countdown = "countdown-" + i;
+			var countdown = "countdown-" + i;
 			var prep_card = 'prep-card-' + i + '-count';
 			sessionStorage.setItem(prep_card, 0);
-			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;*/
+			console.log(prep_card)
+			document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
 			total_items += (card_lists[i-1]).length;
 		}
 		return total_items;
@@ -268,8 +269,8 @@ function closePrepList(id, total_items) {
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 	var countdown = "countdown-" + card_number;
-	/*var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
-	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;*/
+	var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
+	document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
 
 	var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
 	document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
@@ -332,13 +333,13 @@ function createListItemsEvac(list_items, card_id, total_items) {
 function loadCheckedItem(id) {
 	console.log("load checked")
   if(sessionStorage.getItem(id) == "true") {
-  	/*console.log(id)
-  	console.log("lelele")*/
-	  /*document.getElementById(id).checked = true;*/
+  	console.log(id)
+  	console.log("lelele")
+	  document.getElementById(id).checked = true;
 	  return 1;
 	}
 	else {
-	  /*document.getElementById(id).checked = false;*/
+	  document.getElementById(id).checked = false;
 	  return 0;
 	}
 }
@@ -378,14 +379,18 @@ var checked_items = 0;
 			sessionStorage.setItem('card_expanded', "yes");
 			if (type == "check") {
 				var content = createListItemsEvac(items_list, id, total_items);
+
+
+				$(id_string).append(content);
 				for (var i = 0; i < items_list.length; i++) {
 	  			checked_items += loadCheckedItem("item"+i+"-"+id)
 				}
 			}
 			else {
 				var content = createTextBoxItemsEvac(items_list, id, total_items);
+				$(id_string).append(content);
 			}
-  	$(id_string).append(content);
+
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
@@ -421,8 +426,6 @@ function createTextBoxItemsEvac(list_items, card_id, total_items) {
 
 function buttonSave(card_id, total_items) {
 
-	console.log("total")
-	console.log(total_items)
 	var card_string = "#" + card_id;
 	if (sessionStorage.getItem('card_expanded') == "yes") {
 			/*$(".card").removeClass('card-transform');*/
@@ -431,9 +434,26 @@ function buttonSave(card_id, total_items) {
 		sessionStorage.setItem('card_expanded', "no");
 		sessionStorage.setItem('saved', "yes");
 
-		var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
-		document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
-		document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
+		var screen = card_id.split('-')[0];
+
+		if (screen == "prep") {
+
+			console.log(card_id)
+			var card_number = (card_id.split('-')[2])
+			var item = card_id.split('-')[0] + "-";
+			var card = "prep-" + card_id.split(item)[1] + "-count";
+			var countdown = "countdown-" + card_number;
+			console.log(countdown)
+			console.log(card)
+
+
+			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
+			document.getElementById(countdown).innerHTML = sessionStorage.getItem(card) + " of " + total_items_list;
+
+			var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
+			document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
+			document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
+		}
 
 		var content = document.getElementById('list-items');
 		content.remove();
