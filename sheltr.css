@@ -402,7 +402,7 @@ input:focus {
 	  border-radius: 25px;
 	  height: 1.5vh;
 	  margin: 1vh auto 1vh auto;
-	  width: 80%;
+	  width: 100%;
 	}
 
 	#preparation-bar-card {
@@ -423,11 +423,20 @@ input:focus {
 
 #preparation-bar-percentage {
 	font-size: 1.1em;
-	margin: 1vh 0 0 11.5vw;
+	margin: 1vh 0 0 0;
 }
 
 	.preparation-card-countdown {
 	  display: none;
+	}
+
+	#preparation-header {
+		display: inline-block;
+	}
+
+	#preparation-image {
+		float: left;
+		width: 45%;
 	}
 
 .preparation-list-background {
@@ -451,7 +460,9 @@ input:focus {
 }
 
 #preparation-score {
-	margin: 2vh 0 0 0;
+	float: left;
+	margin: 10vh 0 0 0;
+	width: 50%;
 }
 
 #prep-list-1-close {
@@ -484,6 +495,11 @@ input:focus {
 	box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
 	width: 100%;
 	z-index: 1;
+}
+
+
+#status-bar {
+	width: 100%;
 }
 
 

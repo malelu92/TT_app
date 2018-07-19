@@ -7,6 +7,9 @@
 
 $(document).ready(function() {
 
+			sessionStorage.setItem('card_expanded', "no");
+		sessionStorage.setItem('saved', "no");
+
 	/* Load if evacuation screen. */
 	if(document.getElementById("map")) {
 
@@ -100,6 +103,7 @@ $(document).ready(function() {
 
 	  /* Load list of shelter registrations card */
 		$("#prep-card-3").click(function(){
+			console.log("prep")
 			loadList(this.id, card_lists[2], "check", total_items);
 			/*loadList(this.id, card_lists[2], total_items);*/
 	  });
@@ -119,8 +123,8 @@ $(document).ready(function() {
 	/* Only load if registration screen */
 	if(document.getElementById("reg-card-1")) {
 
-		sessionStorage.setItem('card_expanded', "no");
-		sessionStorage.setItem('saved', "no");
+		/*sessionStorage.setItem('card_expanded', "no");
+		sessionStorage.setItem('saved', "no");*/
 
 		var card_lists = [
 			["First Name", "Last name", "Street Address", "Address Line 2", "P.O. Box", "City, State", "Phone Number"],
@@ -408,10 +412,19 @@ function loadCheckedItem(id) {
 **	total_items: total number of items in all lists (integer).
 */
 function loadList(id, items_list, type, total_items) {
+
+
+	console.log("lili")
 	var id_string = "#" + id;
 	var checked_items = 0;
 
+
+	console.log(sessionStorage.getItem('card_expanded'))
+	console.log(sessionStorage.getItem('saved') == "no")
+
+
 	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
+		console.log("lala")
 			var list = $("<div class='preparation-list-background'>");
   		$("body").append(list);
 			$(id_string).addClass('card-transform');
@@ -429,6 +442,7 @@ function loadList(id, items_list, type, total_items) {
 			}
 	}
 	else {
+		console.log("lele")
 		sessionStorage.setItem('saved', "no");
 		setTimeout(function(){
       $(".preparation-list-background").remove();
