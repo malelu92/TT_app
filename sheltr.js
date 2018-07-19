@@ -78,11 +78,12 @@ $(document).ready(function() {
 		sessionStorage.setItem('total_checked', 0);
 
 		var card_lists = [
-			["Marina1", "Marina2", "Marina3"],
+			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
 			["Brazil", "USA", "India", "England"],
-			["Ketki", "Nishchala", "Brooke", "Marina", "Jon", "Jerek"],
-			["Lala", "Lele"],
-			["Hi"]
+			["Buy batteries", "3 days of food", "Water - 9 gallons", "Flashlights", "Sleeping bag", "Toilet paper", "Phone charger", 
+			 "Battery radio", "Can opener", "Towelletes", "Extra Clothing", "Matches"],
+			["Items"],
+			["Items"]
 		];
 
 		var total_items = calculateTotalItems(card_lists);
@@ -99,7 +100,8 @@ $(document).ready(function() {
 
 	  /* Load list of shelter registrations card */
 		$("#prep-card-3").click(function(){
-			loadList(this.id, card_lists[2], total_items);
+			loadListEvac(this.id, card_lists[2], "check", total_items);
+			/*loadList(this.id, card_lists[2], total_items);*/
 	  });
 
 	  /* Load list of create a communication plan card */
@@ -218,18 +220,23 @@ function calculateTotalItems(card_lists) {
 ** 	id: id of specific item, for example: item1-prep-card-5 (string).
 */
 function checkedItem(id) {
+
+	console.log("checked")
+	console.log(id)
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 
 	var count_total = parseInt(sessionStorage.getItem('total_checked'));
 
 	if(!(sessionStorage.getItem(id))){
+		console.log("entrou")
 		sessionStorage.setItem(id, true);
     var count = parseInt(sessionStorage.getItem(card));
     sessionStorage.setItem(card, count+1);
     sessionStorage.setItem('total_checked', count_total+1);
 	}
 	else {
+		console.log("entrou else")
 		if(sessionStorage.getItem(id) == "true") {
 			sessionStorage.setItem(id, false);
 			var count = sessionStorage.getItem(card);
@@ -243,6 +250,8 @@ function checkedItem(id) {
     	sessionStorage.setItem('total_checked', count_total+1);
 		}
 	}
+	console.log("total checked")
+	console.log(sessionStorage.getItem('total_checked'))
 }
 
 
@@ -284,9 +293,30 @@ function createListItems(list_items, card_id, total_items) {
     								</div>";
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'>" + list_items[i] + "<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+  	middle = middle + "<div class='col-12'>" + list_items[i] + 
+  											"<input type='checkbox' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
     										<span class='checkmark'></span>\
-    										</div>"; 
+    									</div>"; 
+  }
+  return init + middle + end;
+}
+
+
+function createListItemsEvac(list_items, card_id, total_items) {
+	console.log("create items evac")
+	var init = "<div id=list-items>\
+    						<label class='list-container'>";
+  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button>clear</button></label>\
+    								</div>';
+  var middle = "";
+  for (var i = 0; i < list_items.length; i++) {
+  	middle = middle + "<div class='col-12 checkbox-line'>\
+  											<label class='checkbox-container'>\
+  												<div class='checkbox-text'>" + list_items[i] +"</div>\
+  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
+    											<span class='checkmark'></span>\
+    										</label>\
+    									</div>"; 
   }
   return init + middle + end;
 }
@@ -300,12 +330,15 @@ function createListItems(list_items, card_id, total_items) {
 **	id: item id in specific list (string). 
 */
 function loadCheckedItem(id) {
+	console.log("load checked")
   if(sessionStorage.getItem(id) == "true") {
-	  document.getElementById(id).checked = true;
+  	/*console.log(id)
+  	console.log("lelele")*/
+	  /*document.getElementById(id).checked = true;*/
 	  return 1;
 	}
 	else {
-	  document.getElementById(id).checked = false;
+	  /*document.getElementById(id).checked = false;*/
 	  return 0;
 	}
 }
@@ -331,22 +364,27 @@ function loadList(id, items_list, total_items) {
 	}
 }
 
-function loadListEvac(id, items_list, type) {
+function loadListEvac(id, items_list, type, total_items) {
 	var id_string = "#" + id;
+
+
+var checked_items = 0;
 
 
 	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
 			var list = $("<div class='preparation-list-background'>");
-  $("body").append(list);
-		console.log("---")
-		$(id_string).addClass('card-transform');
-		sessionStorage.setItem('card_expanded', "yes");
-		if (type == "check") {
-			var content = createListItemsEvac(items_list, id, null);
-		}
-		else {
-			var content = createTextBoxItemsEvac(items_list, id, null);
-		}
+  		$("body").append(list);
+			$(id_string).addClass('card-transform');
+			sessionStorage.setItem('card_expanded', "yes");
+			if (type == "check") {
+				var content = createListItemsEvac(items_list, id, total_items);
+				for (var i = 0; i < items_list.length; i++) {
+	  			checked_items += loadCheckedItem("item"+i+"-"+id)
+				}
+			}
+			else {
+				var content = createTextBoxItemsEvac(items_list, id, total_items);
+			}
   	$(id_string).append(content);
 	}
 	else {
@@ -354,12 +392,6 @@ function loadListEvac(id, items_list, type) {
 		setTimeout(function(){
             $(".preparation-list-background").remove();
     }, 1600);
-		/*console.log(id_string)
-		$(id_string).removeClass('card-transform');
-		sessionStorage.setItem('card_expanded', "no");
-
-		var content = document.getElementById('list-items');
-		content.remove();*/
 
 	}
 }
@@ -367,12 +399,17 @@ function loadListEvac(id, items_list, type) {
 
 function createTextBoxItemsEvac(list_items, card_id, total_items) {
 	var init = "<div id=list-items>\
-    						<label class='list-container'>";
-  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
+    						<label class='list-container'>"
+  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + ',' + total_items + '\')">save</button><button>clear</button>\
+  							</label>\
     								</div>';
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12'><div class='card-sub-item'>" + list_items[i] + "</div><input type='textbox' class='text-box' col-12' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
+  	middle = middle + "<div class='col-12'>\
+  											<div class='card-sub-item'>" + 
+  												list_items[i] + 
+  											"</div>\
+  											<input type='textbox' class='text-box' col-12' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
     										</div>"; 
   }
   return init + middle + end;
@@ -382,7 +419,10 @@ function createTextBoxItemsEvac(list_items, card_id, total_items) {
 
 
 
-function buttonSave(card_id) {
+function buttonSave(card_id, total_items) {
+
+	console.log("total")
+	console.log(total_items)
 	var card_string = "#" + card_id;
 	if (sessionStorage.getItem('card_expanded') == "yes") {
 			/*$(".card").removeClass('card-transform');*/
@@ -390,6 +430,10 @@ function buttonSave(card_id) {
 		$(card_string).addClass('card-retransform');
 		sessionStorage.setItem('card_expanded', "no");
 		sessionStorage.setItem('saved', "yes");
+
+		var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
+		document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
+		document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 
 		var content = document.getElementById('list-items');
 		content.remove();
@@ -402,22 +446,6 @@ function buttonSave(card_id) {
 }
 
 
-function createListItemsEvac(list_items, card_id, total_items) {
-	var init = "<div id=list-items>\
-    						<label class='list-container'>";
-  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\')">save</button><button>clear</button></label>\
-    								</div>';
-  var middle = "";
-  for (var i = 0; i < list_items.length; i++) {
-  	middle = middle + "<div class='col-12 checkbox-line'>\
-  											<label class='checkbox-container'><div class='checkbox-text'>" + list_items[i] +"</div>\
-  												<input type='checkbox' id='item'" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
-    											<span class='checkmark'></span>\
-    										</label>\
-    									</div>"; 
-  }
-  return init + middle + end;
-}
 
 
 
