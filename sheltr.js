@@ -81,11 +81,11 @@ $(document).ready(function() {
 
 		var card_lists = [
 			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
-			["Brazil", "USA", "India", "England"],
+			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
 			["Buy batteries", "3 days of food", "Water - 9 gallons", "Flashlights", "Sleeping bag", "Toilet paper", "Phone charger", 
 			 "Battery radio", "Can opener", "Towelletes", "Extra Clothing", "Matches"],
-			["Items"],
-			["Items"]
+			["Medication", "More medication", "Towelletes", "Extra Clothing", "Matches"],
+			["Medication", "More medication", "Towelletes", "Extra Clothing", "Matches"]
 		];
 
 		if(!(sessionStorage.getItem('total_checked'))) {
@@ -144,7 +144,7 @@ $(document).ready(function() {
 			"Bedridden", "Mentally/Memory Impaired", "Dementia/Alzheimer's", "Dialysis", "Requires contants skilled nursing", "Assistance with medication",
 			"Assistance with insulin", "Requires refrigerated medication", "Medications", "Austism", "Sepcial dietary needs", "Seizures", "Other"],
 			["Ventilator", "Suction machine", "Catheters", "Feeding tube", "Oxygen concentrator", "Other"],
-			["Items"],
+			["Items", "Items", "Items", "Items", "Items", "Items", "Items"],
 			["Items"],
 			["Items"],
 			["Items"],
@@ -232,6 +232,9 @@ function buttonSave(card_id, total_items) {
 			content.remove();
 		}
 
+		console.log(card_id)
+		document.getElementById(card_id).style.height = "100px";
+
 		setTimeout(function(){
       $(card_string).removeClass('card-retransform');
       $(".preparation-list-background").remove();
@@ -248,7 +251,6 @@ function initializeCardSessionStorage(card_lists) {
 	for(var i=1; i<=card_lists.length; i++) {
 		var card = "prep-card-" + i + "-count";
 		sessionStorage.setItem(card, 0);
-		console.log(card)
 	}
 
 }
@@ -280,29 +282,18 @@ function calculateTotalItems(card_lists) {
 */
 function checkedItem(id) {
 
-	console.log("checked")
-	console.log(id)
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 
 	var count_total = parseInt(sessionStorage.getItem('total_checked'));
 
-	console.log("valor pego")
-	console.log(card)
-	console.log(sessionStorage.getItem(card))
-	console.log("id")
-	console.log(id);
-	console.log(sessionStorage.getItem(id))
-
 	if(!(sessionStorage.getItem(id))){
-		console.log("entrou")
 		sessionStorage.setItem(id, true);
     var count = parseInt(sessionStorage.getItem(card));
     sessionStorage.setItem(card, count+1);
     sessionStorage.setItem('total_checked', count_total+1);
 	}
 	else {
-		console.log("entrou else")
 		if(sessionStorage.getItem(id) == "true") {
 			sessionStorage.setItem(id, false);
 			var count = sessionStorage.getItem(card);
@@ -316,11 +307,6 @@ function checkedItem(id) {
     	sessionStorage.setItem('total_checked', count_total+1);
 		}
 	}
-	console.log("total checked")
-	console.log(sessionStorage.getItem('total_checked'))
-	console.log("card checked")
-	console.log(card)
-	console.log(sessionStorage.getItem(card))
 }
 
 
@@ -355,7 +341,7 @@ function closePrepList(id, total_items) {
 function createListItems(list_items, card_id, total_items) {
 	var init = "<div id=list-items>\
     						<label class='list-container'>";
-  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button>clear</button></label>\
+  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button></label>\
     								</div>';
   var middle = "";
   for (var i = 0; i < list_items.length; i++) {
@@ -367,6 +353,7 @@ function createListItems(list_items, card_id, total_items) {
     										</label>\
     									</div>"; 
   }
+
   return init + middle + end;
 }
 
@@ -382,7 +369,7 @@ function createListItems(list_items, card_id, total_items) {
 function createTextBoxItems(list_items, card_id, total_items) {
 	var init = "<div id=list-items>\
     						<label class='list-container'>"
-  var end = '<button class="button-save" onclick="buttonSave(\'' + card_id + ',' + total_items + '\')">save</button><button>clear</button>\
+  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button>\
   							</label>\
     								</div>';
   var middle = "";
@@ -433,10 +420,40 @@ function loadList(id, items_list, type, total_items) {
 			var list = $("<div class='preparation-list-background'>");
   		$("body").append(list);
 			$(id_string).addClass('card-transform');
+
+
+
+
+			/*console.log("list")
+			console.log(items_list.length)
+
+			var height = items_list.length*6
+			$('.card-transform').height(height + "vh");*/
+
+
+
+
+
 			sessionStorage.setItem('card_expanded', "yes");
 			if (type == "check") {
 				var content = createListItems(items_list, id, total_items);
 				$(id_string).append(content);
+
+
+				var rect2 = document.getElementById(id).getBoundingClientRect();
+				console.log(rect2)
+				var rect1 = document.getElementById("save").getBoundingClientRect();
+				console.log(rect1)
+				var rect = document.getElementById("clear").getBoundingClientRect();
+				console.log(rect)
+
+
+				var height = rect1.top - rect2.top
+				$('.card-transform').height(height + "px");
+
+
+
+
 				for (var i = 0; i < items_list.length; i++) {
 	  			checked_items += loadCheckedItem("item"+i+"-"+id)
 				}
@@ -444,6 +461,19 @@ function loadList(id, items_list, type, total_items) {
 			else {
 				var content = createTextBoxItems(items_list, id, total_items);
 				$(id_string).append(content);
+
+
+				var rect2 = document.getElementById(id).getBoundingClientRect();
+				console.log(rect2)
+				var rect1 = document.getElementById("save").getBoundingClientRect();
+				console.log(rect1)
+				var rect = document.getElementById("clear").getBoundingClientRect();
+				console.log(rect)
+
+
+
+								var height = rect1.top - rect2.top
+				$('.card-transform').height(height + "px");
 			}
 	}
 	else {
@@ -661,11 +691,6 @@ function updatePercentageBarCard(card_id) {
 			
 			var total_items_list = (document.getElementById(countdown).innerHTML).split(" ")[2];
 			var prep_bar_inner_id = "preparation-bar-inner-card-" + card_number;
-
-
-			console.log("card...")
-			console.log(card)
-			console.log(sessionStorage.getItem(card))
 
 			/* updates card bar */
 			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
