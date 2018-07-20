@@ -494,8 +494,8 @@ input:focus {
 #registration-message {
 	background-color: #ffffff;
 	box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
+	position: relative;
 	width: 100%;
-	z-index: 1;
 }
 
 

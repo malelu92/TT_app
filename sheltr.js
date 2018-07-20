@@ -444,9 +444,6 @@ function loadList(id, items_list, type, total_items) {
 			$('.card-transform').height(height + "vh");*/
 
 
-
-
-
 			sessionStorage.setItem('card_expanded', "yes");
 
 			/* card has checkboxes */
@@ -495,6 +492,11 @@ function loadList(id, items_list, type, total_items) {
 								var height = rect1.top - rect2.top
 				$('.card-transform').height(height + "px");
 			}
+
+			document.getElementById("registration-message").style.zIndex = "1";
+document.getElementById("registration-message").style.backgroundColor = "#ffffff";
+
+
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
