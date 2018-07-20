@@ -139,6 +139,10 @@ input:focus {
     user-select: none;
 }
 
+.checkbox-container.sole-item {
+	margin: 4vh 0 2vh 8vw;
+}
+
 /* Hide the browser's default checkbox */
 .checkbox-container input {
     position: absolute;

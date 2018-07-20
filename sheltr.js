@@ -381,6 +381,19 @@ function createTextBoxItems(list_items, card_id, total_items) {
   											<input type='textbox' class='text-box' col-12' id=item" + i + "-" + card_id + " onclick='checkedItem(this.id)'>\
     										</div>"; 
   }
+
+
+
+  if(card_id == "reg-card-1") {
+  	middle = middle + "<br><br><div class='col-12 checkbox-line'>\
+  											<label class='checkbox-container sole-item'>\
+  												<div class='checkbox-text'> Set yourself as registrant's emergency contacts </div>\
+  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
+    											<span class='checkmark'></span>\
+    										</label>\
+    									</div>"
+	}
+
   return init + middle + end;
 }
 
@@ -435,6 +448,8 @@ function loadList(id, items_list, type, total_items) {
 
 
 			sessionStorage.setItem('card_expanded', "yes");
+
+			/* card has checkboxes */
 			if (type == "check") {
 				var content = createListItems(items_list, id, total_items);
 				$(id_string).append(content);
@@ -458,8 +473,13 @@ function loadList(id, items_list, type, total_items) {
 	  			checked_items += loadCheckedItem("item"+i+"-"+id)
 				}
 			}
+			/* card has textboxes */
 			else {
 				var content = createTextBoxItems(items_list, id, total_items);
+
+
+
+
 				$(id_string).append(content);
 
 
