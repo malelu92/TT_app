@@ -474,40 +474,36 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 	var id_string = "#" + id;
 	var checked_items = 0;
 
+	/* if card not expanded */
 	if ((sessionStorage.getItem('card_expanded') == "no") & (sessionStorage.getItem('saved') == "no")){
-			var list = $("<div class='preparation-list-background'>");
-  		$("body").append(list);
-			$(id_string).addClass('card-transform');
-			sessionStorage.setItem('card_expanded', "yes");
+		var list = $("<div class='preparation-list-background'>");
+  	$("body").append(list);
+		$(id_string).addClass('card-transform');
+		sessionStorage.setItem('card_expanded', "yes");
 
-				var content = createCardItems(items_list, message, card_image, id, total_items, type);
-				$(id_string).append(content);
+		var content = createCardItems(items_list, message, card_image, id, total_items, type);
+		$(id_string).append(content);
 
+		/* moves preparation bar when card is expanded */
+		var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
+		document.getElementById(card_bar).style.top = "28vh";
 
-				/* moves preparation bar when card is expanded */
-				var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
-				document.getElementById(card_bar).style.top = "28vh";
+		/* calculates expanded card height */
+		var card_pos = document.getElementById(id).getBoundingClientRect();
+		var save_button_pos = document.getElementById("save").getBoundingClientRect();
+		var height = save_button_pos.top - card_pos.top
+		$('.card-transform').height(height + "px");
 
+		/* loads checked items*/
+		for (var i = 0; i < items_list.length; i++) {
+	  	checked_items += loadCheckedItem("item"+i+"-"+id)
+		}
 
-				/* calculates expanded card height */
-				var card_pos = document.getElementById(id).getBoundingClientRect();
-				var save_button_pos = document.getElementById("save").getBoundingClientRect();
-				var height = save_button_pos.top - card_pos.top
-				$('.card-transform').height(height + "px");
-
-
-				/* loads checked items*/
-				for (var i = 0; i < items_list.length; i++) {
-	  			checked_items += loadCheckedItem("item"+i+"-"+id)
-				}
-
-
-			if(id.split('-')[0] == "reg" & document.getElementById("registration-message") != null){
-				document.getElementById("registration-message").style.zIndex = "1";
-				document.getElementById("registration-message").style.backgroundColor = "#ffffff";
-			}
-
-
+		/* highlights Florida health message */
+		if(id.split('-')[0] == "reg" & document.getElementById("registration-message") != null){
+			document.getElementById("registration-message").style.zIndex = "1";
+			document.getElementById("registration-message").style.backgroundColor = "#ffffff";
+		}
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
@@ -700,7 +696,11 @@ function swipedetect(el, callback){
 
 
 
-
+/*
+** Updates main percentage bar on top of preparation screen.
+** Parameters:
+**	total_items: total number of items in all lists (integer).
+*/
 function updatePercentageBar(total_items) {
 			var percentage = (sessionStorage.getItem('total_checked')/total_items)*100;
 			document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
@@ -711,6 +711,13 @@ function updatePercentageBar(total_items) {
 			}	
 }
 
+
+/*
+** Updates percentage bar of specific card.
+** Parameters:
+**	card_id: id of card whose percentage is being updated (string).
+**  type: if the card is on preparation screen or registration screen (string).
+*/
 function updatePercentageBarCard(card_id, type) {
 			var card_number = (card_id.split('-')[2])
 			var item = card_id.split('-')[0] + "-";
