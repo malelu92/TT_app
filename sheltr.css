@@ -46,7 +46,7 @@ input:focus {
 		height: 5vh;
 		margin: auto;
 		text-align: center;
-		width: 24.9%;
+		width: 25%;
 	}
 
 	.bottom-nav-link {
@@ -496,6 +496,18 @@ input:focus {
 	box-shadow: 0 3px 4px 0 rgba(0,0,0,0.10);
 	position: relative;
 	width: 100%;
+}
+
+#share-button {
+	height: 60px;
+  width: 60px;
+}
+
+
+#share-form {
+  margin: 33vh 0 0 70vw;
+  position: absolute;
+  z-index: 2;
 }
 
 

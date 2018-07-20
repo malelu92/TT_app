@@ -493,8 +493,10 @@ function loadList(id, items_list, type, total_items) {
 				$('.card-transform').height(height + "px");
 			}
 
-			document.getElementById("registration-message").style.zIndex = "1";
-document.getElementById("registration-message").style.backgroundColor = "#ffffff";
+			if(id.split('-')[0] == "reg"){
+				document.getElementById("registration-message").style.zIndex = "1";
+				document.getElementById("registration-message").style.backgroundColor = "#ffffff";
+			}
 
 
 	}
