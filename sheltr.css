@@ -431,6 +431,10 @@ input:focus {
 	  display: none;
 	}
 
+	#preparation-cards-body {
+		margin: 0 0 10vh 0;
+	}
+
 	#preparation-header {
 		display: inline-block;
 	}
@@ -468,6 +472,10 @@ input:focus {
 
 #prep-list-1-close {
 	cursor: pointer;
+}
+
+#registration-cards-body {
+	margin: 0 0 10vh 0;
 }
 
 .registration-florida-health {

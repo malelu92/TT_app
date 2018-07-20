@@ -199,7 +199,7 @@ $(document).ready(function() {
 		$("#registration-close").click(function(){
 			$("#registration-message").remove();
 			document.getElementById("share-form").style.margin = "12vh 0 0 70vw";
-			document.getElementById("registration-cards-body").style.margin = "8vh 0 0 0";
+			document.getElementById("registration-cards-body").style.margin = "8vh 0 10vh 0";
 	  });
 	}
 });
