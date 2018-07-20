@@ -10,6 +10,7 @@ $(document).ready(function() {
 	sessionStorage.setItem('card_expanded', "no");
 	sessionStorage.setItem('saved', "no");
 
+	/* Load if login screen. */
 	if(document.getElementById("login-greeting")) {
 
 		$("#button-create-account").click(function(){
