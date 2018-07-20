@@ -375,6 +375,7 @@ function closePrepList(id, total_items) {
 ** 	card_image: image name (string).
 **	card_id: id of the card that the list relates to (string).
 **	total_items: total number of items in all lists added (integer).
+**  type: if card contains checkboxes or textboxes (string).
 */
 function createCardItems(list_items, message, card_image, card_id, total_items, type) {
 	var init = '<div id="card-content">\
@@ -412,7 +413,7 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 	  }
 
 
-
+	  /* first reg card also has a checkbox */
 	  if(card_id == "reg-card-1") {
 	  	middle = middle + "<br><br><div class='col-12 checkbox-line'>\
 	  											<label class='checkbox-container sole-item'>\
@@ -477,62 +478,29 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 			var list = $("<div class='preparation-list-background'>");
   		$("body").append(list);
 			$(id_string).addClass('card-transform');
-
-
 			sessionStorage.setItem('card_expanded', "yes");
 
-			/* card has checkboxes */
-			if (type == "check") {
 				var content = createCardItems(items_list, message, card_image, id, total_items, type);
 				$(id_string).append(content);
 
 
-
+				/* moves preparation bar when card is expanded */
 				var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
 				document.getElementById(card_bar).style.top = "28vh";
 
 
+				/* calculates expanded card height */
 				var card_pos = document.getElementById(id).getBoundingClientRect();
 				var save_button_pos = document.getElementById("save").getBoundingClientRect();
-
-
 				var height = save_button_pos.top - card_pos.top
 				$('.card-transform').height(height + "px");
 
 
+				/* loads checked items*/
 				for (var i = 0; i < items_list.length; i++) {
 	  			checked_items += loadCheckedItem("item"+i+"-"+id)
 				}
-			}
 
-
-			/* card has textboxes */
-			else {
-				var content = createCardItems(items_list, message, card_image, id, total_items, type);
-
-
-
-
-				$(id_string).append(content);
-
-
-				var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
-				console.log(card_bar)
-				document.getElementById(card_bar).style.top = "28vh";
-
-
-				var rect2 = document.getElementById(id).getBoundingClientRect();
-				console.log(rect2)
-				var rect1 = document.getElementById("save").getBoundingClientRect();
-				console.log(rect1)
-				var rect = document.getElementById("clear").getBoundingClientRect();
-				console.log(rect)
-
-
-
-								var height = rect1.top - rect2.top
-				$('.card-transform').height(height + "px");
-			}
 
 			if(id.split('-')[0] == "reg" & document.getElementById("registration-message") != null){
 				document.getElementById("registration-message").style.zIndex = "1";
@@ -543,10 +511,6 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
-		/*setTimeout(function(){
-      $(".preparation-list-background").remove();
-    }, 1600);*/
-
 	}
 }
 
