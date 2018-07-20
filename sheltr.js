@@ -255,7 +255,7 @@ function buttonSave(card_id, total_items) {
 		document.getElementById(card_id).style.height = "100px";
 
 
-		var card_bar = "#card-bar-" + (card_id.split('-')[2]);
+		var card_bar = "#prep-card-bar-" + (card_id.split('-')[2]);
 		$(card_bar).removeAttr('style');
 
 
@@ -479,7 +479,7 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 
 
 
-				var card_bar= "card-bar-" + (id.split('-')[2])
+				var card_bar= "prep-card-bar-" + (id.split('-')[2])
 				document.getElementById(card_bar).style.top = "28vh";
 
 
@@ -507,7 +507,7 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 				$(id_string).append(content);
 
 
-				var card_bar= "card-bar-" + (id.split('-')[2])
+				var card_bar= "prep-card-bar-" + (id.split('-')[2])
 				document.getElementById(card_bar).style.top = "28vh";
 
 
