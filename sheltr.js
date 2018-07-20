@@ -7,8 +7,37 @@
 
 $(document).ready(function() {
 
-		sessionStorage.setItem('card_expanded', "no");
-		sessionStorage.setItem('saved', "no");
+	sessionStorage.setItem('card_expanded', "no");
+	sessionStorage.setItem('saved', "no");
+
+	if(document.getElementById("login-greeting")) {
+
+		$("#button-create-account").click(function(){
+			document.location.href = "registration.html";
+		});
+
+		$("#login-dropdown-container").click(function(){
+			if(document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
+				$("#login-dropdown-container").addClass('login-dropdown-transform');
+				$("#login-dropdown-container").append("<div id='login-options'>\
+																							<div class='login-dropdown-text'>\
+																								Person without medical needs\
+																							</div>\
+																							<div class='login-dropdown-text'>\
+																								Person with medical needs\
+																							</div>\
+																							</div>"
+																						);
+				document.getElementById("login-dropdown-arrow").src = "images/dropdown_arrow_up.png";
+			}
+			else {
+				document.getElementById("login-dropdown-arrow").src = "images/dropdown_arrow.png";
+				$('#login-options').remove();
+				$("#login-dropdown-container").removeClass('login-dropdown-transform');
+			}
+		});
+	}
+
 
 	/* Load if evacuation screen. */
 	if(document.getElementById("map")) {

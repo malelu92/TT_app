@@ -31,6 +31,10 @@ input:focus {
 	width: 80%;
 }
 
+.text-box.login {
+	margin: 0 0 0 10vw;
+}
+
 	#bottom-nav-bar {
 		background-color: #ffffff;
 		border-color: #A0A0A0;
@@ -66,6 +70,16 @@ input:focus {
 	float: left;
 	margin: 5vh 0 0 15vw;
 }
+
+	#button-create-account {
+		background-color: #FF004D;
+		border: 2px solid #ffffff;
+		border-radius: 30%;
+		color: #ffffff;
+		padding: 1.5vh 15vw 1.5vh 15vw;
+    -webkit-transition: height 3s; /* For Safari 3.1 to 6.0 */
+    transition: height 3s;
+	}
 
 
 	[class*="col-"] {
@@ -412,6 +426,43 @@ input:focus {
     -webkit-transform: scale(3); 
     -o-transform: scale(3); 
     transform: scale(3); 
+  }
+
+
+  #login-dropdown-arrow {
+  	float: right;
+  	padding: 1.3vh 4vw 1.3vh 0;
+  	width: 6%;
+  }
+
+  #login-dropdown-container {
+		border-color: #A0A0A0;
+	  border-style: solid;
+	  border-width: .2px;
+  	display: inline-block;
+  	margin: 0 0 0 10vw;
+  	width: 80%;
+  }
+
+
+	.login-dropdown-transform {
+		height: 20vh;
+		margin: 5vh 0 0 5vw;
+	}
+
+  .login-dropdown-text {
+	  float: left;
+	  padding: .5vh 0 .5vh 2vw;
+	  width: 80%;
+  }
+
+  #login-greeting {
+  	font-size: 1.2em;
+  	margin: 10vh 0 0 10vw;
+  }
+
+  .login-instruction {
+  	margin: 5vh 0 0 10vw;
   }
 
   .map-background {

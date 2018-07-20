@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<script src="jquery.min.js"></script>
 	<script src="sheltr.js"></script>
   	<link rel="stylesheet" type="text/css" href="sheltr.css">
+  	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   </head>
   <body>
-  	<a href="preparation.html">prep</a>
-  	<br><br>
-    <div>Nish</div>
-  	<a href="maps_teste.html">prep</a>
+  	<div><img id="status-bar" src="images/status_bar.png" alt="phone status_bar"></div>
+  	<div id="login-greeting">Nice to meet you!</div>
+	  <div class='col-12'>
+		  <div class="login-instruction">User name</div>
+			<input type='textbox' class='text-box login'>
+		</div>
+	  <div class='col-12'>
+		  <div class="login-instruction">Email address</div>
+			<input type='textbox' class='text-box login'>
+		</div>
+	  <div class='col-12'>
+		  <div class="login-instruction">Create password</div>
+			<input type='textbox' class='text-box login'>
+		</div>
+	  <div class='col-12'>
+		  <div class="login-instruction">Confirm password</div>
+			<input type='textbox' class='text-box login'>
+		</div>
+	  <div class='col-12'>
+		  <div class="login-instruction">I consider myself a</div>
+		  <div id="login-dropdown-container">
+		  	<div class="login-dropdown-text">Caregiver</div>
+		  	<img id="login-dropdown-arrow" src="images/dropdown_arrow.png" alt="dropdown arrow">
+		  </div>
+		</div>
+  	<button id="button-create-account">create account</button>
   </body>
 </html>
