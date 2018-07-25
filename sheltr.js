@@ -7,6 +7,7 @@
 
 $(document).ready(function() {
 
+	console.log("all")
 	sessionStorage.setItem('card_expanded', "no");
 	sessionStorage.setItem('saved', "no");
 
@@ -15,6 +16,7 @@ $(document).ready(function() {
 		console.log("pp")
 
 		$("#button-create-account").click(function(){
+			console.log("account")
 			document.location.href = "registration.html";
 		});
 
