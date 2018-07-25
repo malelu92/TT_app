@@ -15,6 +15,8 @@ $(document).ready(function() {
 	if(document.getElementById("login-greeting")) {
 		console.log("pp")
 
+		sessionStorage.setItem('login_menu_expanded', "no");
+
 		$("#button-create-account").click(function(){
 			console.log("account")
 			document.location.href = "registration.html";
@@ -22,8 +24,9 @@ $(document).ready(function() {
 
 		$("#login-dropdown-container").click(function(){
 			console.log("lolo")
-			console.log(document.getElementById("login-dropdown-arrow").src.split('/')[11])
-			if(1 == 1) {//document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
+			console.log(sessionStorage.getItem('login_menu_expanded'))
+			if(sessionStorage.getItem('login_menu_expanded') == "no") {//document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
+				sessionStorage.setItem('login_menu_expanded', "yes");
 				$("#login-dropdown-container").addClass('login-dropdown-transform');
 				$("#login-dropdown-container").append("<div id='login-options'>\
 																							<div class='login-dropdown-text'>\
@@ -37,6 +40,7 @@ $(document).ready(function() {
 				document.getElementById("login-dropdown-arrow").src = "images/dropdown_arrow_up.png";
 			}
 			else {
+				sessionStorage.setItem('login_menu_expanded', "no");
 				document.getElementById("login-dropdown-arrow").src = "images/dropdown_arrow.png";
 				$('#login-options').remove();
 				$("#login-dropdown-container").removeClass('login-dropdown-transform');
