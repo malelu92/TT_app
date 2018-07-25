@@ -13,19 +13,14 @@ $(document).ready(function() {
 
 	/* Load if login screen. */
 	if(document.getElementById("login-greeting")) {
-		console.log("pp")
-
 		sessionStorage.setItem('login_menu_expanded', "no");
 
 		$("#button-create-account").click(function(){
-			console.log("account")
 			document.location.href = "registration.html";
 		});
 
 		$("#login-dropdown-container").click(function(){
-			console.log("lolo")
-			console.log(sessionStorage.getItem('login_menu_expanded'))
-			if(sessionStorage.getItem('login_menu_expanded') == "no") {//document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
+			if(sessionStorage.getItem('login_menu_expanded') == "no") {
 				sessionStorage.setItem('login_menu_expanded', "yes");
 				$("#login-dropdown-container").addClass('login-dropdown-transform');
 				$("#login-dropdown-container").append("<div id='login-options'>\
@@ -204,6 +199,9 @@ $(document).ready(function() {
 		if(!(sessionStorage.getItem('total_checked_registration'))) {
 			sessionStorage.setItem('total_checked_registration', 0);
 			initializeCardSessionStorage(card_lists, "reg");
+
+
+			sessionStorage.setItem("first_time_in_reg_screen", "yes");
 		}
 
 		var total_items = calculateTotalItems(card_lists, "reg");
@@ -212,6 +210,28 @@ $(document).ready(function() {
 		for(var i=1; i<=card_lists.length; i++) {
 			var card_id = "reg-card-" + i;
 			updatePercentageBarCard(card_id, "reg");
+		}
+
+		if(sessionStorage.getItem("first_time_in_reg_screen") == "yes") {
+			sessionStorage.setItem("first_time_in_reg_screen", "no");
+
+
+
+		var reg_message = $("<div class='preparation-list-background'>\
+													<div id='registration-welcome-message'>\
+														<div>Welcome Vanessa</div>\
+														<img src='images/prep_card_1_img.png'>\
+														<div>Step 1: Shelter registration</div>\
+														<div>As a caregiver, it is recommended that you register for a special medical needs shelter\
+														on behalf of the person you take care of.</div>\
+														<div>This is important in case of an emergency evacuation.</div>\
+														<div>OK</div>\
+													</div>\
+												</div>");
+  	$("body").append(reg_message);
+
+
+
 		}
 
 
