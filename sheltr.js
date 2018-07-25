@@ -12,12 +12,14 @@ $(document).ready(function() {
 
 	/* Load if login screen. */
 	if(document.getElementById("login-greeting")) {
+		console.log("pp")
 
 		$("#button-create-account").click(function(){
 			document.location.href = "registration.html";
 		});
 
 		$("#login-dropdown-container").click(function(){
+			console.log("lolo")
 			if(document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
 				$("#login-dropdown-container").addClass('login-dropdown-transform');
 				$("#login-dropdown-container").append("<div id='login-options'>\
