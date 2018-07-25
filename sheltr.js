@@ -22,6 +22,7 @@ $(document).ready(function() {
 
 		$("#login-dropdown-container").click(function(){
 			console.log("lolo")
+			console.log(document.getElementById("login-dropdown-arrow").src.split('/')[11])
 			if(document.getElementById("login-dropdown-arrow").src.split('/')[11] == "dropdown_arrow.png") {
 				$("#login-dropdown-container").addClass('login-dropdown-transform');
 				$("#login-dropdown-container").append("<div id='login-options'>\
