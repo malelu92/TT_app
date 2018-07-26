@@ -142,41 +142,10 @@ $(document).ready(function() {
 			sessionStorage.setItem('total_children', 0);
 			sessionStorage.setItem('total_pets', 0);
 			initializeCardSessionStorage(card_lists, "prep");
+			loadCitizenCountScreen();
 		}
 
 		var total_items = calculateTotalItems(card_lists, "prep");
-
-
-			var reg_message = $("<div class='preparation-list-background'>\
-												<div id='preparation-count-popup'>\
-													<div class='registration-welcome-text step'>How many people are you preparing for?</div>\
-													<div>\
-														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Adults</div>\
-																<div id='minus-adults' class='button-count minus'>-</div>\
-																<div id='count-adults' class='button-count value'>0</div>\
-																<div id='plus-adults' class='button-count plus'>+</div>\
-															</div>\
-														</div>\
-														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Children</div>\
-															<div id='minus-children' class='button-count minus'>-</div>\
-															<div id='count-children' class='button-count value'>0</div>\
-															<div id='plus-children' class='button-count plus'>+</div>\
-														</div>\
-														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Pets</div>\
-															<div id='minus-pets' class='button-count minus'>-</div>\
-															<div id='count-pets' class='button-count value'>0</div>\
-															<div id='plus-pets' class='button-count plus'>+</div>\
-														</div>\
-														<button id='button-preparation-count'>Save to profile</button>\
-													</div>\
-											</div>");
-  $("body").append(reg_message);
-
-
-
 
 		/* updates cards bar */
 		for(var i=1; i<=card_lists.length; i++) {
@@ -526,6 +495,7 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 	  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
 	    											<span class='checkmark'></span>\
 	    										</label>\
+	    										<img class='preparation-info-icon' src='images/info_icon.png'>\
 	    									</div>"; 
 	  }
 	}
@@ -638,6 +608,42 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 		sessionStorage.setItem('saved', "no");
 	}
 }
+
+
+/*
+** Loads count popup on preparation screen.
+*/
+function loadCitizenCountScreen() {
+	var count_screen = $("<div class='preparation-list-background'>\
+												<div id='preparation-count-popup'>\
+													<div class='registration-welcome-text step'>How many people are you preparing for?</div>\
+													<div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Adults</div>\
+																<div id='minus-adults' class='button-count minus'>-</div>\
+																<div id='count-adults' class='button-count value'>0</div>\
+																<div id='plus-adults' class='button-count plus'>+</div>\
+															</div>\
+														</div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Children</div>\
+															<div id='minus-children' class='button-count minus'>-</div>\
+															<div id='count-children' class='button-count value'>0</div>\
+															<div id='plus-children' class='button-count plus'>+</div>\
+														</div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Pets</div>\
+															<div id='minus-pets' class='button-count minus'>-</div>\
+															<div id='count-pets' class='button-count value'>0</div>\
+															<div id='plus-pets' class='button-count plus'>+</div>\
+														</div>\
+														<button id='button-preparation-count'>Save to profile</button>\
+													</div>\
+											</div>");
+  $("body").append(count_screen);
+
+}
+
 
 
 /*

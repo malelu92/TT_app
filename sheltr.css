@@ -202,6 +202,7 @@ input:focus {
     position: relative;
     margin: 0 0 2vh 10vw;
     cursor: pointer;
+    float: left;
     font-size: 22px;
     text-align: left;
     -webkit-user-select: none;
@@ -563,6 +564,12 @@ input:focus {
 	#preparation-image {
 		float: left;
 		width: 45%;
+	}
+
+	.preparation-info-icon {
+		float: right;
+		margin: 0 5vw 0 0;
+		width: 6%;
 	}
 
 .preparation-list-background {
