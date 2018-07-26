@@ -199,9 +199,7 @@ $(document).ready(function() {
 		if(!(sessionStorage.getItem('total_checked_registration'))) {
 			sessionStorage.setItem('total_checked_registration', 0);
 			initializeCardSessionStorage(card_lists, "reg");
-
-
-			sessionStorage.setItem("first_time_in_reg_screen", "yes");
+			loadWelcomeMessage();
 		}
 
 		var total_items = calculateTotalItems(card_lists, "reg");
@@ -212,23 +210,18 @@ $(document).ready(function() {
 			updatePercentageBarCard(card_id, "reg");
 		}
 
-		if(sessionStorage.getItem("first_time_in_reg_screen") == "yes") {
-			sessionStorage.setItem("first_time_in_reg_screen", "no");
-
-
-
-		var reg_message = $("<div class='preparation-list-background'>\
+		/*var reg_message = $("<div class='preparation-list-background'>\
 													<div id='registration-welcome-message'>\
-														<div>Welcome Vanessa</div>\
-														<img src='images/prep_card_1_img.png'>\
-														<div>Step 1: Shelter registration</div>\
-														<div>As a caregiver, it is recommended that you register for a special medical needs shelter\
+														<div id='registration-welcome-title'>Welcome Vanessa!</div>\
+														<img class='registration-welcome-image' src='images/prep_card_1_img.png'>\
+														<div class='registration-welcome-text step'>Step 1: Shelter registration</div>\
+														<div class='registration-welcome-text'>As a caregiver, it is recommended that you register for a special medical needs shelter\
 														on behalf of the person you take care of.</div>\
-														<div>This is important in case of an emergency evacuation.</div>\
-														<div>OK</div>\
+														<div class='registration-welcome-text'>This is important in case of an emergency evacuation.</div>\
+														<div id='registration-ok-button'>OK</div>\
 													</div>\
 												</div>");
-  	$("body").append(reg_message);
+  	$("body").append(reg_message);*/
 
 
 
@@ -286,7 +279,12 @@ $(document).ready(function() {
 			document.getElementById("share-form").style.margin = "12vh 0 0 70vw";
 			document.getElementById("registration-cards-body").style.margin = "8vh 0 10vh 0";
 	  });
-	}
+
+
+
+	  $("#registration-ok-button").click(function(){
+	  	$(".preparation-list-background").remove();
+	  });
 });
 
 
@@ -562,11 +560,31 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 		if(id.split('-')[0] == "reg" & document.getElementById("registration-message") != null){
 			document.getElementById("registration-message").style.zIndex = "1";
 			document.getElementById("registration-message").style.backgroundColor = "#ffffff";
+			document.getElementById("share-form").style.zIndex = "1";
 		}
 	}
 	else {
 		sessionStorage.setItem('saved', "no");
 	}
+}
+
+
+/*
+** Loads welcome message on registration screen.
+*/
+function loadWelcomeMessage() {
+	var reg_message = $("<div class='preparation-list-background'>\
+												<div id='registration-welcome-message'>\
+													<div id='registration-welcome-title'>Welcome Vanessa!</div>\
+													<img class='registration-welcome-image' src='images/prep_card_1_img.png'>\
+													<div class='registration-welcome-text step'>Step 1: Shelter registration</div>\
+													<div class='registration-welcome-text'>As a caregiver, it is recommended that you register for a special medical needs shelter\
+														on behalf of the person you take care of.</div>\
+													<div class='registration-welcome-text'>This is important in case of an emergency evacuation.</div>\
+													<div id='registration-ok-button'>OK</div>\
+												</div>\
+											</div>");
+  $("body").append(reg_message);
 }
 
 

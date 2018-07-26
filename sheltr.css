@@ -578,6 +578,17 @@ input:focus {
 	width: 100%;
 }
 
+#registration-ok-button {
+	color: #2962FF;
+	float: right;
+}
+
+.registration-welcome-image {
+	display: block;
+	margin: 0 auto 0 auto;
+	width: 50%;
+}
+
 
 #registration-welcome-message {
 	background-color: #ffffff;
@@ -585,6 +596,19 @@ input:focus {
 	height: 60vh;
 	margin: 30vh auto 0 auto;
 	width: 80%;
+}
+
+.registration-welcome-text {
+	margin: 0 0 0 10vw;
+}
+
+#registration-welcome-title {
+	color: #2962FF;
+	font-size: 1.1em;
+}
+
+.registration-welcome.step {
+	color: #2962FF;
 }
 
 #share-button {
@@ -596,7 +620,7 @@ input:focus {
 #share-form {
   margin: 33vh 0 0 70vw;
   position: absolute;
-  z-index: 2;
+  /*z-index: 2;*/
 }
 
 
