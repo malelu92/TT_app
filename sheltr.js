@@ -143,6 +143,38 @@ $(document).ready(function() {
 
 		var total_items = calculateTotalItems(card_lists, "prep");
 
+
+			var reg_message = $("<div class='preparation-list-background'>\
+												<div id='preparation-count-popup'>\
+													<div class='registration-welcome-text step'>How many people are you preparing for?</div>\
+													<div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Adults</div>\
+																<div class='button-count minus'>-</div>\
+																<div class='button-count value'>0</div>\
+																<div class='button-count plus'>+</div>\
+															</div>\
+														</div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Children</div>\
+															<div class='button-count minus'>-</div>\
+															<div class='button-count value'>0</div>\
+															<div class='button-count plus'>+</div>\
+														</div>\
+														<div class='button-count-all col-12'>\
+															<div class='preparation-count-popup-text'>Pets</div>\
+															<div class='button-count minus'>-</div>\
+															<div class='button-count value'>0</div>\
+															<div class='button-count plus'>+</div>\
+														</div>\
+														<button id='button-preparation-count'>Save to profile</button>\
+													</div>\
+											</div>");
+  $("body").append(reg_message);
+
+
+
+
 		/* updates cards bar */
 		for(var i=1; i<=card_lists.length; i++) {
 			var card_id = "prep-card-" + i;
@@ -176,6 +208,11 @@ $(document).ready(function() {
 		$("#prep-card-5").click(function(){
 			loadList(this.id, card_messages[4], images[4], card_lists[4], "check", total_items);
 	  });
+
+	  $("#button-preparation-count").click(function(){
+	  	$(".preparation-list-background").remove();
+	  });
+	  
 	}
 
 
@@ -208,23 +245,6 @@ $(document).ready(function() {
 		for(var i=1; i<=card_lists.length; i++) {
 			var card_id = "reg-card-" + i;
 			updatePercentageBarCard(card_id, "reg");
-		}
-
-		/*var reg_message = $("<div class='preparation-list-background'>\
-													<div id='registration-welcome-message'>\
-														<div id='registration-welcome-title'>Welcome Vanessa!</div>\
-														<img class='registration-welcome-image' src='images/prep_card_1_img.png'>\
-														<div class='registration-welcome-text step'>Step 1: Shelter registration</div>\
-														<div class='registration-welcome-text'>As a caregiver, it is recommended that you register for a special medical needs shelter\
-														on behalf of the person you take care of.</div>\
-														<div class='registration-welcome-text'>This is important in case of an emergency evacuation.</div>\
-														<div id='registration-ok-button'>OK</div>\
-													</div>\
-												</div>");
-  	$("body").append(reg_message);*/
-
-
-
 		}
 
 
@@ -285,6 +305,7 @@ $(document).ready(function() {
 	  $("#registration-ok-button").click(function(){
 	  	$(".preparation-list-background").remove();
 	  });
+	}
 });
 
 
