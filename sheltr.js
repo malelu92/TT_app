@@ -443,6 +443,12 @@ function checkedItem(id) {
 }
 
 
+function closeInfoCard() {
+	console.log("info")
+	$(".preparation-info-background").remove();
+	document.querySelector(".card-transform").style.zIndex = 1;
+}
+
 
 /* 
 ** Closes preparation list and updates number of checked items on preparation card and the percentage on preparation bar.
@@ -495,7 +501,7 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 	  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
 	    											<span class='checkmark'></span>\
 	    										</label>\
-	    										<img class='preparation-info-icon' src='images/info_icon.png'>\
+	    										<img id='info-" + i + "-" + card_id + "' class='preparation-info-icon' src='images/info_icon.png' onclick='loadInfo(this.id)'>\
 	    									</div>"; 
 	  }
 	}
@@ -557,6 +563,29 @@ function loadCheckedItem(id) {
 	  document.getElementById(id).checked = false;
 	  return 0;
 	}
+}
+
+function loadInfo(id) {
+	/*var list = $("<div class='background'>");
+  	$("body").append(list);*/
+  	document.querySelector(".card-transform").style.zIndex = 0
+
+  	var info_card = "<div class='preparation-info-background'>\
+												<div id='preparation-info-card'>\
+													<div>Water - 6 gallons</div>\
+													<div id='button-close-info-card' onclick='closeInfoCard()'>X</div>\
+													<div id='preparation-info-container'>\
+														<img src='images/water_bottle.png' id='preparation-info-image'>\
+														<div id='preparation-info-math'>\
+															<div>  2 adults</div>\
+															<div>x 1 gallon</div>\
+															<div>x 3 days</div>\
+															<div>  6 gallons</div>\
+														</div>\
+													</div>\
+												</div>\
+											</div>";
+		$("body").append(info_card);
 }
 
 
