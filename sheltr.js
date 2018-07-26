@@ -212,18 +212,28 @@ $(document).ready(function() {
 			loadList(this.id, card_messages[4], images[4], card_lists[4], "check", total_items);
 	  });
 
+		$("#minus-adults").click(function(){
+			updateCitizen("adults", "subtract");
+	  });
 
+		$("#minus-children").click(function(){
+			updateCitizen("children", "subtract");
+	  });
+
+		$("#minus-pets").click(function(){
+			updateCitizen("pets", "subtract");
+	  });
 
 		$("#plus-adults").click(function(){
-			addCitizen("adults");
+			updateCitizen("adults", "add");
 	  });
 
 		$("#plus-children").click(function(){
-			addCitizen("children");
+			updateCitizen("children", "add");
 	  });
 
 		$("#plus-pets").click(function(){
-			addCitizen("pets");
+			updateCitizen("pets", "add");
 	  });
 
 
@@ -332,10 +342,18 @@ $(document).ready(function() {
 
 
 
-function addCitizen(citizen_type) {
+function updateCitizen(citizen_type, math) {
 	session = "total_" + citizen_type;
 	id = "count-" + citizen_type;
-	count = parseInt(sessionStorage.getItem(session)) + 1;
+	if(math == "add") {
+		count = parseInt(sessionStorage.getItem(session)) + 1;
+	}
+	else {
+		count = parseInt(sessionStorage.getItem(session)) - 1;
+		if (count < 0) {
+			count = 0;
+		}
+	}
 	document.getElementById(id).innerHTML = count;
 	sessionStorage.setItem(session, count);
 }
