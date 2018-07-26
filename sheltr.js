@@ -138,6 +138,9 @@ $(document).ready(function() {
 
 		if(!(sessionStorage.getItem('total_checked'))) {
 			sessionStorage.setItem('total_checked', 0);
+			sessionStorage.setItem('total_adults', 0);
+			sessionStorage.setItem('total_children', 0);
+			sessionStorage.setItem('total_pets', 0);
 			initializeCardSessionStorage(card_lists, "prep");
 		}
 
@@ -150,22 +153,22 @@ $(document).ready(function() {
 													<div>\
 														<div class='button-count-all col-12'>\
 															<div class='preparation-count-popup-text'>Adults</div>\
-																<div class='button-count minus'>-</div>\
-																<div class='button-count value'>0</div>\
-																<div class='button-count plus'>+</div>\
+																<div id='minus-adults' class='button-count minus'>-</div>\
+																<div id='count-adults' class='button-count value'>0</div>\
+																<div id='plus-adults' class='button-count plus'>+</div>\
 															</div>\
 														</div>\
 														<div class='button-count-all col-12'>\
 															<div class='preparation-count-popup-text'>Children</div>\
-															<div class='button-count minus'>-</div>\
-															<div class='button-count value'>0</div>\
-															<div class='button-count plus'>+</div>\
+															<div id='minus-children' class='button-count minus'>-</div>\
+															<div id='count-children' class='button-count value'>0</div>\
+															<div id='plus-children' class='button-count plus'>+</div>\
 														</div>\
 														<div class='button-count-all col-12'>\
 															<div class='preparation-count-popup-text'>Pets</div>\
-															<div class='button-count minus'>-</div>\
-															<div class='button-count value'>0</div>\
-															<div class='button-count plus'>+</div>\
+															<div id='minus-pets' class='button-count minus'>-</div>\
+															<div id='count-pets' class='button-count value'>0</div>\
+															<div id='plus-pets' class='button-count plus'>+</div>\
 														</div>\
 														<button id='button-preparation-count'>Save to profile</button>\
 													</div>\
@@ -208,6 +211,23 @@ $(document).ready(function() {
 		$("#prep-card-5").click(function(){
 			loadList(this.id, card_messages[4], images[4], card_lists[4], "check", total_items);
 	  });
+
+
+
+		$("#plus-adults").click(function(){
+			addCitizen("adults");
+	  });
+
+		$("#plus-children").click(function(){
+			addCitizen("children");
+	  });
+
+		$("#plus-pets").click(function(){
+			addCitizen("pets");
+	  });
+
+
+
 
 	  $("#button-preparation-count").click(function(){
 	  	$(".preparation-list-background").remove();
@@ -307,6 +327,18 @@ $(document).ready(function() {
 	  });
 	}
 });
+
+
+
+
+
+function addCitizen(citizen_type) {
+	session = "total_" + citizen_type;
+	id = "count-" + citizen_type;
+	count = parseInt(sessionStorage.getItem(session)) + 1;
+	document.getElementById(id).innerHTML = count;
+	sessionStorage.setItem(session, count);
+}
 
 
 
