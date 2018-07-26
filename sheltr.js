@@ -6,8 +6,6 @@
 
 
 $(document).ready(function() {
-
-	console.log("all")
 	sessionStorage.setItem('card_expanded', "no");
 	sessionStorage.setItem('saved', "no");
 
@@ -222,7 +220,7 @@ $(document).ready(function() {
 			["First Name", "Last name", "Street Address", "Address Line 2", "P.O. Box", "City, State", "Phone Number"],
 			["Blind/Low Vision", "Deaf/Hard of hearing", "Contagious Disease", "Frail/Elderly", "Speech Impediment", "Physical Disability",
 			"Bedridden", "Mentally/Memory Impaired", "Dementia/Alzheimer's", "Dialysis", "Requires contants skilled nursing", "Assistance with medication",
-			"Assistance with insulin", "Requires refrigerated medication", "Medications", "Austism", "Sepcial dietary needs", "Seizures", "Other"],
+			"Assistance with insulin", "Requires refrigerated medication", "Medications", "Austism", "COPD", "Seizures", "Other"],
 			["Ventilator", "Suction machine", "Catheters", "Feeding tube", "Oxygen concentrator", "Other"],
 			["Items", "Items", "Items", "Items", "Items", "Items", "Items"],
 			["Items"],
@@ -401,14 +399,12 @@ function calculateTotalItems(card_lists, type) {
 */
 function checkedItem(id) {
 
-	console.log("kakak")
-	console.log(id)
 
 	var item = id.split('-')[0] + "-";
 	var card = id.split(item)[1] + "-count";
 	var card_type = id.split('-')[1];
 	console.log(item)
-	console.log(card)
+	console.log(id)
 	console.log(card_type)
 
 	if(card_type == "prep") {
@@ -487,8 +483,8 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
     							<div id="card-message">' + message + '</div>\
     					</div>\
     					<div id=list-items>\
-    						<label class="list-container">';
-  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button></label>\
+    						<div class="list-container">';
+  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button></div>\
     								</div></div>';
   var middle = "";
 
@@ -501,8 +497,8 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 	  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
 	    											<span class='checkmark'></span>\
 	    										</label>\
-	    										<img id='info-" + i + "-" + card_id + "' class='preparation-info-icon' src='images/info_icon.png' onclick='loadInfo(this.id)'>\
-	    									</div>"; 
+	    									</div>\
+	    									<img id='info-" + i + "-" + card_id + "' class='preparation-info-icon' src='images/info_icon.png' onclick='loadInfo(this.id)'>"; 
 	  }
 	}
 	/* if textboxes */
@@ -568,6 +564,8 @@ function loadCheckedItem(id) {
 function loadInfo(id) {
 	/*var list = $("<div class='background'>");
   	$("body").append(list);*/
+
+  	/*checkedItem("item0-prep-card-3")*/
   	document.querySelector(".card-transform").style.zIndex = 0
 
   	var info_card = "<div class='preparation-info-background'>\

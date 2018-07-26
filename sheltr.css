@@ -208,6 +208,10 @@ input:focus {
     z-index: 1;
 }
 
+.checkbox-line {
+	width: 80%;
+}
+
 .checkbox-container {
     display: block;
     position: relative;
@@ -282,7 +286,6 @@ input:focus {
 .checkbox-text {
 	font-size: .8em;
 	margin: 0 0 0 10vw;
-	width: 80%;
 }
 
 
@@ -476,7 +479,6 @@ input:focus {
     transform: scale(3); 
   }
 
-
   #login-dropdown-arrow {
   	float: right;
   	padding: 1.3vh 4vw 1.3vh 0;
@@ -648,6 +650,10 @@ input:focus {
 
 #prep-list-1-close {
 	cursor: pointer;
+}
+
+#reg-card-7 {
+	display: none;
 }
 
 #registration-cards-body {
