@@ -342,6 +342,19 @@ function buttonSave(card_id, total_items) {
 		sessionStorage.setItem('saved', "yes");
 		var screen = card_id.split('-')[0];
 
+
+		/* for purposes of demonstration. loads another card if COPD option checked */
+		var copd = false;
+		if(sessionStorage.getItem("item16-reg-card-3") == "true") {
+			/*document.getElementById("reg-card-7").style.display = "block"*/
+			copd = true;
+		}
+		/*else {
+			document.getElementById("reg-card-7").style.display = "none"
+		}*/
+
+
+
 		if (screen == "prep") {
 			updatePercentageBarCard(card_id, "prep");
 			updatePercentageBar(total_items);
@@ -367,6 +380,29 @@ function buttonSave(card_id, total_items) {
       $(card_string).removeClass('card-retransform');
       $(".preparation-list-background").remove();
     }, 300);
+
+
+
+		/* adds oxygen card */
+		setTimeout(function(){
+      if (screen == "reg") {
+	      if(copd){
+	      	document.getElementById("reg-card-7").style.display = "block";
+	      	$("#reg-card-7").fadeTo(1000, 1);
+	      	document.getElementById("reg-card-7").style.boxShadow = "0 0 5px 0 #7867EA, 0 5px 12px 0 #7867EA";
+	      }
+	      else {
+	      	document.getElementById("reg-card-7").style.display = "none"
+	      }
+    	}
+    }, 1300);
+		setTimeout(function(){
+			console.log("entrou")
+		    document.getElementById("reg-card-7").style.boxShadow = "0 0 2px 0 rgba(0,0,0,0.12), 0 2px 6px 0 rgba(0,0,0,0.66)";
+		}, 2500);
+
+
+
 
 	}
 }
@@ -562,10 +598,6 @@ function loadCheckedItem(id) {
 }
 
 function loadInfo(id) {
-	/*var list = $("<div class='background'>");
-  	$("body").append(list);*/
-
-  	/*checkedItem("item0-prep-card-3")*/
   	document.querySelector(".card-transform").style.zIndex = 0
 
   	var info_card = "<div class='preparation-info-background'>\
