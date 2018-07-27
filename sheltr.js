@@ -103,6 +103,13 @@ $(document).ready(function() {
 	  	}
 	  });*/
 
+
+	  /* trick to show iphone screen*/
+	  $("#status-bar").click(function(){
+	  	var iphone = "<img id='iphone-screen' src='images/iphone_screen.png'>";
+	  	$("body").append(iphone);
+	  });
+
 	}
 
 
