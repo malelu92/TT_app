@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 	  /* trick to show iphone screen*/
 	  $("#status-bar").click(function(){
-	  	var iphone = "<img id='iphone-screen' src='images/iphone_screen.png'>";
+	  	var iphone = "<img id='iphone-screen' src='images/iphone_screen.png' onclick='updateEvacuationScreen()'>";
 	  	$("body").append(iphone);
 	  });
 
@@ -929,6 +929,12 @@ function updatePercentageBar(total_items) {
 			if (percentage > 50) {
 				document.getElementById("preparation-image").src = "images/prep_two.png";
 			}	
+}
+
+
+
+function updateEvacuationScreen() {
+	$("#iphone-screen").remove();
 }
 
 
