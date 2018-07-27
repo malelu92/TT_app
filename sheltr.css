@@ -9,7 +9,7 @@ button {
 	border: 2px solid #2962FF;
 	color: #7867EA;
 	float: right;
-	font-size: 1.1em;
+	font-size: 1em;
 	margin: 5vh 15vw 0 0;
 	padding: .5vh 5vw .5vh 5vw;
 }
@@ -105,6 +105,13 @@ input:focus {
 		color:#000000;
 	}
 
+	.button-go {
+		background-color: #2962FF;
+		color:#ffffff;
+		margin: 0 0 0 0;
+		padding: 0 1vw 0 1vw;
+	}
+
 	.button-save {
 	background-color: #7867EA;
 	color: #ffffff;
@@ -113,7 +120,18 @@ input:focus {
 }
 
 .button-evacuation {
-	margin: 2vh 15vw 0 0;
+	float: left;
+	margin: .5vh 0 .5vh 5vw;
+	width: 87%;
+}
+
+.button-evacuation.emergency-call {
+	margin: .5vh 0 1.5vh 5vw;
+	}
+
+.button-evacuation.stay-safe {
+	background-color: #2962FF;
+	color:#ffffff;
 }
 
 	#button-create-account {
@@ -325,7 +343,7 @@ input:focus {
 	.evacuation-plan-advice {
 		color: #5a3eff;
 		font-size: .6em;
-		margin: 1vh 0 1vh 5vw;
+		margin: 2.5vh 0 1vh 5vw;
 		text-transform: uppercase;
 	}
 
@@ -345,7 +363,7 @@ input:focus {
 
 	.evacuation-plan-building {
 		color: #232752;
-		font-size: 1.2em;
+		font-size: 1em;
 		margin: 1vh 0 1vh 5vw;
 	}
 
