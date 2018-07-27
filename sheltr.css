@@ -6,7 +6,7 @@ a {
 
 button {
 	background-color: #ffffff;
-	border: 2px solid #7867EA;
+	border: 2px solid #2962FF;
 	color: #7867EA;
 	float: right;
 	font-size: 1.1em;
@@ -110,6 +110,10 @@ input:focus {
 	color: #ffffff;
 	float: left;
 	margin: 5vh 0 0 15vw;
+}
+
+.button-evacuation {
+	margin: 2vh 15vw 0 0;
 }
 
 	#button-create-account {
@@ -485,6 +489,11 @@ input:focus {
   	position: absolute;
   	top: 0;
   	z-index: 1;
+  }
+
+  .link-evacuation {
+  	color: #2962FF;
+  	text-decoration: underline;
   }
 
   #login-dropdown-arrow {
