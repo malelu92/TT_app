@@ -475,6 +475,10 @@ input:focus {
 
 	}
 
+	.icon-evacuation {
+		width: 5%;
+	}
+
 	input[type=checkbox] {
     -ms-transform: scale(3); 
     -moz-transform: scale(3); 
