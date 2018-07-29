@@ -749,34 +749,37 @@ input:focus {
 #registration-ok-button {
 	color: #2962FF;
 	float: right;
+	padding: 3vh 10vw 0 0;
 }
 
 .registration-welcome-image {
 	display: block;
 	margin: 0 auto 0 auto;
-	width: 50%;
+	width: 45%;
 }
 
 
 #registration-welcome-message {
 	background-color: #ffffff;
-	border-radius: 3%;
-	height: 60vh;
+	border-radius: 4px;
+	height: 55vh;
 	margin: 30vh auto 0 auto;
-	width: 80%;
+	width: 94.5%;
 }
 
 .registration-welcome-text {
-	padding: 3vh 0 0 3vw;
+	padding: 2vh 7vw 0 7vw;
 }
 
 #registration-welcome-title {
 	color: #2962FF;
-	font-size: 1.1em;
+	font-size: 1.2em;
+	padding: 3vh 0 0 7vw;
 }
 
-.registration-welcome.step {
+.registration-welcome-text.step {
 	color: #2962FF;
+	padding: 0 7vw 0 7vw;
 }
 
 #share-button {
