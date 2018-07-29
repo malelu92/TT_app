@@ -201,7 +201,7 @@ input:focus {
 		float:left;
 		font-size: .9em;
 		text-align: left;
-		width: 60%;
+		width: 56%;
 	}
 
 	.card-sub-item {
@@ -212,6 +212,9 @@ input:focus {
 
 	.card-text {
 		padding: 3vh 5vw 5vh 5vw;
+        /*want the text to transform to the properties below*/
+/*        font-size:1.25em;*/
+/*        text-align: left;*/
 	}
 
 	#card-top-container {
@@ -221,19 +224,14 @@ input:focus {
 
 	.card-transform {
 		background: #ffffff;
-		/*height: 90vh;*/
 		margin: 5vh 0 0 5vw;
-    width: 83%;
-    /*position: fixed;*/
+    width: 94.5%;
     z-index: 1;
 }
 
 	.card-retransform {
 		background: #ffffff;
 		height: 100px;
-		/*margin:	2.5vw 0 2.5vw 5vw;
-    width: 40%;
-    position: fixed;*/
     z-index: 1;
 }
 
@@ -588,14 +586,15 @@ input:focus {
 	}
 
 	#preparation-bar-inner {
-	  background-color: #5E39FF;
+	  background-color: #2962FF;
 	  border-radius: 25px;
 	  height: 1.5vh;
 	  width: 0%;
 	}
 
 #preparation-bar-percentage {
-	font-size: 1.1em;
+	font-size: 1.125em;
+	font-weight: 450;
 	margin: 1vh 0 0 0;
 }
 
@@ -626,6 +625,7 @@ input:focus {
 
 	#preparation-image {
 		float: left;
+		margin: 2% 0 0 0;
 		width: 45%;
 	}
 
@@ -695,7 +695,7 @@ input:focus {
 #preparation-score {
 	float: left;
 	margin: 10vh 0 0 0;
-	width: 50%;
+	width: 53%;
 }
 
 #prep-list-1-close {
@@ -714,14 +714,14 @@ input:focus {
 .registration-florida-health {
 	float: left;
 	height: 15vh;
-	padding: 1vh 0 9vh 3vw;
+	padding: 1vh 0 4vh 8vw;
 }
 
 #registration-guarantee {
 	float: left;
 	padding: 1vh 1vw 3vh 3vw;
-	width:60%;
-	padding: 1vh 0 8vh 3vw;
+	width:50%;
+	padding: 1vh 0 2vh 4vw;
 }
 
 
@@ -790,7 +790,7 @@ input:focus {
 
 
 #toggle {
-		background-color: #232752;
+		background-color: #041735;
 		border-radius: 50px;
 	  height: 5%;
 	  margin: 5% 0 0 17%;
@@ -810,8 +810,8 @@ input:focus {
 	color: #ffffff;
 	display: block;
 	float: left;
-	font-size: .8em;
-	margin: 2% 10% 0 5%;
+	font-size: 1em;
+	margin: 2.5% 10% 0 5%;
 	position: relative;
 	z-index: 1;
 }
@@ -826,8 +826,9 @@ input:focus {
 }
 
 .subtitle {
-	font-size: 1.1em;
-	margin: 6vh 0 0 8.5vw;
+	font-size: 1em;
+	font-weight: 600;
+	margin: 6vh 0 0 3.5vw;
 }
 
 #swipe-area {
