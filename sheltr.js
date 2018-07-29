@@ -807,12 +807,12 @@ function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 
 		    /* plan B card on screen */
 		    if (pos == -swipe_pixels) {
-		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    	document.getElementById("map-image").src = "images/planB_background.png";
 		    }
 
 		    /* plan C card on screen */
 		    if (pos == -(2*swipe_pixels)) {
-		    	document.getElementById("map-image").src = "images/planC_background.jpg";
+		    	document.getElementById("map-image").src = "images/planC_background.png";
 		    }
 
 		    return;
@@ -856,7 +856,7 @@ function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
 
 		    /* plan B card on screen */
 		    if (pos == -swipe_pixels) {
-		    	document.getElementById("map-image").src = "images/planB_background.jpg";
+		    	document.getElementById("map-image").src = "images/planB_background.png";
 		    }
 		    return;
 		  }
