@@ -7,6 +7,7 @@ a {
 button {
 	background-color: #ffffff;
 	border: 3px solid #2962FF;
+	border-radius: 3px;
 	color: #2962FF;
 	float: right;
 	font-size: .875em;
@@ -93,7 +94,7 @@ input:focus {
 		height: 4vh;
 		margin: 2vh 0 2vh 0;
 		text-align: center;
-    width: 18%;
+    width: 25%;
 	}
 
 	.button-count.minus {
@@ -111,6 +112,10 @@ input:focus {
 		color:#000000;
 	}
 
+	.button-count-combined {
+		float: right;
+	}
+
 	.button-go {
 		background-color: #2962FF;
 		color:#ffffff;
@@ -120,7 +125,6 @@ input:focus {
 
 	.button-save {
 		background-color: #2962FF;
-    border-radius: 3px;
 		color: #ffffff;
 		float: left;
 		margin: 5vh 0 0 15vw;
@@ -154,7 +158,10 @@ input:focus {
 	#button-preparation-count {
 		background-color: #2962FF;
 		color: #ffffff;
+		font-weight: 250;
+		margin: 2vh 7vw 0 0;
 		text-transform: uppercase;
+		width: 85%
 	}
 
 
@@ -608,15 +615,16 @@ input:focus {
 
 	#preparation-count-popup {
 		background-color: #ffffff;
-		border-radius: 3%;
-		height: 60vh;
+		border-radius: 4px;
+		font-size: 1.15em;
+		height: 42vh;
 		margin: 30vh auto 0 auto;
 		width: 80%;
 	}
 
 	.preparation-count-popup-text {
 		float: left;
-		margin: 2.5vh 8vw 0 0;
+		margin: 2.5vh 0 0 0;
 	}
 
 	#preparation-header {
@@ -759,7 +767,7 @@ input:focus {
 }
 
 .registration-welcome-text {
-	margin: 0 0 0 10vw;
+	padding: 3vh 0 0 3vw;
 }
 
 #registration-welcome-title {
@@ -778,7 +786,7 @@ input:focus {
 
 
 #share-form {
-  margin: 33vh 0 0 70vw;
+  margin: 28vh 0 0 70vw;
   position: absolute;
   /*z-index: 2;*/
 }

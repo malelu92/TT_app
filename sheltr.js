@@ -685,23 +685,29 @@ function loadCitizenCountScreen() {
 													<div class='registration-welcome-text step'>How many people are you preparing for?</div>\
 													<div>\
 														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Adults</div>\
+															<div class='preparation-count-popup-text col-3'>Adults</div>\
+															<div class='button-count-combined offset-1 col-8'>\
 																<div id='minus-adults' class='button-count minus'>-</div>\
 																<div id='count-adults' class='button-count value'>0</div>\
 																<div id='plus-adults' class='button-count plus'>+</div>\
 															</div>\
+															</div>\
 														</div>\
 														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Children</div>\
-															<div id='minus-children' class='button-count minus'>-</div>\
-															<div id='count-children' class='button-count value'>0</div>\
-															<div id='plus-children' class='button-count plus'>+</div>\
+															<div class='preparation-count-popup-text col-3'>Children</div>\
+															<div class='button-count-combined offset-1 col-8'>\
+																<div id='minus-children' class='button-count minus'>-</div>\
+																<div id='count-children' class='button-count value'>0</div>\
+																<div id='plus-children' class='button-count plus'>+</div>\
+															</div>\
 														</div>\
 														<div class='button-count-all col-12'>\
-															<div class='preparation-count-popup-text'>Pets</div>\
-															<div id='minus-pets' class='button-count minus'>-</div>\
-															<div id='count-pets' class='button-count value'>0</div>\
-															<div id='plus-pets' class='button-count plus'>+</div>\
+															<div class='preparation-count-popup-text col-3'>Pets</div>\
+															<div class='button-count-combined offset-1 col-8'>\
+																<div id='minus-pets' class='button-count minus'>-</div>\
+																<div id='count-pets' class='button-count value'>0</div>\
+																<div id='plus-pets' class='button-count plus'>+</div>\
+															</div>\
 														</div>\
 														<button id='button-preparation-count'>Save to profile</button>\
 													</div>\
@@ -926,7 +932,7 @@ function updatePercentageBar(total_items) {
 			document.getElementById("preparation-bar-percentage").innerHTML = "You are " + parseInt(percentage) +"% prepared";
 			document.getElementById("preparation-bar-inner").style.width = (String(parseInt(percentage))+"%");
 
-			if (percentage > 50) {
+			if (percentage > 20) {
 				document.getElementById("preparation-image").src = "images/prep_two.png";
 			}	
 }
