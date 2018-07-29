@@ -6,8 +6,8 @@ a {
 
 button {
 	background-color: #ffffff;
-	border: 3px solid #2962FF;
-	border-radius: 3px;
+	border: 2px solid #2962FF;
+	border-radius: 2px;
 	color: #2962FF;
 	float: right;
 	font-size: .875em;
@@ -15,6 +15,7 @@ button {
   font-weight: 500;
 	margin: 5vh 15vw 0 0;
 	padding: .5vh 5vw .5vh 5vw;
+	text-transform: uppercase;
 }
 
 html, body, h1, h2, h3, h4, p, div, ul,li,a {
@@ -119,8 +120,10 @@ input:focus {
 	.button-go {
 		background-color: #2962FF;
 		color:#ffffff;
-		margin: 0 0 0 0;
-		padding: 0 1vw 0 1vw;
+		float: left;
+		margin: 1vh 0 0 0;
+		padding: .5vh 2vw .5vh 2vw;
+    font-weight: 300;
 	}
 
 	.button-save {
@@ -132,6 +135,8 @@ input:focus {
 
 .button-evacuation {
 	float: left;
+	font-size: .8em;
+	font-weight: 300;
 	margin: .5vh 0 .5vh 5vw;
 	width: 87%;
 }
@@ -160,7 +165,6 @@ input:focus {
 		color: #ffffff;
 		font-weight: 250;
 		margin: 2vh 7vw 0 0;
-		text-transform: uppercase;
 		width: 85%
 	}
 
@@ -353,10 +357,14 @@ input:focus {
 
 
 	.evacuation-plan-advice {
-		color: #5a3eff;
+		color: #2962FF;
 		font-size: .6em;
 		margin: 2.5vh 0 1vh 5vw;
 		text-transform: uppercase;
+	}
+
+	.evacuation-plan-advice.not-recommended {
+		color: #FF004D;
 	}
 
 	.evacuation-plan {
@@ -385,16 +393,22 @@ input:focus {
 		margin: 1vh 0 1vh 5vw;
 	}
 
+	.evacuation-plan-item.distance{
+		float: left;
+		margin: 2vh 0 2vh 5vw;
+	}
+
 	.evacuation-plan-risk {
 		background-color: #FF004C;
 		color: #ffffff;
 	}
 
 	.evacuation-plan-risk-text {
-		color: #ffffff;
-		font-size: .8em;
-		margin: 1vh 0 1vh 10vw;
-		padding: 1.2vh 0 1.2vh 0;
+    color: #ffffff;
+    font-size: .95em;
+    font-weight: 300;
+    margin: 1vh 0 1vh 13vw;
+    padding: 1.2vh 0 1.2vh 0;
 	}
 
 	#evacuation-second-view {
@@ -510,7 +524,28 @@ input:focus {
 	}
 
 	.icon-evacuation {
-		width: 5%;
+		margin: 0 1vw 0 0;
+		width: 10%;
+	}
+
+	.icon-evacuation.generator {
+		width: 2.5%;
+	}
+
+	.icon-evacuation.nurse {
+		margin: 0 1vw 0 3vw;
+		width: 4%;
+	}
+
+	.icon-evacuation.pet {
+		margin: 0 1vw 0 3vw;
+		width: 4%;
+	}
+
+	.icon-no-electricity {
+		float: left;
+		margin: .8vh 0 0 4.5vw;
+    width: 7%;
 	}
 
 	input[type=checkbox] {
