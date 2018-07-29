@@ -385,6 +385,10 @@ input:focus {
 		padding: 1.2vh 0 1.2vh 0;
 	}
 
+	#evacuation-second-view {
+		visibility: hidden;
+	}
+
 
 .evac-plan-transform-active {
     -webkit-animation: diagonal .5s;
