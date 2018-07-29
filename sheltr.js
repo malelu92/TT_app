@@ -948,26 +948,31 @@ function updateEvacuationScreen() {
 
 	/*var div_plan_a = document.getElementById('plan-1-card');*/
 	plan_a.innerHTML += '<div class="evacuation-plan-advice">Next best option</div>\
-	  											<div class="evacuation-plan-building">Foothill Highschool</div>\
-	  											<div class="evacuation-plan-item">\
-	  												<a class="link-evacuation">Zone C</a> - East Tampa\
-	  											</div>\
-	  											<div class="evacuation-plan-item">\
-	  												<img class="icon-evacuation" src="images/icon_car.png">25 mins - 12 miles\
-	  												<button class="button-go">Go</button>\
-	  											</div>\
-	  											<div class="evacuation-plan-item">\
-	  												<img class="icon-evacuation" src="images/icon_generator.png">Generator\
-	  												<img class="icon-evacuation" src="images/icon_nurse.png">Nurse\
-	  												<img class="icon-evacuation" src="images/icon_pet.png">Pet Friendly\
-	  											</div>';
+	  									<div class="evacuation-plan-building">Foothill Highschool</div>\
+	  									<div class="evacuation-plan-item"><a class="link-evacuation">Zone C</a> - East Tampa</div>\
+	  									<div class="col-12">\
+		  									<div class="evacuation-plan-item distance">\
+		  										<img class="icon-evacuation" src="images/icon_car.png">\
+		  										25 mins - 12 miles\
+		  									</div>\
+		  									<button class="button-go">Go</button>\
+	  									</div>\
+	  									<div class="evacuation-plan-item">\
+	  										<img class="icon-evacuation generator" src="images/icon_generator.png">Generator\
+	  										<img class="icon-evacuation nurse" src="images/icon_nurse.png">Nurse\
+	  										<img class="icon-evacuation pet" src="images/icon_pet.png">Pet Friendly\
+	  									</div>';
 
 
 	/* update plan B */
 	var plan_b = document.getElementById('plan-2-card');
 	while ( plan_b.firstChild ) plan_b.removeChild(plan_b.firstChild );
 
-	plan_b.innerHTML += '<div class="evacuation-plan-advice">Best plan for Sue</div>\
+	plan_b.innerHTML += '<div class="evacuation-plan-advice not-recommended">Not recommended</div>\
+	  									<div class="evacuation-plan-risk">\
+	  										<img class="icon-no-electricity" src="images/no_electricity.png">\
+	  										<div class="evacuation-plan-risk-text">Risk of losing electricity</div>\
+	  									</div>\
 	  									<div class="evacuation-plan-building">Shelter-in-Place</div>\
 	  									<div class="evacuation-plan-item">\
 	  										<a class="link-evacuation">Zone A</a> - Ybor City\
