@@ -428,7 +428,7 @@ function buttonSave(card_id, total_items) {
 	      if(copd){
 	      	document.getElementById("reg-card-7").style.display = "block";
 	      	$("#reg-card-7").fadeTo(1000, 1);
-	      	document.getElementById("reg-card-7").style.boxShadow = "0 0 5px 0 #7867EA, 0 5px 12px 0 #7867EA";
+	      	document.getElementById("reg-card-7").style.boxShadow = "0 0 5px 0 #2962FF, 0 5px 12px 0 #2962FF";
 	      }
 	      else {
 	      	document.getElementById("reg-card-7").style.display = "none"
@@ -582,7 +582,7 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 
 
 
-  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button></div>\
+  var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button class="button-clear" id="clear">clear</button></div>\
     								</div></div>';
   var middle = "";
 

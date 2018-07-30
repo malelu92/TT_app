@@ -71,6 +71,7 @@ li {
 	  bottom:0;
 	  position: fixed;
 	  left:0;
+	  width: 100%;
 	}
 
 	.bottom-nav-bar-item {
@@ -157,8 +158,12 @@ li {
 		background-color: #2962FF;
 		color: #ffffff;
 		float: left;
-		margin: 5vh 0 0 15vw;
+		margin: 5vh 0 0 22vw;
 }
+
+	.button-clear {
+		margin: 5vh 22vw 0 0;
+	}
 
 .button-evacuation {
 	float: left;
@@ -410,7 +415,8 @@ li {
 
 	.evacuation-plan-advice {
 		color: #2962FF;
-		font-size: .6em;
+		font-size: .75em;
+		font-weight: 600;
 		margin: 2.5vh 0 1vh 5vw;
 		text-transform: uppercase;
 	}
@@ -449,9 +455,10 @@ li {
 	}
 
 	.evacuation-plan-building {
-		color: #232752;
-		font-size: 1em;
-		margin: 1vh 0 1vh 5vw;
+        color: #232752;
+        font-size: 1.4em;
+        font-weight: 400;
+        margin: 1.5vh 0 1vh 5vw;
 	}
 
 	.evacuation-plan-item{
@@ -725,7 +732,7 @@ li {
 		background-color: #ffffff;
 		border-radius: 4px;
 		font-size: 1.15em;
-		height: 47vh;
+		height: 50vh;
 		margin: 30vh auto 0 auto;
 		width: 80%;
 	}
@@ -928,12 +935,17 @@ li {
 	width: 100%;
 }
 
+#status-bar-evac {
+	position: absolute;
+	width: 100%;
+}
+
 
 #toggle {
 		background-color: #041735;
 		border-radius: 50px;
 	  height: 5%;
-	  margin: 5% 0 0 17%;
+	  margin: 15% 0 0 17%;
 	  position: absolute;
 	  width: 60%;
 }
@@ -1092,7 +1104,7 @@ li {
   87% { -webkit-transform: translate(-500.8px, 61.5px) ; }
   92% { -webkit-transform: translate(-530.9px, 47.0px) ; }
   97% { -webkit-transform: translate(-550.5px, 29.0px) ; }
-  100% { -webkit-transform: translate(-160.2vw, 3.3vh) ; }
+  100% { -webkit-transform: translate(-160.2vw, 30.3vh) ; }
 }
 
 
