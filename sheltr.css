@@ -418,8 +418,8 @@ input:focus {
 		display: block;
     margin: 35vh auto 32vh auto;
 	  position: absolute;
-	  /*width: 80%;*/
-	  width: 75%;
+	  width: 80%;
+	  /*width: 75%;*/
 	  z-index: 1;
 }
 
@@ -1077,7 +1077,7 @@ input:focus {
   87% { -webkit-transform: translate(-500.8px, 61.5px) ; }
   92% { -webkit-transform: translate(-530.9px, 47.0px) ; }
   97% { -webkit-transform: translate(-550.5px, 29.0px) ; }
-  100% { -webkit-transform: translate(-156.2vw, 3.3vh) ; }
+  100% { -webkit-transform: translate(-160.2vw, 3.3vh) ; }
 }
 
 
