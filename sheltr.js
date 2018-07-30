@@ -909,7 +909,12 @@ function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
 
 		    /* plan A card on screen */
 		    if (pos == 0) {
-		    	document.getElementById("map-image").src = "images/planA_background.png";
+		    	if(sessionStorage.getItem('second_evac_view')) {
+		    		document.getElementById("map-image").src = "images/planB_background.png";
+		    	}
+		    	else {
+		    		document.getElementById("map-image").src = "images/planA_background.png";
+		    	}
 		    }
 
 		    /* plan B card on screen */
