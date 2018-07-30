@@ -132,7 +132,7 @@ $(document).ready(function() {
 												<div id='preparation-count-popup'>\
 													<div id='evacuation-popup-title'>don't forget to</div>\
 													<div class='col-12'>\
-														<button>Call Maria</button>\
+														<button id='button-call-maria'>Call Maria</button>\
 													</div>\
 													<ol>\
 													  <li>Prescription medicines</li>\
