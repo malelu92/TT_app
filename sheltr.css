@@ -43,7 +43,8 @@ li {
 }
 
 .text-box {
-	border-width: 0 0 3px 0;
+	border-width: 0 0 1px 0;
+	border-color: #232752;
 	height: 3vh;
 	width: 80%;
 }

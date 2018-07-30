@@ -437,7 +437,7 @@ function buttonSave(card_id, total_items) {
     }, 1300);
 		setTimeout(function(){
 			if (screen == "reg") {
-		    document.getElementById("reg-card-7").style.boxShadow = "0 0 2px 0 rgba(0,0,0,0.12), 0 2px 6px 0 rgba(0,0,0,0.66)";
+		    document.getElementById("reg-card-7").style.boxShadow = "0 0 2px 0 rgba(0,49,107,0.33), 0 2px 6px 0 rgba(0,49,107,0.33)";
 		  }
 		}, 2500);
 
