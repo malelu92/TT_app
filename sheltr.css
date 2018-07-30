@@ -11,7 +11,7 @@ button {
 	color: #2962FF;
 	float: right;
 	font-size: .875em;
-    /*font-family:San Francisco Text;*/
+  font-family: San Francisco Text, Helvetica, sans-serif;
   font-weight: 500;
 	margin: 5vh 15vw 0 0;
 	padding: .5vh 5vw .5vh 5vw;
@@ -136,6 +136,7 @@ li {
 
 	.button-count-combined {
 		float: right;
+		line-height: 4vh;
 	}
 
 	#button-get-directions {
@@ -196,8 +197,8 @@ li {
 	#button-preparation-count {
 		background-color: #2962FF;
 		color: #ffffff;
-		font-weight: 250;
 		margin: 2vh 6vw 0 0;
+		padding: 1.5vh 0 1vh 0;
 		width: 85%
 	}
 
@@ -731,15 +732,15 @@ li {
 	#preparation-count-popup {
 		background-color: #ffffff;
 		border-radius: 4px;
-		font-size: 1.15em;
-		height: 50vh;
+		font-size: 1.1em;
+		height: 47vh;
 		margin: 30vh auto 0 auto;
 		width: 80%;
 	}
 
 	.preparation-count-popup-text {
 		float: left;
-		margin: 2.5vh 0 0 0;
+		margin: 2.5vh 10vw 0 2vw;
 	}
 
 	#preparation-header {
@@ -839,7 +840,8 @@ li {
 }
 
 .preparation-welcome-text {
-	padding: 3vh 7vw 0 7vw;
+	line-height: 1.3em;
+	padding: 3vh 7vw 1vh 7vw;
 }
 
 #prep-list-1-close {
