@@ -73,11 +73,13 @@ $(document).ready(function() {
 	  	if(sessionStorage.getItem('toggle') == "left") {
 	  		switchRight();
 	  		sessionStorage.setItem('toggle', "right");
+	  		document.getElementById("evacuation-background").style.opacity = 100;
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-map-mode').addClass('evacuation-transform-list-mode');
 	  	}
 	  	else {
 	  		switchLeft();
 	  		sessionStorage.setItem('toggle', "left");
+	  		document.getElementById("evacuation-background").style.opacity = 0;
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
 	  	}
 	  });
@@ -567,7 +569,7 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
   /* if checkboxes */
   if (type == "check") {
 	  for (var i = 0; i < list_items.length; i++) {
-	  	middle = middle + "<div class='col-12 checkbox-line'>\
+	  	middle = middle + "<div class='col-9 checkbox-line'>\
 	  											<label class='checkbox-container'>\
 	  												<div class='checkbox-text'>" + list_items[i] +"</div>\
 	  												<input type='checkbox' id='item" + i + "-" + card_id + "' onclick='checkedItem(this.id)'>\
