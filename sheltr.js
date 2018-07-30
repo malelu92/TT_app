@@ -110,6 +110,27 @@ $(document).ready(function() {
 	  	$("body").append(iphone);
 	  });
 
+	  $("#button-marias-house").click(function(){
+	  	var reminder = $("<div class='preparation-list-background'>\
+												<div id='preparation-count-popup'>\
+													<div id='evacuation-popup-title'>don't forget to</div>\
+													<div class='col-12'>\
+														<button>Call Maria</button>\
+													</div>\
+													<ol>\
+													  <li>Prescription medicines</li>\
+													  <li>Identifications documents</li>\
+													  <li>Blankets</li>\
+													  <li>Batteries</li>\
+													  <li>Snacks</li>\
+													  <li>Activities for kids</li>\
+													</ol>\
+													<button id='button-get-directions'>Get directions</button>\
+												</div>\
+											</div>");
+  		$("body").append(reminder);
+	  });
+
 	}
 
 
@@ -127,7 +148,7 @@ $(document).ready(function() {
 		var card_lists = [
 			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
 			["First Name", "Last name", "Street Address", "Address line 2", "P.O. Box", "City, State", "Phone number"],
-			["Buy batteries", "3 days of food", "Water - 9 gallons", "Flashlights", "Sleeping bag", "Toilet paper", "Phone charger", 
+			["Buy batteries", "3 days of food", "Water - 6 gallons", "Flashlights", "Sleeping bag", "Toilet paper", "Phone charger", 
 			 "Battery radio", "Can opener", "Towelletes", "Extra Clothing", "Matches"],
 			["Medication", "More medication", "Towelletes", "Extra Clothing", "Matches"],
 			["Medication", "More medication", "Towelletes", "Extra Clothing", "Matches"]
@@ -353,14 +374,8 @@ function buttonSave(card_id, total_items) {
 		/* for purposes of demonstration. loads another card if COPD option checked */
 		var copd = false;
 		if(sessionStorage.getItem("item16-reg-card-3") == "true") {
-			/*document.getElementById("reg-card-7").style.display = "block"*/
 			copd = true;
 		}
-		/*else {
-			document.getElementById("reg-card-7").style.display = "none"
-		}*/
-
-
 
 		if (screen == "prep") {
 			updatePercentageBarCard(card_id, "prep");
@@ -404,8 +419,9 @@ function buttonSave(card_id, total_items) {
     	}
     }, 1300);
 		setTimeout(function(){
-			console.log("entrou")
+			if (screen == "reg") {
 		    document.getElementById("reg-card-7").style.boxShadow = "0 0 2px 0 rgba(0,0,0,0.12), 0 2px 6px 0 rgba(0,0,0,0.66)";
+		  }
 		}, 2500);
 
 
@@ -520,13 +536,30 @@ function closePrepList(id, total_items) {
 **  type: if card contains checkboxes or textboxes (string).
 */
 function createCardItems(list_items, message, card_image, card_id, total_items, type) {
-	var init = '<div id="card-content">\
-								<div id="card-top-container">\
-    							<div id="card-image-container"><img id="card-image" src=\'images/' + card_image + '\'></div>\
-    							<div id="card-message">' + message + '</div>\
-    					</div>\
-    					<div id=list-items>\
-    						<div class="list-container">';
+
+
+	if(card_image != null) {
+
+		var init = '<div id="card-content">\
+									<div id="card-top-container">\
+	    							<div id="card-image-container"><img id="card-image" src=\'images/' + card_image + '\'></div>\
+	    							<div id="card-message">' + message + '</div>\
+	    					</div>\
+	    					<div id=list-items>\
+	    						<div class="list-container">';
+  }
+  else {
+  	var init = '<div id="card-content">\
+  	<div id="card-top-container-registration"></div>\
+    							<div id=list-items>\
+    								<div class="list-container">';
+  }
+
+  /*<div id=card-close>X<div>*/
+
+
+
+
   var end = '<button id = "save" class="button-save" onclick="buttonSave(\'' + card_id + '\', \'' + total_items + '\')">save</button><button id="clear">clear</button></div>\
     								</div></div>';
   var middle = "";
@@ -609,15 +642,17 @@ function loadInfo(id) {
 
   	var info_card = "<div class='preparation-info-background'>\
 												<div id='preparation-info-card'>\
-													<div>Water - 6 gallons</div>\
+													<div id='preparation-info-title'>Water - 6 gallons</div>\
 													<div id='button-close-info-card' onclick='closeInfoCard()'>X</div>\
 													<div id='preparation-info-container'>\
 														<img src='images/water_bottle.png' id='preparation-info-image'>\
 														<div id='preparation-info-math'>\
-															<div>  2 adults</div>\
+															<div class='preparation-info-item'>  2 adults</div>\
 															<div>x 1 gallon</div>\
 															<div>x 3 days</div>\
-															<div>  6 gallons</div>\
+															<hr>\
+															<div class='preparation-info-item'>  6 gallons</div>\
+															<hr>\
 														</div>\
 													</div>\
 												</div>\
@@ -650,7 +685,12 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 
 		/* moves preparation bar when card is expanded */
 		var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
-		document.getElementById(card_bar).style.top = "28vh";
+		if(card_image != null) {
+			document.getElementById(card_bar).style.top = "28vh";
+		}
+		else {
+			document.getElementById(card_bar).style.top = "10vh";
+		}
 
 		/* calculates expanded card height */
 		var card_pos = document.getElementById(id).getBoundingClientRect();
@@ -682,7 +722,7 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 function loadCitizenCountScreen() {
 	var count_screen = $("<div class='preparation-list-background'>\
 												<div id='preparation-count-popup'>\
-													<div class='registration-welcome-text step'>How many people are you preparing for?</div>\
+													<div class='preparation-welcome-text step'>How many people are you preparing for?</div>\
 													<div>\
 														<div class='button-count-all col-12'>\
 															<div class='preparation-count-popup-text col-3'>Adults</div>\
@@ -1005,6 +1045,16 @@ function updatePercentageBarCard(card_id, type) {
 
 			/* updates card bar */
 			var card_percentage = (sessionStorage.getItem(card)/total_items_list)*100;
+
+			console.log("***")
+			console.log(prep_bar_inner_id)
+
+			/* for presentation, update medical condition card to 100% */
+			if(prep_bar_inner_id == "registration-bar-inner-card-3" && sessionStorage.getItem("item16-reg-card-3") == "true") {
+				card_percentage = 100;
+			}
+
+
 			document.getElementById(prep_bar_inner_id).style.width = (String(parseInt(card_percentage))+"%");
 			document.getElementById(prep_bar_inner_id).style.height = "1vh";
 			document.getElementById(prep_bar_inner_id).style.backgroundColor = "#FF004D";
