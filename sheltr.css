@@ -150,7 +150,7 @@ input:focus {
 
 .button-evacuation {
 	float: left;
-	font-size: .8em;
+	font-size: .7em;
 	font-weight: 300;
 	margin: .5vh 0 .5vh 5vw;
 	width: 87%;
@@ -180,7 +180,7 @@ input:focus {
 		background-color: #2962FF;
 		color: #ffffff;
 		font-weight: 250;
-		margin: 2vh 7vw 0 0;
+		margin: 2vh 6vw 0 0;
 		width: 85%
 	}
 
@@ -386,6 +386,12 @@ input:focus {
   width: 100%; 
 }
 
+#evacuation-best-plan-image {
+	float: left;
+	margin: 2vh 0 1vh 5vw;
+	width: 5%;
+}
+
 
 
 
@@ -397,6 +403,11 @@ input:focus {
 		text-transform: uppercase;
 	}
 
+	.evacuation-plan-advice.best {
+		float: left;
+		margin: 2.5vh 0 1vh 2vw;
+	}
+
 	.evacuation-plan-advice.not-recommended {
 		color: #FF004D;
 	}
@@ -405,14 +416,24 @@ input:focus {
 		background-color: #ffffff;
 		border-radius: 5px;
 		display: block;
-    margin: 40vh auto 32vh auto;
+    margin: 35vh auto 32vh auto;
 	  position: absolute;
-	  width: 80%;
+	  /*width: 80%;*/
+	  width: 75%;
 	  z-index: 1;
 }
 
 	.evacuation-plan.plan-1 {
 	  margin-left: 10vw;
+	  width: 80%;
+	}
+
+	.evacuation-plan.plan-2 {
+	  margin-left: 15vw;
+	}
+
+	.evacuation-plan.plan-3 {
+	  margin-left: 15vw;
 	}
 
 	.evacuation-plan-building {
@@ -734,6 +755,7 @@ input:focus {
 
 	#preparation-info-container {
 		display: inline-block;
+		font-size: .8em;
 	}
 
 	.preparation-info-icon {
@@ -744,13 +766,19 @@ input:focus {
 
 	#preparation-info-image {
 		float: left;
-		margin: 2vh 0 0 0;
-		width: 40%;
+		margin: 5vh 0 0 0;
+		width: 36%;
 	}
 
 	.preparation-info-item {
 		margin: 0 0 0 4vw;
 	}
+
+	.preparation-info-item.adults {
+		color: #2962FF;
+		text-decoration: underline;
+	}
+
 
 	#preparation-info-math {
 		float: left;
@@ -759,7 +787,7 @@ input:focus {
 
 	#preparation-info-title {
 		float:left;
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 
 .preparation-list-background {
@@ -808,7 +836,7 @@ input:focus {
 .registration-florida-health {
 	float: left;
 	height: 15vh;
-	padding: 1vh 0 4vh 8vw;
+	padding: 1vh 0 5vh 8vw;
 }
 
 #registration-guarantee {
@@ -848,7 +876,7 @@ input:focus {
 #registration-welcome-message {
 	background-color: #ffffff;
 	border-radius: 4px;
-	height: 55vh;
+	height: 65vh;
 	margin: 30vh auto 0 auto;
 	width: 94.5%;
 }
@@ -875,7 +903,7 @@ input:focus {
 
 
 #share-form {
-  margin: 28vh 0 0 70vw;
+  margin: 29vh 0 0 70vw;
   position: absolute;
   /*z-index: 2;*/
 }
@@ -1017,7 +1045,7 @@ input:focus {
   70% { -webkit-transform: translate(-20.4px, -189.1px) ; }
   76% { -webkit-transform: translate(-13.4px, -217.5px) ; }
   84% { -webkit-transform: translate(-3.5px, -247.8px) ; }
-  100% { -webkit-transform: translate(0vw, -50vh) ; }
+  100% { -webkit-transform: translate(0vw, -48vh) ; }
 }
 
 
@@ -1034,7 +1062,7 @@ input:focus {
   76% { -webkit-transform: translate(-230.4px, 0.5px) ; }
   83% { -webkit-transform: translate(-250.0px, -30.8px) ; }
   91% { -webkit-transform: translate(-280.7px, -68.5px) ; }
-  100% { -webkit-transform: translate(-81vw, -25vh) ; }
+  100% { -webkit-transform: translate(-79vw, -21vh) ; }
 }
 
 
@@ -1049,7 +1077,7 @@ input:focus {
   87% { -webkit-transform: translate(-500.8px, 61.5px) ; }
   92% { -webkit-transform: translate(-530.9px, 47.0px) ; }
   97% { -webkit-transform: translate(-550.5px, 29.0px) ; }
-  100% { -webkit-transform: translate(-162vw, 3vh) ; }
+  100% { -webkit-transform: translate(-156.2vw, 3.3vh) ; }
 }
 
 

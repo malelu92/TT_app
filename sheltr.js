@@ -112,6 +112,12 @@ $(document).ready(function() {
 	  	$("body").append(iphone);
 	  });
 
+	  /* trick to show iphone screen*/
+	  $("#profile-iphone").click(function(){
+	  	var iphone = "<img id='iphone-screen' src='images/iphone_screen.png' onclick='updateEvacuationScreen()'>";
+	  	$("body").append(iphone);
+	  });
+
 	  $("#button-marias-house").click(function(){
 	  	var reminder = $("<div class='preparation-list-background'>\
 												<div id='preparation-count-popup'>\
@@ -127,7 +133,7 @@ $(document).ready(function() {
 													  <li>Snacks</li>\
 													  <li>Activities for kids</li>\
 													</ol>\
-													<button id='button-get-directions'>Get directions</button>\
+													<button id='button-get-directions' onclick='closeReminderPopup()''>Get directions</button>\
 												</div>\
 											</div>");
   		$("body").append(reminder);
@@ -525,6 +531,11 @@ function closePrepList(id, total_items) {
 	updatePercentageBar(total_items);
 }
 
+function closeReminderPopup() {
+	console.log("heloo")
+	$(".preparation-list-background").remove();
+}
+
 
 
 /*
@@ -649,12 +660,12 @@ function loadInfo(id) {
 													<div id='preparation-info-container'>\
 														<img src='images/water_bottle.png' id='preparation-info-image'>\
 														<div id='preparation-info-math'>\
-															<div class='preparation-info-item'>  2 adults</div>\
+															<div class='preparation-info-item adults'>  2 adults</div>\
 															<div>x 1 gallon</div>\
 															<div>x 3 days</div>\
-															<hr>\
+															<div class='preparation-info-item'><hr></div>\
 															<div class='preparation-info-item'>  6 gallons</div>\
-															<hr>\
+															<div class='preparation-info-item'><hr></div>\
 														</div>\
 													</div>\
 												</div>\
@@ -849,7 +860,12 @@ function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
 
 		    /* plan B card on screen */
 		    if (pos == -swipe_pixels) {
-		    	document.getElementById("map-image").src = "images/planB_background.png";
+		    	if(sessionStorage.getItem('second_evac_view')) {
+		    		document.getElementById("map-image").src = "images/planA_background.png";
+		    	}
+		    	else {
+		    		document.getElementById("map-image").src = "images/planB_background.png";
+		    	}
 		    }
 
 		    /* plan C card on screen */
@@ -984,14 +1000,18 @@ function updatePercentageBar(total_items) {
 function updateEvacuationScreen() {
 	$("#iphone-screen").remove();
 
+	document.getElementById("map-image").src = "images/planB_background.png";
+	sessionStorage.setItem('second_evac_view', "yes");
+
 	/* update plan A */
 	var plan_a = document.getElementById('plan-1-card');
 	while ( plan_a.firstChild ) plan_a.removeChild(plan_a.firstChild );
 
 	/*var div_plan_a = document.getElementById('plan-1-card');*/
-	plan_a.innerHTML += '<div class="evacuation-plan-advice">Next best option</div>\
-	  									<div class="evacuation-plan-building">Foothill Highschool</div>\
-	  									<div class="evacuation-plan-item"><a class="link-evacuation">Zone C</a> - East Tampa</div>\
+	plan_a.innerHTML += '<img id="evacuation-best-plan-image" src="images/star.png">\
+	  									<div class="evacuation-plan-advice best">Best plan for Sue</div>\
+	  									<div class="evacuation-plan-building col-12">Foothill Highschool</div>\
+	  									<div class="evacuation-plan-item col-12"><a class="link-evacuation">Zone C</a> - East Tampa</div>\
 	  									<div class="col-12">\
 		  									<div class="evacuation-plan-item distance">\
 		  										<img class="icon-evacuation" src="images/icon_car.png">\
@@ -999,7 +1019,7 @@ function updateEvacuationScreen() {
 		  									</div>\
 		  									<button class="button-go">Go</button>\
 	  									</div>\
-	  									<div class="evacuation-plan-item">\
+	  									<div class="evacuation-plan-item col-12">\
 	  										<img class="icon-evacuation generator" src="images/icon_generator.png">Generator\
 	  										<img class="icon-evacuation nurse" src="images/icon_nurse.png">Nurse\
 	  										<img class="icon-evacuation pet" src="images/icon_pet.png">Pet Friendly\
