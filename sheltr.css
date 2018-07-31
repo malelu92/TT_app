@@ -686,7 +686,7 @@ padding: 0 20vw 0 0;
 
 
 	.login-dropdown-transform {
-		height: 12vh;
+		height: 13.5vh;
 		margin: 5vh 0 0 5vw;
 	}
 
@@ -762,7 +762,7 @@ padding: 0 20vw 0 0;
 		background-color: #ffffff;
 		border-radius: 4px;
 		font-size: 1.1em;
-		height: 53vh;
+		height: 47vh;
 		margin: 30vh auto 0 auto;
 		width: 80%;
 	}
@@ -931,7 +931,7 @@ padding: 0 20vw 0 0;
 	background-color: #ffffff;
 	border-radius: 4px;
 	height: 65vh;
-	margin: 30vh auto 0 auto;
+	margin: 20vh auto 0 auto;
 	width: 94.5%;
 }
 
