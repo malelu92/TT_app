@@ -168,10 +168,11 @@ li {
 
 .button-evacuation {
 	float: left;
-	font-size: .7em;
-	font-weight: 300;
+	font-size: .75em;
+	font-weight: 500;
 	margin: .5vh 0 .5vh 5vw;
 	width: 87%;
+	font-family: San Francisco Text;
 }
 
 .button-evacuation.emergency-call {
@@ -435,16 +436,16 @@ li {
 		background-color: #ffffff;
 		border-radius: 5px;
 		display: block;
-    margin: 35vh auto 32vh auto;
+    margin: 40vh auto 32vh auto;
 	  position: absolute;
-	  width: 80%;
+	  width: 90%;
 	  /*width: 75%;*/
 	  z-index: 1;
 }
 
 	.evacuation-plan.plan-1 {
-	  margin-left: 10vw;
-	  width: 80%;
+	  margin-left: 5vw;
+	  width: 90%;
 	}
 
 	.evacuation-plan.plan-2 {
@@ -457,15 +458,16 @@ li {
 
 	.evacuation-plan-building {
         color: #232752;
-        font-size: 1.4em;
+        font-size: 1.25em;
         font-weight: 400;
         margin: 1.5vh 0 1vh 5vw;
 	}
 
 	.evacuation-plan-item{
 		color: #232752;
-		font-size: .8em;
-		margin: 1vh 0 1vh 5vw;
+		font-size: .9em;
+		font-weight: 400;
+    margin: 0.5vh 0 3vh 5vw;
 	}
 
 	.evacuation-plan-item.distance{
@@ -506,6 +508,8 @@ li {
 }
 
 .evacuation-transform-list-mode {
+		height: 200px; 
+		position: relative;
     -webkit-animation: evac_list_mode .4s;
     animation: evac_list_mode .4s;
     animation-fill-mode: forwards;
@@ -645,6 +649,27 @@ li {
   	top: 0;
   	z-index: 1;
   }
+
+
+
+
+
+
+.ketki {
+	height: auto;
+	overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 
   .link-evacuation {
   	color: #2962FF;
@@ -947,7 +972,7 @@ li {
 		background-color: #041735;
 		border-radius: 50px;
 	  height: 5%;
-	  margin: 15% 0 0 17%;
+	  margin: 10% 0 0 17%;
 	  position: absolute;
 	  width: 60%;
 }
@@ -961,22 +986,25 @@ li {
 }
 
 .toggle-item {
-	color: #ffffff;
-	display: block;
-	float: left;
-	font-size: 1em;
-	margin: 2.5% 10% 0 5%;
-	position: relative;
-	z-index: 1;
+ display: block;
+    font-family: San Francisco Text;
+    float: left;
+    font-size: 0.9em;
+    margin: 3% 10% 0 9%;
+    position: relative;
+    z-index: 1;
 }
 
 .toggle-item.left {
 	color: #232752;
+	font-weight: 500;
 }
 
 
 .toggle-item.right {
-	float: right;
+    float: right;
+    color: #ffffff;
+    font-weight: 500;
 }
 
 .subtitle {
@@ -988,8 +1016,8 @@ li {
 #swipe-area {
   	display: flex;
   	position: fixed;
-  	height: 60%;
-  	margin: 40% 0 0 0;
+  	height: 70%;
+  	margin: 30% 0 0 0;
   	width: 100%;
 }
 
@@ -1074,7 +1102,7 @@ li {
   70% { -webkit-transform: translate(-20.4px, -189.1px) ; }
   76% { -webkit-transform: translate(-13.4px, -217.5px) ; }
   84% { -webkit-transform: translate(-3.5px, -247.8px) ; }
-  100% { -webkit-transform: translate(0vw, -48vh) ; }
+  100% { -webkit-transform: translate(0vw, -38vh) ; }
 }
 
 
@@ -1091,7 +1119,7 @@ li {
   76% { -webkit-transform: translate(-230.4px, 0.5px) ; }
   83% { -webkit-transform: translate(-250.0px, -30.8px) ; }
   91% { -webkit-transform: translate(-280.7px, -68.5px) ; }
-  100% { -webkit-transform: translate(-79vw, -21vh) ; }
+  100% { -webkit-transform: translate(-87vw, -77vh) ; }
 }
 
 
@@ -1106,7 +1134,7 @@ li {
   87% { -webkit-transform: translate(-500.8px, 61.5px) ; }
   92% { -webkit-transform: translate(-530.9px, 47.0px) ; }
   97% { -webkit-transform: translate(-550.5px, 29.0px) ; }
-  100% { -webkit-transform: translate(-160.2vw, 30.3vh) ; }
+  100% { -webkit-transform: translate(-178.2vw, -115.7vh) ; }
 }
 
 

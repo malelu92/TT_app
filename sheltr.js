@@ -76,8 +76,8 @@ $(document).ready(function() {
 	  		document.getElementById("evacuation-background").style.opacity = 100;
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-map-mode').addClass('evacuation-transform-list-mode');
 
-	  		document.getElementById("plan-2-card").style.width = "75%";
-	  		document.getElementById("plan-3-card").style.width = "75%";
+	  		document.getElementById("plan-2-card").style.width = "80%";
+	  		document.getElementById("plan-3-card").style.width = "80%";
 
 
 	  	}
@@ -88,8 +88,8 @@ $(document).ready(function() {
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-list-mode').addClass('evacuation-transform-map-mode');
 
 
-	  		document.getElementById("plan-2-card").style.width = "80%";
-	  		document.getElementById("plan-3-card").style.width = "80%";
+	  		document.getElementById("plan-2-card").style.width = "90%";
+	  		document.getElementById("plan-3-card").style.width = "90%";
 	  	}
 	  });
 
