@@ -191,6 +191,7 @@ li {
 		border-radius: 25px;
 		color: #ffffff;
 		font-weight: 300;
+		margin: 5vh 18vw 0 0;
 		padding: 1.5vh 15vw 1.5vh 15vw;
     -webkit-transition: height 3s; /* For Safari 3.1 to 6.0 */
     transition: height 3s;
@@ -878,6 +879,10 @@ padding: 0 20vw 0 0;
 	cursor: pointer;
 }
 
+#profile-screen {
+	width: 100%;
+}
+
 #reg-card-7 {
 	display: none;
 	opacity: 0;
@@ -1045,7 +1050,7 @@ padding: 0 20vw 0 0;
 	color: #ffffff;
 	height: 7vh;
 	line-height: 7vh;
-	margin: 10vh 0 0 0;
+	margin: 12vh 0 0 0;
 	position: absolute;
 	text-align: center;
 	top: 0;
