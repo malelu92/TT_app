@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 
 	  /* trick to show iphone screen*/
-	  $("#status-bar").click(function(){
+	  $("#status-bar-evac").click(function(){
 	  	var iphone = "<img id='iphone-screen' src='images/iphone_screen.png' onclick='updateEvacuationScreen()'>";
 	  	$("body").append(iphone);
 	  });
@@ -419,6 +419,7 @@ function buttonSave(card_id, total_items) {
 		$(card_bar).removeAttr('style');
 
 
+		$(".preparation-list-background").fadeTo("slow", 0);
 		setTimeout(function(){
       $(card_string).removeClass('card-retransform');
       $(".preparation-list-background").remove();
@@ -549,6 +550,10 @@ function closePrepList(id, total_items) {
 function closeReminderPopup() {
 	$(".preparation-list-background").remove();
 	document.querySelector('.toggle-item.right').style.zIndex = 1;
+}
+
+function closeWarningMessage() {
+	$("#warning-message").remove();	
 }
 
 
@@ -830,7 +835,7 @@ function switchLeft() {
 		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
 			}
 		}
-	}, 10);
+	}, 1);
 }
 
 /*
@@ -854,7 +859,7 @@ function switchRight() {
 		    document.getElementById("toggle-bar").style.left = pos + 'px'; 
 			}
 		}
-	}, 10);
+	}, 1);
 }
 
 
@@ -1028,6 +1033,13 @@ function updatePercentageBar(total_items) {
 
 function updateEvacuationScreen() {
 	$("#iphone-screen").remove();
+
+	var warning_message = "<div id='warning-message'>\
+													<div id='warning-message-text'>Your plans have changed!</div>\
+													<div id='warning-message-close' onclick='closeWarningMessage()'>X</div>\
+												</div>";
+
+	$("body").append(warning_message);
 
 	document.getElementById("map-image").src = "images/planB_background.png";
 	sessionStorage.setItem('second_evac_view', "yes");
