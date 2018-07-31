@@ -137,12 +137,12 @@ $(document).ready(function() {
 														<button id='button-call-maria'>Call Maria</button>\
 													</div>\
 													<ol>\
-													  <li>Prescription medicines</li>\
-													  <li>Identifications documents</li>\
-													  <li>Blankets</li>\
-													  <li>Batteries</li>\
-													  <li>Snacks</li>\
-													  <li>Activities for kids</li>\
+													  <li>General emergency kit</li>\
+													  <li>Identification documents</li>\
+													  <li>Medical emergency kit</li>\
+													  <li>Extra snacks</li>\
+													  <li>Pet emergency kit</li>\
+													  <li>Extra blankets</li>\
 													</ol>\
 													<button id='button-get-directions' onclick='closeReminderPopup()''>Get directions</button>\
 												</div>\
