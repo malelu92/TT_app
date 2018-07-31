@@ -1035,7 +1035,8 @@ function updateEvacuationScreen() {
 	$("#iphone-screen").remove();
 
 	var warning_message = "<div id='warning-message'>\
-													<div id='warning-message-text'>Your plans have changed!</div>\
+													<img id='warning-message-icon' src='images/icon_warning.png'>\
+													<div id='warning-message-text'>Warning! Your plans have changed!</div>\
 													<div id='warning-message-close' onclick='closeWarningMessage()'>X</div>\
 												</div>";
 
