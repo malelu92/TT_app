@@ -1052,7 +1052,7 @@ function updateEvacuationScreen() {
 	/*var div_plan_a = document.getElementById('plan-1-card');*/
 	plan_a.innerHTML += '<img id="evacuation-best-plan-image" src="images/star.png">\
 	  									<div class="evacuation-plan-advice best">Best plan for Sue</div>\
-	  									<div class="evacuation-plan-building col-12">Foothill Highschool</div>\
+	  									<div class="evacuation-plan-building col-12">Foothill High School</div>\
 	  									<div class="evacuation-plan-item col-12"><a class="link-evacuation">Zone C</a> - East Tampa</div>\
 	  									<div class="col-12">\
 		  									<div class="evacuation-plan-item distance">\
