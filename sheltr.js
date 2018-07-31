@@ -77,7 +77,9 @@ $(document).ready(function() {
 	  		$(".evacuation-transform").not(this).removeClass('evacuation-transform-map-mode').addClass('evacuation-transform-list-mode');
 
 	  		document.getElementById("plan-2-card").style.width = "80%";
+	  		document.getElementById("plan-2-card").style.paddingTop = ".2vh";
 	  		document.getElementById("plan-3-card").style.width = "80%";
+	  		document.getElementById("plan-3-card").style.paddingTop = ".2vh";
 
 
 	  	}
@@ -146,6 +148,8 @@ $(document).ready(function() {
 												</div>\
 											</div>");
   		$("body").append(reminder);
+
+  		document.querySelector('.toggle-item.right').style.zIndex = 0;
 	  });
 
 	}
@@ -543,8 +547,8 @@ function closePrepList(id, total_items) {
 }
 
 function closeReminderPopup() {
-	console.log("heloo")
 	$(".preparation-list-background").remove();
+	document.querySelector('.toggle-item.right').style.zIndex = 1;
 }
 
 
@@ -863,7 +867,6 @@ function switchRight() {
 **	swipe_pixels: number of pixels cards will swipe left (integer).
 */
 function swipeAllCardsLeft (card_1, card_2, card_3, swipe_pixels) {
-
 	var card_pos = sessionStorage.getItem("plan-card");
 	var pos = card_pos;
 
@@ -935,7 +938,12 @@ function swipeAllCardsRight (card_1, card_2, card_3, swipe_pixels) {
 
 		    /* plan B card on screen */
 		    if (pos == -swipe_pixels) {
-		    	document.getElementById("map-image").src = "images/planB_background.png";
+		    	if(sessionStorage.getItem('second_evac_view')) {
+		    		document.getElementById("map-image").src = "images/planA_background.png";
+		    	}
+		    	else {
+		    		document.getElementById("map-image").src = "images/planB_background.png";
+		    	}
 		    }
 		    return;
 		  }
@@ -1040,7 +1048,7 @@ function updateEvacuationScreen() {
 		  									</div>\
 		  									<button class="button-go">Go</button>\
 	  									</div>\
-	  									<div class="evacuation-plan-item col-12">\
+	  									<div class="evacuation-plan-item utilities col-12">\
 	  										<img class="icon-evacuation generator" src="images/icon_generator.png">Generator\
 	  										<img class="icon-evacuation nurse" src="images/icon_nurse.png">Nurse\
 	  										<img class="icon-evacuation pet" src="images/icon_pet.png">Pet Friendly\
