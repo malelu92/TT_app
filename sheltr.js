@@ -189,12 +189,8 @@ $(document).ready(function() {
 			sessionStorage.setItem('total_children', 0);
 			sessionStorage.setItem('total_pets', 0);
 			initializeCardSessionStorage(card_lists, "prep");
-			/*loadCitizenCountScreen();*/
+			loadCitizenCountScreen();
 		}
-
-
-loadCitizenCountScreen();
-
 
 		var total_items = calculateTotalItems(card_lists, "prep");
 
@@ -1040,7 +1036,7 @@ function updateEvacuationScreen() {
 
 	var warning_message = "<div id='warning-message'>\
 													<img id='warning-message-icon' src='images/icon_warning.png'>\
-													<div id='warning-message-text'>Warning! Your plans have changed!</div>\
+													<div id='warning-message-text'>Your plans have changed!</div>\
 													<div id='warning-message-close' onclick='closeWarningMessage()'>X</div>\
 												</div>";
 
