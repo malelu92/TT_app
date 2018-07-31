@@ -950,6 +950,15 @@ padding: 0 20vw 0 0;
 	padding: 0 7vw 0 7vw;
 }
 
+#reminder {
+		background-color: #ffffff;
+		border-radius: 4px;
+		font-size: 1.1em;
+		height: 53vh;
+		margin: 30vh auto 0 auto;
+		width: 80%;
+}
+
 #share-button {
 	height: 60px;
   width: 60px;
@@ -1107,6 +1116,7 @@ padding: 0 20vw 0 0;
   6.0000% { -webkit-transform: translate(-164.0px, -991.0px) ; }
   25.3700% { -webkit-transform: translate(-275.0px, -930.9px) ; }
   100.0000% { -webkit-transform: translate(-664.0px, -780.0px) ; }
+}
 
 
   .col-1 {

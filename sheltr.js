@@ -131,7 +131,7 @@ $(document).ready(function() {
 
 	  $("#button-marias-house").click(function(){
 	  	var reminder = $("<div class='preparation-list-background'>\
-												<div id='preparation-count-popup'>\
+												<div id='reminder'>\
 													<div id='evacuation-popup-title'>don't forget to</div>\
 													<div class='col-12'>\
 														<button id='button-call-maria'>Call Maria</button>\
@@ -189,8 +189,12 @@ $(document).ready(function() {
 			sessionStorage.setItem('total_children', 0);
 			sessionStorage.setItem('total_pets', 0);
 			initializeCardSessionStorage(card_lists, "prep");
-			loadCitizenCountScreen();
+			/*loadCitizenCountScreen();*/
 		}
+
+
+loadCitizenCountScreen();
+
 
 		var total_items = calculateTotalItems(card_lists, "prep");
 
