@@ -235,9 +235,10 @@ li {
 	}
 
 	#card-checked-message {
-		color: #FF004D;
-		float:left;
-		margin: 0 0 5vh 0;
+color: #FF004D;
+float: right;
+margin: 0 10vw 5vh 100vw;
+padding: 0 20vw 0 0;
 	}
 
 	#card-close {
