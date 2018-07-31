@@ -185,10 +185,8 @@ $(document).ready(function() {
 			sessionStorage.setItem('total_children', 0);
 			sessionStorage.setItem('total_pets', 0);
 			initializeCardSessionStorage(card_lists, "prep");
-			/*loadCitizenCountScreen();*/
+			loadCitizenCountScreen();
 		}
-
-		loadCitizenCountScreen();
 
 		var total_items = calculateTotalItems(card_lists, "prep");
 
@@ -463,7 +461,9 @@ function calculateTotalItems(card_lists, type) {
 	for (var i=1; i<=card_lists.length; i++) {
 		var countdown = type + "-countdown-" + i;
 		var prep_card = type + '-card-' + i + '-count';
+		console.log(countdown)
 		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+		console.log(sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length)
 		total_items += (card_lists[i-1]).length;
 	}
 	return total_items;
@@ -564,11 +564,32 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 
 	if(card_image != null) {
 
+		console.log("card_id")
+		console.log(card_id)
+		var item = card_id.split('-')[2];
+		var countdown = type + "-countdown-" + item;
+		var prep_card = 'prep-card-' + item + '-count';
+		console.log(prep_card)
+		console.log(sessionStorage.getItem(prep_card) + " of " + (list_items).length);
+
+		var countdown = sessionStorage.getItem(prep_card) + " of " + (list_items).length;
+
+		/*var total_items = 0;
+	for (var i=1; i<=card_lists.length; i++) {
+		var countdown = type + "-countdown-" + i;
+		var prep_card = type + '-card-' + i + '-count';
+		console.log(countdown)
+		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
+		console.log(sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length)
+		total_items += (card_lists[i-1]).length;
+	}*/
+
 		var init = '<div id="card-content">\
 									<div id="card-top-container">\
 	    							<div id="card-image-container"><img id="card-image" src=\'images/' + card_image + '\'></div>\
 	    							<div id="card-message">' + message + '</div>\
 	    					</div>\
+	    					<div id="card-checked-message" class="col-12">' + countdown + '</div>\
 	    					<div id=list-items>\
 	    						<div class="list-container">';
   }
@@ -710,7 +731,7 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 		/* moves preparation bar when card is expanded */
 		var card_bar= id.split('-')[0] + "-card-bar-" + (id.split('-')[2])
 		if(card_image != null) {
-			document.getElementById(card_bar).style.top = "28vh";
+			document.getElementById(card_bar).style.top = "31vh";
 		}
 		else {
 			document.getElementById(card_bar).style.top = "10vh";

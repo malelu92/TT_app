@@ -234,6 +234,12 @@ li {
 		margin:	1.5vh 2.5vw 1.5vh 0;
 	}
 
+	#card-checked-message {
+		color: #FF004D;
+		float:left;
+		margin: 0 0 5vh 0;
+	}
+
 	#card-close {
 		position: absolute;
 	}
@@ -250,6 +256,7 @@ li {
 	#card-message {
 		float:left;
 		font-size: .9em;
+		margin: 3vh 0 0 0;
 		text-align: left;
 		width: 56%;
 	}
@@ -261,7 +268,7 @@ li {
 
 
 	.card-text {
-		padding: 3vh 5vw 5vh 5vw;
+		padding: 3vh 5vw 4vh 5vw;
         /*want the text to transform to the properties below*/
 /*        font-size:1.25em;*/
 /*        text-align: left;*/
@@ -269,7 +276,8 @@ li {
 
 	#card-top-container {
 		height: 10vh;
-		margin: 0 0 10vh 0;
+		/*margin: 0 0 10vh 0;*/
+		margin: 0 0 7vh 0;
 	}
 
 	#card-top-container-registration {
