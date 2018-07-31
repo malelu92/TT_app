@@ -564,25 +564,9 @@ function createCardItems(list_items, message, card_image, card_id, total_items, 
 
 	if(card_image != null) {
 
-		console.log("card_id")
-		console.log(card_id)
-		var item = card_id.split('-')[2];
-		var countdown = type + "-countdown-" + item;
-		var prep_card = 'prep-card-' + item + '-count';
-		console.log(prep_card)
-		console.log(sessionStorage.getItem(prep_card) + " of " + (list_items).length);
-
-		var countdown = sessionStorage.getItem(prep_card) + " of " + (list_items).length;
-
-		/*var total_items = 0;
-	for (var i=1; i<=card_lists.length; i++) {
-		var countdown = type + "-countdown-" + i;
-		var prep_card = type + '-card-' + i + '-count';
-		console.log(countdown)
-		document.getElementById(countdown).innerHTML = sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length;
-		console.log(sessionStorage.getItem(prep_card) + " of " + (card_lists[i-1]).length)
-		total_items += (card_lists[i-1]).length;
-	}*/
+		/*var item = card_id.split('-')[2];
+		var prep_card = 'prep-card-' + item + '-count';*/
+		var countdown = sessionStorage.getItem('prep-card-' + card_id.split('-')[2] + '-count') + " of " + (list_items).length;
 
 		var init = '<div id="card-content">\
 									<div id="card-top-container">\
@@ -740,7 +724,7 @@ function loadList(id, message, card_image, items_list, type, total_items) {
 		/* calculates expanded card height */
 		var card_pos = document.getElementById(id).getBoundingClientRect();
 		var save_button_pos = document.getElementById("save").getBoundingClientRect();
-		var height = save_button_pos.top - card_pos.top
+		var height = save_button_pos.top - card_pos.top - 200;
 		$('.card-transform').height(height + "px");
 
 		/* loads checked items*/
