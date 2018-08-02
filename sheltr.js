@@ -130,26 +130,7 @@ $(document).ready(function() {
 	  });
 
 	  $("#button-marias-house").click(function(){
-	  	var reminder = $("<div class='preparation-list-background'>\
-												<div id='reminder'>\
-													<div id='evacuation-popup-title'>don't forget to</div>\
-													<div class='col-12'>\
-														<button id='button-call-maria'>Call Maria</button>\
-													</div>\
-													<ol>\
-													  <li>General emergency kit</li>\
-													  <li>Identification documents</li>\
-													  <li>Medical emergency kit</li>\
-													  <li>Extra snacks</li>\
-													  <li>Pet emergency kit</li>\
-													  <li>Extra blankets</li>\
-													</ol>\
-													<button id='button-get-directions' onclick='closeReminderPopup()''>Get directions</button>\
-												</div>\
-											</div>");
-  		$("body").append(reminder);
-
-  		document.querySelector('.toggle-item.right').style.zIndex = 0;
+	  	openReminderScreen();
 	  });
 
 	}
@@ -815,6 +796,25 @@ function loadWelcomeMessage() {
 }
 
 
+function openReminderScreen() {
+	  	var reminder = $("<div class='preparation-list-background'>\
+												<div id='reminder'>\
+													<div id='evacuation-popup-title'>don't forget</div>\
+													<ol>\
+													  <li>General emergency kit</li>\
+													  <li>Identification documents</li>\
+													  <li>Medical emergency kit</li>\
+													  <li>Extra snacks</li>\
+													  <li>Pet emergency kit</li>\
+													  <li>Extra blankets</li>\
+													</ol>\
+													<button id='button-get-directions' onclick='closeReminderPopup()''>Get directions</button>\
+												</div>\
+											</div>");
+  		$("body").append(reminder);
+
+  		document.querySelector('.toggle-item.right').style.zIndex = 0;	
+}
 
 /*
 ** Moves toggle switch left.
@@ -1059,7 +1059,7 @@ function updateEvacuationScreen() {
 		  										<img class="icon-evacuation" src="images/icon_car.png">\
 		  										25 mins - 12 miles\
 		  									</div>\
-		  									<button class="button-go">Go</button>\
+		  									<button onclick="openReminderScreen()" class="button-go">Go</button>\
 	  									</div>\
 	  									<div class="evacuation-plan-item utilities col-12">\
 	  										<img class="icon-evacuation generator" src="images/icon_generator.png">Generator\
