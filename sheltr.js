@@ -1,6 +1,6 @@
 /***********************************************************************
 **	MHCI Capstone Project - Sheltr.
-**	Brooke Sachs, Ketki Jadhav, Marina Leao Lucena, Nishchala Singhal.
+**	Marina Leao Lucena, Brooke Sachs, Ketki Jadhav, Nishchala Singhal.
 **	July 2018
 ************************************************************************/
 
@@ -1030,7 +1030,9 @@ function updatePercentageBar(total_items) {
 }
 
 
-
+/*
+** Removes iPhone screen and update evacuation plans.
+*/
 function updateEvacuationScreen() {
 	$("#iphone-screen").remove();
 
@@ -1049,7 +1051,6 @@ function updateEvacuationScreen() {
 	var plan_a = document.getElementById('plan-1-card');
 	while ( plan_a.firstChild ) plan_a.removeChild(plan_a.firstChild );
 
-	/*var div_plan_a = document.getElementById('plan-1-card');*/
 	plan_a.innerHTML += '<img id="evacuation-best-plan-image" src="images/star.png">\
 	  									<div class="evacuation-plan-advice best">Best plan for Sue</div>\
 	  									<div class="evacuation-plan-building col-12">Foothill High School</div>\
